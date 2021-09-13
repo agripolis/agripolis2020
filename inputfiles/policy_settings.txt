@@ -1,0 +1,19 @@
+iteration 0					
+	price_change:	V_HIRED_LABOUR=1.011;	V_HIRED_LABOUR_H=1.011;	 V_OFF_FARM_LAB=1.011;	
+	tranch:	tranch_2_deg=0.10;	tranch_3_deg=0.10;	tranch_4_deg=0.10;	tranch_5_deg=0.14;
+	others:	rhs_row:Grazing_Land=EQ;	rhs_row:Arable_Land=EQ;		
+					
+iteration 1					
+	price_change:	V_HIRED_LABOUR=1.011;	V_HIRED_LABOUR_H=1.011;	 V_OFF_FARM_LAB=1.011;	
+	tranch:	tranch_2_deg=0.10;	tranch_3_deg=0.10;	tranch_4_deg=0.10;	tranch_5_deg=0.14;
+	others:	rhs_row:Grazing_Land=EQ;	rhs_row:Arable_Land=EQ;		
+					
+iteration 2					
+	price_change:	V_HIRED_LABOUR=1.011;	V_HIRED_LABOUR_H=1.011;	 V_OFF_FARM_LAB=1.011;	
+	tranch:	tranch_2_deg=0.10;	tranch_3_deg=0.10;	tranch_4_deg=0.10;	tranch_5_deg=0.14;
+	others:	rhs_row:Grazing_Land=EQ;	rhs_row:Arable_Land=EQ;		
+					
+iteration 3					
+	price_change:	V_HIRED_LABOUR=1.011;	V_HIRED_LABOUR_H=1.011;	 V_OFF_FARM_LAB=1.011;	
+	tranch:	tranch_2_deg=0.10;	tranch_3_deg=0.10;	tranch_4_deg=0.10;	tranch_5_deg=0.14;
+	others:	rhs_row:Grazing_Land=EQ;	rhs_row:Arable_Land=EQ;		

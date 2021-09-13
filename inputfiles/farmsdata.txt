@@ -1,0 +1,37 @@
+#	generated from ===> Belgium_input.xlsm <=== /// typical farms																			
+																				
+#	Farm Data Collections																			
+																				
+	NumOfFarms	19																		
+	Name	CROP-PIF1	CROP-PIF2	CROP-PIF3	CROP-FIF4	CROP-FIF5	DAIRY-FIF6	DAIRY-FIF7	DAIRY-FIF8	FOD-FIF9	FOD-PIF10	PIG-FIF11	PIG-PIF12	PIG-FIF13	POUL-FIF14	POUL-FIF15	MIXED-FIF16	MIXED-FIF17	MIXED-FIF18	MIXED-FIF19
+	Farm_Type	3	3	3	3	3	5	5	5	4	4	1	1	1	1	1	4	4	4	4
+	Form_of_Organisation	0	2	2	1	1	1	1	1	1	1	1	2	1	1	1	1	1	1	1
+	Weighting_Factor	4607	1662	168	470	40	694	768	665	2228	3755	188	823	1070	547	269	658	777	412	508
+																				
+																				
+	land_input	7	23	57	111	216	32	53	89	37	17	16	3	34	8	18	64	32	38	62
+																				
+	Arable_Land																			
+	owned_land	0	8	19	10	68	6	10	18	3	3	2	0	12	0	6	14	7	3	24
+	rented_land	5	10	31	90	132	9	18	32	14	3	10	0	17	4	7	25	13	25	24
+	initial_rental_price	382	382	382	382	382	382	382	382	382	310	382	0	382	382	382	382	382	382	382
+																				
+	Grazing_Land																			
+	owned_land	1	2	3	4	5	10	8	14	3	5	2	1	3	0	2	10	3	1	7
+	rented_land	1	3	4	7	11	7	17	25	17	6	2	2	2	4	3	15	9	9	7
+	initial_rental_price	327	327	327	327	327	327	327	327	327	298	327	327	327	327	327	327	327	327	327
+																				
+																				
+	milk_quota	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+	fam_labour_units	1	1	1	1	1	2	2	2	1	1	1	1	1	2	1	2	1	1	1
+	off_fam_labour	0	0	0	1	1	0	1	1	0	0	1	0	1	1	1	0	1	1	1
+	equity_capital	106378	176705	328654	544130	890578	352679	671193	1181446	639503	127355	967860.9683	579368	1034178	568810	864303.397	782330	474196	619216	782332
+	#arable assets	53235	141960	337155	567840	1206660	106470	177450	319410	106470	53235	106470	0	212940	35490	106470	248430	124215	53235	425880
+	#grassland assets	12050	24100	36150	48200	60250	120500	96400	168700	84350	60250	24100	12050	36150	24100	24100	120500	36150	12050	84350
+	land_assets	65285	166060	373305	616040	1266910	226970	273850	488110	190820	113485	130570	12050	249090	59590	130570	368930	160365	65285	510230
+	rel_invest_age	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+																				
+#	Milchk?e	0	0	0	190	0	0	0	60	0	0	0	0	0	0	0	0	0	0	0
+																				
+	#fadnID	21 * halved																		
+	"#land assets calculated by FADN farms without rented land, taking SE446/ha for arable and grassland"											arable		17745		grass	12050			

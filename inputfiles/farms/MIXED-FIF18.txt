@@ -1,0 +1,11 @@
+FarmName  MIXED-FIF18		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+PIGS4	1	300
+		
+VEALER2	1	43
+		
+MACHINERY6	1	30
+		
+MACHINERY7	1	15

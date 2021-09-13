@@ -1,0 +1,6 @@
+FarmName  CROP-PIF1		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+		
+MACHINERY7	1	15

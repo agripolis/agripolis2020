@@ -1,0 +1,9 @@
+FarmName DAIRY-FIF6		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+DAIRY3	1	140
+		
+PARLOUR2	1	140
+		
+MACHINERY6	1	30

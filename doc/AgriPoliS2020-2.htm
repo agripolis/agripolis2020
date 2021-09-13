@@ -1,0 +1,280 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 14 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:SimSun;
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@SimSun";
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+h1
+	{mso-style-link:"Heading 1 Char";
+	margin-top:24.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Cambria","serif";
+	color:#365F91;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-link:"Heading 1";
+	font-family:"Cambria","serif";
+	color:#365F91;
+	font-weight:bold;}
+span.msoDel
+	{mso-style-name:"";
+	text-decoration:line-through;
+	color:red;}
+.MsoChpDefault
+	{font-family:"Calibri","sans-serif";}
+.MsoPapDefault
+	{margin-bottom:10.0pt;
+	line-height:115%;}
+@page WordSection1
+	{size:595.35pt 841.95pt;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-GB>
+
+<div class=WordSection1>
+
+<h1 align=center style='text-align:center'><span lang=EN-US>Issues of AgriPoliS-2</span></h1>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-size:10.0pt;line-height:115%'>(Changxing Dong, July 2018)</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:12.0pt;line-height:115%'>&nbsp;</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:12.0pt;line-height:115%'>AgriPoliS2020: Reorganization of
+input</span></b></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span lang=EN-US>Refactoring steps to the start_version
+of AgriPoliS2020</span></b></p>
+
+<p class=MsoNormal><span lang=EN-US>The start_version of AgriPoliS2020 uses<span
+class=msoDel><del cite="mailto:Changxing%20Dong" datetime="2018-07-04T11:14"> </del></span> the
+<span class=msoDel><del cite="mailto:Changxing%20Dong"
+datetime="2018-07-04T11:15"> </del></span>Altmark as the reference region with
+new formats for the matrix and policy files in addition to changes to other
+input files. Starting from this version, AgriPoliS is further refactored with the
+following operations:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in'><span lang=EN-US>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>Code cleaning.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle><span lang=EN-US>Subtasks include: removing
+unused global INTEGER_SWITCH; removing some unused functions and variables;
+removing obsolete documentation; translating some documentation lines into
+English; removing unused files.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+lang=EN-US>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Command line options.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle><span lang=EN-US>Command line options for
+RUNS and TEILER are introduced. This is mainly for debugging’s convenience, not
+for normal use. Normal users can ignore these command line options.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+lang=EN-US>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Reorganization of inputs/outputs.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle><span lang=EN-US>This operation aims at
+improving the usability of AgriPoliS, especially the readability of the inputs.
+The improvement is carried out by separating financial and labour related items
+from normal products or investments.</span></p>
+
+<p class=MsoListParagraphCxSpLast><span lang=EN-US> </span></p>
+
+<p class=MsoNormal><b><span lang=EN-US>Details of the input reorganization</span></b></p>
+
+<p class=MsoNormal><span lang=EN-US>The last refactoring operation affects the
+usage of AgriPoliS directly, especially for users of earlier versions. Here are
+the details.</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in'><span lang=EN-US>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>Remove PRODUCTGROUPS etc. from globals.txt.  PRODUCTGROUPS is
+directly related to the column “group” in market.txt and should be in
+accordance with each other.  This is guaranteed with this refactoring step,
+since PRODUCTGROUPS is calculated hereafter in the program.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+lang=EN-US>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Remove invest_groups from globals.txt. The value
+of it is assigned hereafter also through the program.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+lang=EN-US>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Remove OFFFARMLABTYPE etc. from globals.txt.
+These are constants which correlate to the column “type” in market.txt or
+investments.txt and are now considered directly through the program. </span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+lang=EN-US>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Reorganize the entries in globals.txt and
+options.txt according to their meanings; Introduce groupings for management,
+production, finance, land, labour, etc. in globas.txt. </span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+lang=EN-US>5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>ST_BORROW_CAP and EC_INTEREST are moved from
+market.txt to globals.txt, under finance group.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+lang=EN-US>6.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>V_HIRED_LABOUR and V_OFF_FARM_LAB are moved from
+market.txt to globals.txt; HIREDLAB and OFFFARMLAB are moved from
+investments.txt to globals.txt. All under labour group.  With these changes the
+&quot;translation&quot;-lines at the beginning of investments.txt are not
+necessary any more.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+lang=EN-US>7.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>A scenario file is introduced to the input,
+which has the default file name scenario.txt and the following format:</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:.5in'><span lang=EN-US>Scenario:  
+renting_strategy</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.75in;text-indent:-.75in'><span
+lang=EN-US>Description:  to investigate the combinational effects of rent_adjust_factor
+and generation_change</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:.5in'><span lang=EN-US>Policy_file: 
+policy_settings.txt</span></p>
+
+<p class=MsoListParagraphCxSpMiddle><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:.5in'><span lang=EN-US>[globals]</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:.5in'><span lang=EN-US>rent_adjust_factor           0.5</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:.5in'><span lang=EN-US>generation_change
+         15</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span lang=EN-US>Where “Scenario:”
+“Description:” “Policy_file:” and “[globals]” are part of the format. The globals
+listed under [globals] override the corresponding values in globals.txt. The scenario
+name will be in the output files.</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span lang=EN-US>Effects of the input reorganization</span></b></p>
+
+<p class=MsoNormal><span lang=EN-US>The Effects of the reorganization of input
+files can be summarized as:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in'><span lang=EN-US>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>With groupings, the file globals.txt is more structured. This
+greatly improves the readability of this file.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+lang=EN-US>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Labour related variables are grouped in
+globals.txt, not distributed over market.txt and investments.txt.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+lang=EN-US>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Financial products are moved from market.txt to
+globals.txt, under finance group.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+lang=EN-US>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Both market.txt and investments.txt are purer
+without labour and finance related items.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+lang=EN-US>5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Scenario file is introduced with scenario.txt as
+the default file name.  It can be called otherwise and there can be more than
+one scenario files in the same input folder. In this case, the scenario file
+should be explicitly given in the command line after the input folder name.  </span></p>
+
+<p class=MsoListParagraphCxSpMiddle><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraphCxSpLast><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

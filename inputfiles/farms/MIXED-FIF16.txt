@@ -1,0 +1,17 @@
+FarmName  MIXED-FIF16		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+PIGS3	1	960
+		
+INTCATTLE2	1	100
+		
+DAIRY2	1	100
+		
+PARLOUR2	1	120
+		
+VEALER3	1	80
+		
+MACHINERY5	1	50
+		
+MACHINERY7	1	15

@@ -1,0 +1,39 @@
+#generation change scenario	
+#notations	
+#	FF: family farm
+#	CF: corporate farms
+#	GC: generation change
+#	Prob: probability
+#	Prod: productivity
+	
+#initial manager age distribution	
+FF_initAge_min	30
+FF_initAge_max	70
+CF_initAge_min	35
+CF_initAge_max	66
+FF_initAge_mean	55
+FF_initAge_dev	11.05541597
+CF_initAge_mean	52.2
+CF_initAge_dev	9.274707651
+	
+#new manager age distribution	
+GC_newAge_min	30
+GC_newAge_max	45
+GC_newAge_mean	35
+GC_newAge_dev	1.5
+	
+#generation change age	
+GC_age	67
+#max manager age	
+GC_age_max	75
+	
+#gc probability	
+FF_GC_prob	0.75
+CF_GC_prob	1
+	
+#productivity decrease after GC_age	
+FF_Prod_Decrease	0.01
+ 	
+#Econ_size_class
+ESC_exclusion	6
+ESC_exclusion_prob	1

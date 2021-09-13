@@ -1,0 +1,11 @@
+FarmName  MIXED-FIF17		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+PIGS2	1	1920
+		
+INTCATTLE1	1	80
+		
+CHICKENS4	1	13900
+		
+MACHINERY6	1	30

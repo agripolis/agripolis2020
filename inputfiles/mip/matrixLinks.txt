@@ -1,0 +1,55 @@
+# generated from ===> Altmark_input.xlsm <===					
+					
+					
+#Matrix links					
+					
+					
+#Links -------					
+					
+#============	===============				
+#	MatrixRow	MatrixCol	 linkType   	value	   factor
+#============	===============				
+	liquidity/financing_rule	BARLEY	  market 	C	0.4
+	liquidity/financing_rule	WINTER_WHEAT	  market 	C	0.4
+	liquidity/financing_rule	SUMMER_WHEAT	  market 	C	0.4
+	liquidity/financing_rule	SUGAR_BEETS	  market 	C	0.4
+	liquidity/financing_rule	GRAIN_MAIZE	  market 	C	0.4
+	liquidity/financing_rule	MAIZE_SILAGE	  market 	C	0.4
+	liquidity/financing_rule	POTATOES	  market 	C	0.4
+	liquidity/financing_rule	TRITICALE	  market 	C	0.4
+	liquidity/financing_rule	SPELT	  market 	C	0.4
+	liquidity/financing_rule	GRASS_SILAGE	  market 	C	0.2
+	liquidity/financing_rule	PASTURE	  market 	C	0.2
+	liquidity/financing_rule	SOWS	  market 	C	0.4
+	liquidity/financing_rule	FATTENING_PIGS	  market 	C	0.27
+	liquidity/financing_rule	BULL_SUCKLER	  market 	C	0.66
+	liquidity/financing_rule	SUCKLER_COW	  market 	C	0.66
+	liquidity/financing_rule	DAIRY_COW	  market 	C	0.2
+	liquidity/financing_rule	HEIFER_SUCKLER	  market 	C	0.66
+	liquidity/financing_rule	HEIFER_DAIRY	  market 	C	0.66
+	liquidity/financing_rule	HENS	market	C	0.66
+	liquidity/financing_rule	BROILERS	market	C	0.66
+	liquidity/financing_rule	DAIRY_CALF_SELL	  market 	C	1
+	liquidity/financing_rule	SUCKLER_CALF_SELL	  market 	C	1
+	liquidity/financing_rule	MANURE_SELL	  market 	C	0
+	liquidity/financing_rule	MANURE_BUY	  market 	C	0
+	liquidity/financing_rule	LEASE_QUOTA	  market 	C	0
+	liquidity/financing_rule	LET_QUOTA	  market 	C	0
+	liquidity/financing_rule	COUPLED_PREM_UNMOD	  market 	C	0
+	liquidity/financing_rule	DECOUPLED_PREM_UNMOD	  market 	C	0
+	liquidity/financing_rule	TOTAL_PREM_MODULATED	  market 	C	0
+	liquidity/financing_rule	TRANCH_1	  market 	C	0
+	liquidity/financing_rule	TRANCH_2	  market 	C	0
+	liquidity/financing_rule	TRANCH_3	  market 	C	0
+	liquidity/financing_rule	TRANCH_4	  market 	C	0
+	liquidity/financing_rule	TRANCH_5	  market 	C	0
+	liquidity/financing_rule	FIRST_30_HECTARE	  market 	C	0
+	liquidity/financing_rule	NEXT_16_HECTARE	  market 	C	0
+	liquidity/financing_rule	IDLE_ARABLE	  market 	C	0.4
+	liquidity/financing_rule	IDLE_GRASS	  market 	C	0.3
+	liquidity/financing_rule	EXCESS_LU	  market 	C	0
+	dist_prem	TRANCH_1	reference	tranch1deg	
+	dist_prem	TRANCH_2	reference	tranch2deg	
+	dist_prem	TRANCH_3	reference	tranch3deg	
+	dist_prem	TRANCH_4	reference	tranch4deg	
+	dist_prem	TRANCH_5	reference	tranch5deg	

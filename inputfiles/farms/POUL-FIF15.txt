@@ -1,0 +1,7 @@
+FarmName  POUL-FIF15		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+CHICKENS1	1	90000
+		
+MACHINERY7	1	15

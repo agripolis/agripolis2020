@@ -1,0 +1,68 @@
+Syntax for policy_settings
+
+1. Lines begin with # will be ignored as empty lines; spaces, tabulators are delimiters. 
+
+2. Structure 
+	2a. Policy for each iteration consists of the following lines
+		ITERATION line
+		PREMIUM line (optional)
+    REF_PREM_PERCENT  line (optional)
+		PRICE_CHANGE line (optional)
+		DECOUPLING line (optional)
+		TRANCHING line (optional)
+		OTHERS line (optional)
+	2b. The order of the optional lines is irrelevant.	
+	2c. If all the optional lines are empty, the iteration line can also be removed. That is, not every iteration needs a policy line.
+	2d. If an element does not change, it needs not appear in the current policy.
+
+3. ITERATION line 
+					iteration num   [some description ]
+		3a. Policy will be initialized with the policy of iteration 0
+			
+4. PREMIUM line
+			premium: ( productName=val; )+
+
+5. REF_PREM_PERCENT line
+			ref_prem_percent:  ( productName=val; )+
+			
+6. PRICE_CHANGE line
+			price_change:  ( productName=val; )+
+			
+7. DECOUPLING line
+			decoupling:   [fully=val1;] [regional=val2;] [farmspecific=val3;]
+		7a. At least one of the decoupling should appear;
+		7b. val1, val2, val3 can be 0 or 1;
+
+8. TRANCHING line
+		8a. when LP_MOD is true (num can be 1 through 5):
+			tranch: [tranch_num_deg=val; ]+	
+		8b. when LP_MOD is false:
+			tranch: [degression_low_tranch=val; ] [degression_middle_tranch=val; ] [degression_high_tranch=val;]
+		8c. val is a float number.
+
+9. OTHERS line
+			others: [MAT_CELL RHS_ROW UB_COL ]+
+		9a. MAT_CELL
+			mat_cell: rowname, colname = val;
+		9b. RHS_ROW
+			rhs_row: rowname=  (LE | GE | EQ ) ;
+		9c. UB_COL
+			ub_col: colname= ( 0|INF);
+			
+10. Examples
+iteration  0			initializing												
+	ref_prem_percent:	 BARLEY=1;	WINTER_WHEAT=1;	RAPE_SEED=1;	SUGAR_BEETS=1;	PROTEIN_PLANTS=1;	MAIZE_SILAGE=1;	INT_GRASS=1;	EXT_GRASS=1;	INT_CATTLE=1;	EXT_CATTLE=1;	DAIRY=1;	SET_ASIDE=1;	IDLE_ARABLE=1;	IDLE_GRASS=1;
+	price_change:	V_HIRED_LABOUR_H = 1.005;	V_OFF_FARM_LAB=1.005;												
+  #	#	others: 	mat_cell												
+iteration 3															
+	premium:	INT_GRASS=0;	EXT_GRASS = 51;	INT_CATTLE=206;	EXT_CATTLE=313;	DAIRY=131.4;	SET_ASIDE=392;	IDLE_ARABLE=0;	IDLE_GRASS=0;						
+	price_change:	DAIRY=0.94;		
+	others:	mat_cell:LU,IDLE_GRASS = -0.7;	
+													
+iteration 4															
+	premium:	BARLEY=384;	WINTER_WHEAT = 384;	RAPE_SEED=384;	SUGAR_BEETS=384;	PROTEIN_PLANTS=439.57;	MAIZE_SILAGE=384;	INT_GRASS=44;	EXT_GRASS=44;	INT_CATTLE=0;	EXT_CATTLE=0;	DAIRY=0;	SET_ASIDE=384;	IDLE_ARABLE=384;	IDLE_GRASS=44;
+	ref_prem_percent:	BARLEY=0;	WINTER_WHEAT=0;	RAPE_SEED=0;	SUGAR_BEETS=0;	PROTEIN_PLANTS=0;	MAIZE_SILAGE=0;	INT_GRASS=0;	EXT_GRASS=0;	INT_CATTLE=0.67;	EXT_CATTLE=0.64;	SET_ASIDE=0;	IDLE_ARABLE=0;	IDLE_GRASS=0;	
+	decoupling:	  regional=0;	farmspecific=1;	fully=0;											
+	tranch:	tranch_1_deg=0;	tranch_2_deg=0.03;	tranch_3_deg=0.03;	tranch_4_deg=0.03;	tranch_5_deg=0.03;									
+	price_change:	BARLEY=1.04;	WINTER_WHEAT=1.04;	RAPE_SEED=1.03;	INT_CATTLE=1.06;	EXT_CATTLE=1.06;	DAIRY=1.06;								
+	others:	rhs_row:arable_land=EQ;	rhs_row: pasture_land = EQ;				

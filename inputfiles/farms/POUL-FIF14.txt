@@ -1,0 +1,6 @@
+FarmName  POUL-FIF14		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+HENS3	1	40000
+		

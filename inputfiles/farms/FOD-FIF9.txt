@@ -1,0 +1,12 @@
+"FarmName  FOD-FIF9
+"		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+INTCATTLE1	1	100
+		
+EXTCATTLE4	1	38
+		
+MACHINERY6	1	30
+		
+MACHINERY7	1	15

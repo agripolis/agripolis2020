@@ -1,0 +1,10 @@
+"FarmName  FOD-PIF10
+"		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+INTCATTLE1	1	100
+		
+EXTCATTLE4	1	36
+		
+MACHINERY7	1	15

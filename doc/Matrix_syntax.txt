@@ -1,0 +1,52 @@
+Matrix syntax
+
+1. Lines begin with # will be ignored as empty lines
+
+2. Structure of matrix 
+	2a. Structure (The order is significant)
+		_VARIABLES_ line (one line)
+		_INTEGERS_ line	(one line)
+		restriction lines (more than one lines)
+	2b. Every line has a name, followed by some terms. 
+	2c. Name and terms in the lines are separated by: tab, plus(+) or colon(:). 	
+	2d. Terms of each line can consist of several parts, which are separated by: spaces or commas (,). 
+
+3. _VARIABLES_ line 
+		3a. Name of the line: _VARIABLES_
+		3b. The order of the terms in this line is significant. 
+		The terms of this line can be:  
+		3c. market.name._all_ , means all the names of products will be used. 
+		3d. investments.name._all_, means all the names of investments will be used. 
+		3e. otherNames, mean other free chosen names.
+			
+4. _INTEGERS_ line
+		4a. Name of the line: _INTEGERS_
+		Terms of this line can be:	
+		4b. NameA, means the variable NameA from _VARIABLES_ is a integer variable. 
+		4c. NameB=>NameC, means the variables from NameB to NameC (both inclusive) are integer variables.
+			
+5. Restriction lines
+		5a. A restriction begins with a free chosen name (name of the row), followed by some terms. which can be: 
+    	5b. NameA ,  NameA=>NameB,  {NameA=>NameB}.  Meaning: The coefficients of these variables are 1.
+		5c. Factor*NameA, Factor* {NameA => NameB }, FactorList*{NameA=>NameB}. The Factor of FactorList are the coefficients of the corresponding variables. Factor should be a literal number, while FactorList should be a list of literal numbers. 
+		5d. market.ColName._all_, Factor*market.ColName._all_ , investments.ColName._all_, Factor*investments.ColName._all_. The Coefficients of the variables from market or investments are that in the column ColName, possibly times an extra factor.
+		5e. market.ColName*NameA, market.ColName*{NameA=>NameB}, investments.ColName*NameA, investments.ColName*{NameA=>NameB}. Only partial names are used from market or investments.
+		5f. Factor*market.ColName*NameA, Factor*market.ColName*{NameA=>NameB}, Factor*investments.ColName*NameA, Factor*investments.ColName*{NameA=>NameB}. With extra factor.
+		5g. Factor*FactorList*{NameA=>NameB}. A short form for contiguous variable names.
+		5h. Implemented ColName for market: labour, initPrem;  ColName for investments: labSub, capacity. Can be extended.
+		5i. matrixLinks.RestrictionName, _defaultLinks_.RestrictionName are just reminders for the modelling, the relevant values are taken care by the program from the input files for the links.
+		5j. The order of the parts in the terms is significant. Wrong terms: SOWS1*50, {SOWS1 => SOWS9}* investments.capacity
+		5k. Factor examples:   1, -1, (-1), 100.2, (-123.4)
+		5l. FactorLists are values in braces. examples: {1, 2, 3, 4}, {-1, -2, 3, 4}, {1 2 -5 -6.8}, {1 (-2)  3 (-4.2)}
+
+6. Example lines
+		6a. _VARIABLES_:  	market.name._all_ + LU_UPPER_LIMIT + investments.name._all_ + DISINV_SOWS
+		6b. _INTEGERS_: 	SOWS1 => OFFFARMLAB + DISINV_SOWS
+		6c. liquidity: 	(-1 ) * ST_BORROW_CAP +1 *EC_INTEREST + matrixLinks.liquidity + _defaultLinks_.liquidity
+		6d. labour:		market.labour._all_ + (-1)* investments.labSub._all_ + (-6.5)*DISINV_SOWS
+		6e. extensive_cattle:	EXT_CATTLE + (-1)*investments.capacity*{ EXTCATTLE1 => EXTCATTLE3} + DISINV_SUCKLER
+		6f. fertilisation:		(-170) * { BARLEY => MAIZE_SILAGE } +(-210)*INT_GRASS +(-100)*EXT_GRASS +30*SOWS +10*FATTENING_PIGS +50*INT_CATTLE +50*EXT_CATTLE +100*DAIRY +(-221)*MANURE_SELL  
+		6g. labour_for_premium:	(-1)*market.labour*{BARLEY => SET_ASIDE} + (-1 )*market.labour*IDLE_ARABLE + (-1) * market.labour * IDLE_GRASS      
+		6h. set_aside_max:		 ( -1 ) * { 0.33, 0.33  0.33}* {BARLEY => RAPE_SEED } + (-0.33)*PROTEIN_PLANTS +(-0.33)*MAIZE_SILAGE +SET_ASIDE    
+		6i. dairy: 		DAIRY  + (-1)*investments.capacity*{DAIRY1=>DAIRY5} + DISINV_DAIRY
+		
