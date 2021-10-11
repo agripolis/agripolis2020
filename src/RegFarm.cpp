@@ -2874,8 +2874,4 @@ double RegFarmInfo::getUnitsOfProduct(int i) const{
 
 double RegFarmInfo::getVarCostsOfProduct(int i) const {
         return FarmProductList->getVarCostsOfNumber(i);
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes
