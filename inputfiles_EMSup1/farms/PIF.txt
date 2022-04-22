@@ -1,0 +1,5 @@
+FarmName PIF
+		
+!              Investition	Anzahl	Kapazitaet
+
+MACHINERY7	2	15

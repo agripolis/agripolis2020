@@ -1,0 +1,10 @@
+FarmName  Ei2
+					
+!              Investition	Anzahl	Kapazitaet			
+					
+HENS2		2	15000
+					
+MACHINERY6	2	30
+
+
+					

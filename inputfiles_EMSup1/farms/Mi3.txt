@@ -1,0 +1,11 @@
+FarmName Mi3		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+DAIRY3	1	60
+		
+PARLOUR_3	1	60
+		
+MACHINERY4	1	100
+
+

@@ -1,0 +1,13 @@
+FarmName Mi2		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+DAIRY2	1	120
+		
+ROBOT1	1	140
+		
+VEALER2	3	40
+		
+MACHINERY4	1	100
+
+MACHINERY6	1	30 

@@ -1,0 +1,9 @@
+FarmName  51aGa		
+		
+!              Investition	Anzahl	Kapazitaet
+
+MACHINERY3	1	200
+		
+MACHINERY4	1	100
+		
+MACHINERY5	1	50

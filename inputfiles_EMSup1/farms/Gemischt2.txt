@@ -1,0 +1,18 @@
+FarmName  Gemischt2
+					
+!              Investition	Anzahl	Kapazitaet			
+					
+VEALER2		1	40
+
+VEALER3		1	80	
+					
+BROILERS1	2	39000
+
+BIOGAS500	1	1
+
+MACHINERY4	1	100
+
+MACHINERY6	1 	30
+
+
+					

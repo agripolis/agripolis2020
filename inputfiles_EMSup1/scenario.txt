@@ -1,0 +1,41 @@
+Scenario:	  PSL_23
+Description: REF Emsland
+
+policy_file: policy_settings.txt
+
+[Options]
+Teiler		1
+RestrictInvestments	true
+#true
+
+NASG	true
+
+DEBUG_MIP	false
+#false
+ManagerCoeffDistribution	Normal
+
+[Globals]
+Livestock_inv_farmsPercent	1
+Livestock_invs:	SOWS PIGS INTCATTLE EXTCATTLE DAIRY HENS BROILERS BIOGAS500
+
+NASG_start_period	4
+NASG_maxRentAv	0.1
+#NASG_maxShareUAA	0.09
+NASG_maxSizeFactor 	5
+
+ManagerMean 	1
+ManagerDev		0.05
+lower_border	0.975
+upper_border	1.025
+
+#seed_demogFF	<SEED>	
+#seed_demogCF	<SEED>	
+#seed_demogNewAge	<SEED>	
+seed_mgmtCoeff		<SEED>
+seed_farmAge		<SEED>
+seed_closeFarm		<SEED>
+seed_investAge		<SEED>
+seed_contractLengthInit	<SEED>	
+seed_contractLength	 	<SEED>
+seed_freePlot_initLand	<SEED>	
+seed_freePlot_rentPlot	<SEED>	

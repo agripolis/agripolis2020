@@ -1,0 +1,10 @@
+# generated from ===> REFVästerbotten2009_03_03.xls <===		
+#-- Anfangsinvestitionen -----	---	
+		
+FarmName  MH1		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+BROILERS1	2	39000
+		
+MACHINERY5	2	50

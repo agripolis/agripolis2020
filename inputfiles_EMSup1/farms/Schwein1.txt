@@ -1,0 +1,10 @@
+FarmName  Schwein1
+					
+!              Investition	Anzahl	Kapazitaet			
+					
+PIGS1		1	5400
+					
+MACHINERY5	1	50
+
+MACHINERY7	1 	15
+					

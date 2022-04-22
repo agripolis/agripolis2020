@@ -1,0 +1,18 @@
+# generated from ===> REFVästerbotten2009_03_03.xls <===		
+#-- Anfangsinvestitionen -----	---	
+		
+FarmName  MiBu		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+INTCATTLE3	1	84
+		
+DAIRY2	1	120
+		
+PARLOUR_2	1	120
+		
+VEALER2	3	40
+		
+MACHINERY4	1	100
+		
+MACHINERY5	1	50

@@ -1,0 +1,40 @@
+# -----------Options  -----------------		
+#	Name	Value
+		
+	TEILER	1
+	RUNS	25
+		
+#[Output]		
+	PRINT_SEC_RES	true;
+    PRINT_SEC_PRICE	true;	
+    PRINT_SEC_EXP_PRICE	true;	
+    PRINT_FARM_RES	true;	
+    PRINT_FARM_INV	true;	
+    PRINT_FARM_PROD	true;	
+    PRINT_FARM_COSTS	false;	
+    PRINT_CONT_PLOTS	false;	
+    PRINT_POLICY	false;	
+		
+		
+### NORMALLY YOU DON'T EDIT THE FOLLOWING LINES ###		
+	OUTPUTFILE; 	
+		
+	FARMOUTPUT 	true	
+	SECTOROUTPUT	true	
+		
+    SWEDEN   	false	
+    ENV_MODELING   	false
+	WEIGHTED_PLOT_SEARCH   	   true      
+    AGE_DEPENDENT   	false	
+	LP_MOD   	true	
+		
+	HAS_SOILSERVICE	false	
+	TECH_DEVELOP	0.0221
+	CARBON_MIN	2
+	CARBON_MAX	7
+		
+    AVERAGE_OFFER_BUFFER_SIZE	5;	
+    WEIGHTED_PLOT_SEARCH_VALUE	50;	
+		
+    USE_VARIABLE_PRICE_CHANGE	true;	
+	USE_TRIANGULAR_DISTRIBUTED_MANAGEMENT_FACTOR	false;

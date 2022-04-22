@@ -1,0 +1,23 @@
+iteration 0																				
+	price_change:	V_HIRED_LABOUR=1.011;	V_HIRED_LABOUR_H=1.011;	 V_OFF_FARM_LAB=1.011;																
+	premium:	BARLEY=273.24;	WINTER_WHEAT=273.24;	RAPE_SEED=273.24;	SUGAR_BEETS=273.24;	PROTEIN_PLANTS=273.24;	MAIZE_SILAGE=273.24;	LEY=273.24;	POTATOES=273.24;	RYE=273.24;	RYE_BIOGAS=273.24;	GPS=273.24;	GRASSILAGE_INT=273.24;	GRASSILAGE_EXT=273.24;	PORTIONSWEIDE=273.24;	UMTRIEBSWEIDE=273.24;	STANDWEIDE=273.24;	SET_ASIDE=273.24;	IDLE_ARABLE=273.24;	IDLE_GRASS=273.24;
+	tranch:	tranch_2_deg=0.10;	tranch_3_deg=0.10;	tranch_4_deg=0.10;	tranch_5_deg=0.14;															
+	others:	rhs_row:Grazing_Land=EQ;	rhs_row:Arable_Land=EQ;		rhs_row:stickstoff=LE;																	
+																				
+iteration 1																				
+	price_change:	V_HIRED_LABOUR=1.011;	V_HIRED_LABOUR_H=1.011;	 V_OFF_FARM_LAB=1.011;																
+	premium:	BARLEY=272.01;	WINTER_WHEAT=272.01;	RAPE_SEED=272.01;	SUGAR_BEETS=272.01;	PROTEIN_PLANTS=272.01;	MAIZE_SILAGE=272.01;	LEY=272.01;	POTATOES=272.01;	RYE=272.01;	RYE_BIOGAS=272.01;	GPS=272.01;	GRASSILAGE_INT=272.01;	GRASSILAGE_EXT=272.01;	PORTIONSWEIDE=272.01;	UMTRIEBSWEIDE=272.01;	STANDWEIDE=272.01;	SET_ASIDE=272.01;	IDLE_ARABLE=272.01;	IDLE_GRASS=272.01;
+	tranch:	tranch_2_deg=0.10;	tranch_3_deg=0.10;	tranch_4_deg=0.10;	tranch_5_deg=0.14;															
+	others:	rhs_row:Grazing_Land=EQ;	rhs_row:Arable_Land=EQ;		rhs_row:stickstoff=LE;																	
+																				
+iteration 2																				
+	price_change:	V_HIRED_LABOUR=1.011;	V_HIRED_LABOUR_H=1.011;	 V_OFF_FARM_LAB=1.011;																
+	premium:	BARLEY=270.95;	WINTER_WHEAT=270.95;	RAPE_SEED=270.95;	SUGAR_BEETS=270.95;	PROTEIN_PLANTS=270.95;	MAIZE_SILAGE=270.95;	LEY=270.95;	POTATOES=270.95;	RYE=270.95;	RYE_BIOGAS=270.95;	GPS=270.95;	GRASSILAGE_INT=270.95;	GRASSILAGE_EXT=270.95;	PORTIONSWEIDE=270.95;	UMTRIEBSWEIDE=270.95;	STANDWEIDE=270.95;	SET_ASIDE=270.95;	IDLE_ARABLE=270.95;	IDLE_GRASS=270.95;
+	tranch:	tranch_2_deg=0.10;	tranch_3_deg=0.10;	tranch_4_deg=0.10;	tranch_5_deg=0.14;															
+	others:	rhs_row:Grazing_Land=EQ;	rhs_row:Arable_Land=EQ;		rhs_row:stickstoff=LE;																	
+																				
+iteration 3																				
+	price_change:	V_HIRED_LABOUR=1.011;	V_HIRED_LABOUR_H=1.011;	 V_OFF_FARM_LAB=1.011;																
+	premium:	BARLEY=269.89;	WINTER_WHEAT=269.89;	RAPE_SEED=269.89;	SUGAR_BEETS=269.89;	PROTEIN_PLANTS=269.89;	MAIZE_SILAGE=269.89;	LEY=269.89;	POTATOES=269.89;	RYE=269.89;	RYE_BIOGAS=269.89;	GPS=269.89;	GRASSILAGE_INT=269.89;	GRASSILAGE_EXT=269.89;	PORTIONSWEIDE=269.89;	UMTRIEBSWEIDE=269.89;	STANDWEIDE=269.89;	SET_ASIDE=269.89;	IDLE_ARABLE=269.89;	IDLE_GRASS=269.89;
+	tranch:	tranch_2_deg=0.10;	tranch_3_deg=0.10;	tranch_4_deg=0.10;	tranch_5_deg=0.14;															
+	others:	rhs_row:Grazing_Land=EQ;	rhs_row:Arable_Land=EQ;		rhs_row:stickstoff=LE;																	

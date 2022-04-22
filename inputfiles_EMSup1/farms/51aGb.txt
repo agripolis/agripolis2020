@@ -1,0 +1,9 @@
+FarmName  51aGb		
+		
+!              Investition	Anzahl	Kapazitaet
+
+MACHINERY3	2	200
+		
+MACHINERY4	2	100
+		
+MACHINERY7	1	15

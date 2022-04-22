@@ -1,0 +1,8 @@
+FarmName  SAU1
+					
+!              Investition	Anzahl	Kapazitaet			
+					
+SOWS2		1	800					
+					
+MACHINERY4	1	100			
+					

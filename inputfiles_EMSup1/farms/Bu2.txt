@@ -1,0 +1,11 @@
+FarmName  Bu2
+					
+!              Investition	Anzahl	Kapazitaet			
+					
+INTCATTLE1	2	280	
+
+VEALER2		1	40					
+					
+MACHINERY4	1	100			
+					
+MACHINERY7	1	15
