@@ -26,6 +26,8 @@ const string RegGlobalsInfo::UsageString=
     "USAGE: program [options] dirOfSzenarios  [ szenario [repeatNum] ] \n";
 
 RegGlobalsInfo::RegGlobalsInfo() {
+	HOC = 0.25;
+
 	Livestock_Inv_farmsPercent = 0;
 	RestrictInvestments = false;
 
@@ -400,6 +402,8 @@ void RegGlobalsInfo::initDemograph() {
 
 void
 RegGlobalsInfo::initGlobalsRead() {
+	HOC = atof(globdata.globs["HOC"].c_str());
+
 	//RestrictInvestments = globdata.globs["RESTRICTINVESTMENTS"].compare("true") == 0 ? true : false;
 	Livestock_Inv_farmsPercent = atof(globdata.globs["LIVESTOCK_INV_FARMSPERCENT"].c_str());
 	

@@ -1720,7 +1720,7 @@ RegFarmInfo::futureOfFarm( int period) {
 
         // high opportunity costs when generation change
         if (hoc == 0) {
-            oppcosts += (double)labour->getFamilyLabour() * oppcostslabourhour * .25;
+            oppcosts += (double)labour->getFamilyLabour() * oppcostslabourhour * g->HOC; //.25;
         }
 
         if (oppcosts > (ex_total_income)) {
@@ -1735,7 +1735,7 @@ RegFarmInfo::futureOfFarm( int period) {
             // increase number of closed farms in sector
             if (hoc > 0) {
 
-                sunk_costs_labor = ( (double)labour->getFamilyLabour()*(double) oppcostslabourhour * .25)
+                sunk_costs_labor = ( (double)labour->getFamilyLabour()*(double) oppcostslabourhour * g->HOC) //.25)
                                    /
                                    capitalReturnFactor(g->INTEREST_RATE, g->GENERATION_CHANGE - hoc
                                                       );

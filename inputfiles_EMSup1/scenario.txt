@@ -15,6 +15,9 @@ DEBUG_MIP	false
 ManagerCoeffDistribution	Normal
 
 [Globals]
+#HOC: high opportunity cost 
+hoc		0.5
+
 Livestock_inv_farmsPercent	1
 Livestock_invs:	SOWS PIGS INTCATTLE EXTCATTLE DAIRY HENS BROILERS BIOGAS500
 

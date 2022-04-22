@@ -32,6 +32,7 @@ using namespace std;
 class RegGlobalsInfo {
 public:
 	//emsland
+    float HOC;
 	bool RestrictInvestments;
 	double Livestock_Inv_farmsPercent;
 	set<string> Livestock_Invs;
