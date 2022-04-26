@@ -185,6 +185,7 @@ RegMarketInfo::debug(string filename) {
 void
 RegMarketInfo::calculatePricevectors(RegSectorResultsInfo& Sector, int iteration) {
 	vector<double> prod;
+    double mansell_price_i = 0;
 	prod.resize(product_cat.size());
 	for (int i = 0; i < (int)product_cat.size(); i++) {
 		string aname = product_cat[i].getStdName();
@@ -227,6 +228,24 @@ RegMarketInfo::calculatePricevectors(RegSectorResultsInfo& Sector, int iteration
 				if (exprice > 0) exprice = 0;
 				price_vector[i] = exprice;
 			}
+
+            //Manure price Emsland, April 2022
+            else if (!aname.compare("MANSELL_EMS") || !aname.compare("MANBUY_EMS")) {
+                if (!aname.compare("MANSELL_EMS")) {
+                  double ts = Sector.getTotalUnitsProduced(g->stdNameIndexs["MANSELL_EMS"]);
+                  double tb = Sector.getTotalUnitsProduced(g->stdNameIndexs["MANBUY_EMS"]);
+                  double excessmanure = (ts-tb)/(ts+tb+1);
+                  double pricechange = 0;
+                  pricechange = excessmanure * g->Manure_Price_X;
+
+                  price_vector[i] = price_vector[i] * (1 + pricechange);
+                  mansell_price_i = price_vector[i];
+                }
+                else {//BUY  !!BUY must be below SELL
+                  price_vector[i] = (-1)*mansell_price_i - g->Manure_Transport_Cost; 
+                }
+
+            }
 
 			//MILK QUOTA
 			else if (!aname.compare("GETQUOTA")) { // lease milk quota

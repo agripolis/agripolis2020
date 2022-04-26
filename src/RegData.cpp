@@ -686,9 +686,9 @@ RegDataInfo::printSectorResults(const RegSectorResultsInfo& sector,
     sector_values.push_back( sector.real_sunk_costs_labour    );
 
  //DCX
-    bool ok = g->stdNameIndexs.find("MANSELL")!=end(g->stdNameIndexs);
-	sector_values.push_back(ok?product_cat[g->stdNameIndexs["MANSELL"]].getPriceExpectation():0);
-    sector_values.push_back(ok?product_cat[g->stdNameIndexs["MANBUY"]].getPriceExpectation():0);
+    bool ok = g->stdNameIndexs.find("MANSELL_EMS")!=end(g->stdNameIndexs);
+	sector_values.push_back(ok?product_cat[g->stdNameIndexs["MANSELL_EMS"]].getPriceExpectation():0);
+    sector_values.push_back(ok?product_cat[g->stdNameIndexs["MANBUY_EMS"]].getPriceExpectation():0);
 	
     for (int i=0;i<g->NO_OF_SOIL_TYPES;i++) {
         sector_values.push_back( sector.total_rent_of_type[i]         );
@@ -993,9 +993,9 @@ RegDataInfo::printLegalTypeResults(const RegSectorResultsInfo& sector,vector<Reg
             sector_values.push_back( sector_type[z]->total_capital_input       );
             sector_values.push_back( sector_type[z]->real_sunk_costs_labour    );
 //DCX
-            bool ok = g->stdNameIndexs.find("MANSELL")!=end(g->stdNameIndexs);
-            sector_values.push_back(ok ? product_cat[g->stdNameIndexs["MANSELL"]].getPriceExpectation():0 );
-            sector_values.push_back(ok ? product_cat[g->stdNameIndexs["MANBUY"]].getPriceExpectation():0 );
+            bool ok = g->stdNameIndexs.find("MANSELL_EMS")!=end(g->stdNameIndexs);
+            sector_values.push_back(ok ? product_cat[g->stdNameIndexs["MANSELL_EMS"]].getPriceExpectation():0 );
+            sector_values.push_back(ok ? product_cat[g->stdNameIndexs["MANBUY_EMS"]].getPriceExpectation():0 );
             for (int i=0;i<g->NO_OF_SOIL_TYPES;i++) {
                 sector_values.push_back( sector_type[z]->total_rent_of_type[i]         );
             }

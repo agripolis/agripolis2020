@@ -27,6 +27,7 @@ const string RegGlobalsInfo::UsageString=
 
 RegGlobalsInfo::RegGlobalsInfo() {
 	HOC = 0.25;
+	Manure_Transport_Cost = 0.1;
 
 	Livestock_Inv_farmsPercent = 0;
 	RestrictInvestments = false;
@@ -402,6 +403,8 @@ void RegGlobalsInfo::initDemograph() {
 
 void
 RegGlobalsInfo::initGlobalsRead() {
+	Manure_Price_X = atof(globdata.globs["MANURE_PRICE_X"].c_str());
+	Manure_Transport_Cost = atof(globdata.globs["MANURE_TRANSPORT_COST"].c_str());
 	HOC = atof(globdata.globs["HOC"].c_str());
 
 	//RestrictInvestments = globdata.globs["RESTRICTINVESTMENTS"].compare("true") == 0 ? true : false;

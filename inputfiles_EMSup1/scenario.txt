@@ -4,7 +4,7 @@ Description: REF Emsland
 policy_file: policy_settings.txt
 
 [Options]
-Teiler		1
+Teiler		10
 RestrictInvestments	true
 #true
 
@@ -17,6 +17,12 @@ ManagerCoeffDistribution	Normal
 [Globals]
 #HOC: high opportunity cost 
 hoc		0.5
+
+#manure price param x
+manure_price_x	0.5
+
+#manure transport cost
+manure_transport_cost	0.1
 
 Livestock_inv_farmsPercent	1
 Livestock_invs:	SOWS PIGS INTCATTLE EXTCATTLE DAIRY HENS BROILERS BIOGAS500

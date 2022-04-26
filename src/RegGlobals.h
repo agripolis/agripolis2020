@@ -32,7 +32,9 @@ using namespace std;
 class RegGlobalsInfo {
 public:
 	//emsland
-    float HOC;
+    double Manure_Price_X;
+    double Manure_Transport_Cost;
+    double HOC;
 	bool RestrictInvestments;
 	double Livestock_Inv_farmsPercent;
 	set<string> Livestock_Invs;
