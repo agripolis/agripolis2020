@@ -33,6 +33,7 @@ class RegGlobalsInfo {
 public:
 	//emsland
     double Manure_Price_X;
+    double Manure_Price_D;
     double Manure_Transport_Cost;
     double HOC;
 	bool RestrictInvestments;

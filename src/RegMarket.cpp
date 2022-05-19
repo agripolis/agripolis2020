@@ -234,7 +234,7 @@ RegMarketInfo::calculatePricevectors(RegSectorResultsInfo& Sector, int iteration
                 if (!aname.compare("MANSELL_EMS")) {
                   double ts = Sector.getTotalUnitsProduced(g->stdNameIndexs["MANSELL_EMS"]);
                   double tb = Sector.getTotalUnitsProduced(g->stdNameIndexs["MANBUY_EMS"]);
-                  double excessmanure = (ts-tb)/(ts+tb+1);
+                  double excessmanure = (ts-tb-g->Manure_Price_D)/(ts+tb+1);
                   double pricechange = 0;
                   pricechange = excessmanure * g->Manure_Price_X;
 

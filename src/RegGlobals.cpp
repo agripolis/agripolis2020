@@ -404,6 +404,7 @@ void RegGlobalsInfo::initDemograph() {
 void
 RegGlobalsInfo::initGlobalsRead() {
 	Manure_Price_X = atof(globdata.globs["MANURE_PRICE_X"].c_str());
+	Manure_Price_D = atof(globdata.globs["MANURE_PRICE_D"].c_str());
 	Manure_Transport_Cost = atof(globdata.globs["MANURE_TRANSPORT_COST"].c_str());
 	HOC = atof(globdata.globs["HOC"].c_str());
 

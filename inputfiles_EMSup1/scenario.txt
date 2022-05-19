@@ -18,8 +18,9 @@ ManagerCoeffDistribution	Normal
 #HOC: high opportunity cost 
 hoc		0.5
 
-#manure price param x
-manure_price_x	0.5
+#manure price params
+manure_price_x	0.2
+manure_price_d	 10000
 
 #manure transport cost
 manure_transport_cost	0.1
