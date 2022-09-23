@@ -1270,7 +1270,7 @@ double RegManagerInfo::NASG_RentOffer(double offer, RegFarmInfo* pfarm, int type
 			cout << " too large! : " << area << "\n";
 	}
 
-	if (offer > NASG_maxRentOfTypes[type])
+	if (res > NASG_maxRentOfTypes[type])
 		res = NASG_maxRentOfTypes[type];
 	if (debug1) {
 		if (res != offer)
