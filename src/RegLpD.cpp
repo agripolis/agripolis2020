@@ -95,16 +95,21 @@ void
 RegLpInfo::debug(string filename) {
     ofstream out;
     out.open(filename.c_str(),ios::trunc);
-    if (objsen==-1)
-        out << "max:\t" ;
+    if (objsen == -1)
+        out << "max:\t";
     else
         out << "min:\t";
+    
+    for (int i = 0; i < numcols; i++) {
+        out << matrixdata.colnames[i] << "\t";
+    }
+    out << "\n\t";
     for (int i=0;i<numcols;i++) {
         out << setprecision(10) << obj[i] << "\t";
     }
     out << "\n\n";
     for (int i=0;i<numrows;i++) {
-        out << "\t";
+        out << matrixdata.rownames[i]<<"\t";
         for (int j=0;j<numcols;j++) {
             out << mat_val[i+j*numrows] << "\t";
         }
