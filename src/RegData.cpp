@@ -555,7 +555,7 @@ RegDataInfo::initSectorResults(vector<RegInvestObjectInfo>& invest_cat,vector<Re
     sector_names.push_back( "family_labour");
     sector_names.push_back( "total_income");
     sector_names.push_back( "profit");
-    sector_names.push_back( "economic_profit");
+    sector_names.push_back( "net_profitability");
     sector_names.push_back( "withdrawal");
     sector_names.push_back( "equity_capital");
     sector_names.push_back( "liquidity");
@@ -872,7 +872,7 @@ condfarmout.open(filename.c_str(), ios::trunc);
                 sector_names.push_back(g->NAMES_OF_LEGAL_TYPES[z]+"family_labour");
                 sector_names.push_back(g->NAMES_OF_LEGAL_TYPES[z]+"total_income");
                 sector_names.push_back(g->NAMES_OF_LEGAL_TYPES[z]+"profit");
-                sector_names.push_back(g->NAMES_OF_LEGAL_TYPES[z]+"economic_profit");
+                sector_names.push_back(g->NAMES_OF_LEGAL_TYPES[z]+"net_profitability");
                 sector_names.push_back(g->NAMES_OF_LEGAL_TYPES[z]+"withdrawal");
                 sector_names.push_back(g->NAMES_OF_LEGAL_TYPES[z]+"equity_capital");
                 sector_names.push_back(g->NAMES_OF_LEGAL_TYPES[z]+"liquidity");
