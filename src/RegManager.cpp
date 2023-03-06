@@ -37,6 +37,7 @@
 
 using namespace std;
 map<int,int> manageCoeffMap;
+map<int, int> betaMap;
 
 long int mtRandMin = 0 ;
 long int mtRandMax= 0x7FFFFFFFUL ;
@@ -236,6 +237,9 @@ void RegManagerInfo::init() {
 	
 	initPopulations(); 
 	//outputManageCoeffDistrib();
+    if (g->Rent_Variation)
+        outputMap(betaMap);
+
     initOutput();
 	
 	readPolicyChanges0();
@@ -822,6 +826,10 @@ RegManagerInfo::initOutput() {
     }
 }
 
+double RegManagerInfo::get_beta() {
+    return g->triangular("RENTVARIATION", g->Beta_min, (g->Beta_max + g->Beta_min )/2, g->Beta_max);
+}
+
 // INITIALISE FARM POPULATION(S)
 void
 RegManagerInfo::initPopulations() {
@@ -963,6 +971,12 @@ RegManagerInfo::initPopulations() {
 					//cout << "farmId0: " << newFarm->getFarmId() << endl;
 				}
 			}
+
+            if (g->Rent_Variation) {
+                double r = get_beta();
+                betaMap[int(r * 100 + 0.5)]++;
+                newFarm->set_beta(r);
+            }
         }
     }
 
@@ -1019,6 +1033,12 @@ void RegManagerInfo::outputManageCoeffDistrib() {
 	for (auto x : manageCoeffMap) {
 		cout << x.first << "\t" << x.second << endl;
 	}
+}
+
+void RegManagerInfo::outputMap(std::map<int,int> &amap){
+    for (auto x : amap) {
+        cout << x.first << "\t" << x.second << endl;
+    }
 }
 
 void RegManagerInfo::outputFarmAgeDists() {

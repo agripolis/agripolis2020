@@ -37,6 +37,8 @@ class RegProductList;
 class RegProductInfo;
 class RegFarmInfo {
 protected:
+    double rent_beta;
+
 	void changeGeneration();
 
 	double reinvestLUcap;
@@ -298,6 +300,8 @@ protected:
     bool flat_copy;
 
 public:
+    void set_beta(double );
+
 	void setReinvestLUcap();
 	double& getRefReinvestLUcap();
 	map<string, int> getRestrictedInvests();

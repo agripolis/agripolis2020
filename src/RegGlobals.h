@@ -31,6 +31,11 @@ enum class DISTRIB_TYPE {UNIFORM, NORMAL};
 using namespace std;
 class RegGlobalsInfo {
 public:
+    //rent-variation
+    bool Rent_Variation = false;
+    float Beta_min = 0.35;
+    float Beta_max = 0.8;
+
 	//emsland
 	bool RestrictInvestments;
 	double Livestock_Inv_farmsPercent;
@@ -92,11 +97,11 @@ public:
 	vector<double> MaxRents;
 	bool SDEBUG1, SDEBUG2;
 
-	static const size_t RCOUNT = 12; //# of extra random number generators
+	static const size_t RCOUNT = 13; //# of extra random number generators
 	string rand_gen_names[RCOUNT] = { "mgmtCoeff","farmAge","closeFarm", "investAge",
 		"contractLengthInit","contractLength",
 		"freePlot_rentPlot", "freePlot_initLand",
-		"demogFF", "demogCF", "demogNewage", "livestock_inv"};// , "randPlotType_preparePeriod"
+		"demogFF", "demogCF", "demogNewage", "livestock_inv", "rentVariation"};// , "randPlotType_preparePeriod"
 
 
 	enum R_ENGINES { MINSTD_RAND0, MINSTD_RAND, MT19937, MT19937_64, KNUTH_B };
@@ -111,6 +116,7 @@ public:
 	int getRandomInt(string, std::uniform_int_distribution<>&);
 	double getRandomReal(string, std::uniform_real_distribution<>&);
 
+    std::uniform_real_distribution<> uni_real_distrib_rentVar;
 	std::uniform_real_distribution<> uni_real_distrib_mgmtCoeff;
 	std::uniform_int_distribution<> uni_int_distrib_farmAge;
 	std::uniform_real_distribution<> uni_real_distrib_closeFarm;
@@ -318,6 +324,7 @@ public:
     double UB_MIDDLE_TRANCH;
     double LB_HIGH_TRANCH;
     double UB_HIGH_TRANCH;
+
     double DEG_LOW_TRANCH;
     double DEG_MIDDLE_TRANCH;
     double DEG_HIGH_TRANCH;

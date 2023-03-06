@@ -253,6 +253,8 @@ void setoptions(){
 gg->RUNS=atoi(optionsdata["RUNS"].c_str());
 gg->TEILER = atoi(optionsdata["TEILER"].c_str());
 
+gg->Rent_Variation = optionsdata["RENT_VARIATION"].compare("true") == 0 ? true : false;
+
 gg->RestrictInvestments=optionsdata["RESTRICTINVESTMENTS"].compare("true") == 0 ? true : false;
 
 gg->NASG = optionsdata["NASG"].compare("true") == 0 ? true : false;

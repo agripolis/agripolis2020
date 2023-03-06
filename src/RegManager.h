@@ -118,11 +118,14 @@ public:
 	double NASG_RentOffer(double, RegFarmInfo* pfarm, int landtype);
 
 	void outputManageCoeffDistrib();
+    void outputMap(std::map<int, int>&);
 	void outputFarmAgeDists();
 
 	void updateYoungFarmerLand();
 
 protected:
+    double get_beta();
+
 	void outputRestrictedInvs(RegFarmInfo*);
 	int nfarms_restrict_invest;
 

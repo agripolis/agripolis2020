@@ -601,6 +601,10 @@ double RegGlobalsInfo::triangular(string whichgen, double min, double ml, double
 	else if (!whichgen.compare("FARMAGE")) {
 		r = getRandomInt(whichgen, uni_int_distrib_farmAge);
 	}
+	else if (!whichgen.compare("RENTVARIATION")) {
+		r = getRandomReal(whichgen, uni_real_distrib_rentVar);
+	}
+
 	//cout << "triang: " << r << endl;
 	if (r <= (ml - min) / (max - min)) {
         return min + sqrt(r * (ml - min) * (max - min));
