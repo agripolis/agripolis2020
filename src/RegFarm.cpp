@@ -702,6 +702,10 @@ RegFarmInfo::getInitialRentedPlot(double rent,int type) {
     // but it is free
     if (wanted_plot != NULL) {
         setRentedPlot(wanted_plot,rent,0);
+
+        if (g->Rent_Variation)
+            wanted_plot->setSecondOffer(rent);
+
 		int cl = getRandomContractLength();
 		// 1 + randlong() % (g->MAX_CONTRACT_LENGTH - 1);
 		

@@ -237,8 +237,8 @@ void RegManagerInfo::init() {
 	
 	initPopulations(); 
 	//outputManageCoeffDistrib();
-    if (g->Rent_Variation)
-        outputMap(betaMap);
+    //if (g->Rent_Variation)
+    //  outputMap(betaMap);
 
     initOutput();
 	
@@ -2018,6 +2018,9 @@ RegManagerInfo::rentOnePlot(vector<int>& count_rented_plots_of_type, int type) {
 				Region->updateMaxRents(offer,pl->getSoilType());
 
                 (*equalbidder_iter)->setRentedPlot(pl,offer,f_tac);
+                if (g->Rent_Variation) {
+                    pl->setSecondOffer(true_second_offer);
+                }
 
                 if (g->USE_TC_FRAMEWORK) {
                     paid_tacs+=f_tac;
@@ -2125,6 +2128,13 @@ RegManagerInfo::rentOnePlot(vector<int>& count_rented_plots_of_type, int type) {
                 } else {
                     (*equalbidder_iter)->setRentedPlot(p,second_offer,0);
                 }
+
+                if (g->Rent_Variation) {
+                    //if (max_offer - second_offer > 0)
+                    //    cout << "pl: " << p->getId() << endl;
+                    p->setSecondOffer(second_offer);
+                }
+
                 count_rented_plots_of_type[p->getSoilType()]++;
             }
          return second_offer;

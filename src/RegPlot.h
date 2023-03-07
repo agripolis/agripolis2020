@@ -47,6 +47,10 @@ private:
     double   distance_from_agent;
     /// rent paid for this plot
     double   rent_paid;
+
+    /// second highest offer
+    double second_offer;
+
     /// entitlement for direct payment
     double   payment_entitlement;
     /// initial payment entitlement
@@ -222,6 +226,15 @@ public:
     double getRentPaid() const {
         return rent_paid;
     }
+
+    void setSecondOffer(double so) {
+        second_offer = so;
+    }
+    double getSecondOffer() const {
+        return second_offer;
+    }
+
+
     void setPaymentEntitlement(double pe);
     double getPaymentEntitlement() const {
         return payment_entitlement;

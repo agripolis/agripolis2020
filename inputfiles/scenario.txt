@@ -6,7 +6,7 @@ policy_file: policy_settings.txt
 [Options]		
 Teiler	10	
 
-Rent_variation	true
+#Rent_variation	true
 		
 ManagerCoeffDistribution	Normal	
 ManagerDemographics	true

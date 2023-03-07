@@ -44,6 +44,7 @@ RegPlotInfo::RegPlotInfo(RegGlobalsInfo* G,
     PA.row = yrow;
     newley_rented = false;
     rent_paid = -1;
+    second_offer = rent_paid;
     distance_from_agent = -1;
     rented_by_agent = -1;
     previously_rented_by_agent=-1;
@@ -76,6 +77,7 @@ RegPlotInfo::RegPlotInfo(RegPlotInfo& rh,
     contract_length=rh.contract_length;
     distance_from_agent=rh.distance_from_agent;
     rent_paid=rh.rent_paid;
+    second_offer = rh.second_offer;
     payment_entitlement=rh.payment_entitlement;
     initial_payment_entitlement=rh.initial_payment_entitlement;
     rented_by_agent=rh.rented_by_agent;
@@ -313,6 +315,7 @@ RegPlotInfo::setState(const int passState,RegFarmInfo* farm, int colour) {
     switch (PA.state) {
     case -1: // dead_plot
         rent_paid          = 0;
+        second_offer = rent_paid;
         rented_by_agent    = -1;
         occupied_by_agent  = -1;
         rented_by_legal_type=-1;
@@ -321,6 +324,7 @@ RegPlotInfo::setState(const int passState,RegFarmInfo* farm, int colour) {
         break;
     case 0: // idle plot
         rent_paid          = 0;
+        second_offer = rent_paid;
         previously_rented_by_agent    = rented_by_agent;
         previously_occupied_by_agent  = occupied_by_agent;
         previously_rented_by_legal_type=rented_by_legal_type;
@@ -341,6 +345,7 @@ RegPlotInfo::setState(const int passState,RegFarmInfo* farm, int colour) {
         break;
     case 2: // plot is farmstead
         rent_paid          = 0;
+        second_offer = rent_paid;
         rented_by_agent    = -1;
         rented_by_legal_type=farm->getLegalType();
         occupied_by_agent  = farm->getFarmId();
@@ -350,6 +355,7 @@ RegPlotInfo::setState(const int passState,RegFarmInfo* farm, int colour) {
         break;
     case 3: // plot is owened Land
         rent_paid          = 0;//farm.getRentOffer();
+        second_offer = rent_paid;
         rented_by_agent    = -1;
         rented_by_legal_type=farm->getLegalType();
         occupied_by_agent  = farm->getFarmId();
@@ -359,6 +365,7 @@ RegPlotInfo::setState(const int passState,RegFarmInfo* farm, int colour) {
 
     default:
         rent_paid          = 0;
+        second_offer = rent_paid;
         rented_by_agent    = -1;
         occupied_by_agent  = -1;
         distance_costs     = 0;
