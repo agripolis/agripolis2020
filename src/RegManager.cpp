@@ -128,7 +128,7 @@ RegManagerInfo::clone(string name) {
 
     (*n).Env=new RegEnvInfo(*Env,(*n).g);
     (*n).Region=new RegRegionInfo(*Region,(*n).g);
-	(*n).Data=new RegDataInfo((*n).g, (*n).Market);
+	(*n).Data=new RegDataInfo((*n).g, (*n).Market, (*n).Region);
     (*n).Market=new RegMarketInfo(*Market,(*n).g);
     (*n).Mip= Mip->clone((*n).g);
     (*n).Policyoutput=new OutputControl(*Policyoutput,(*n).g);
@@ -205,7 +205,7 @@ void RegManagerInfo::init() {
     Market = new RegMarketInfo(g);
 
 	// create output files and pass globals
-    Data = new RegDataInfo(g, Market);
+    Data = new RegDataInfo(g, Market, Region);
     
 	initGlobals(true);
 	initCommandlineOptions();
@@ -253,6 +253,8 @@ void RegManagerInfo::init() {
 	Region->calcMaxRents();
 
 	//testLivestockInvRand();
+    //if (g->Rent_Variation)
+        //Data->printFarmSteads(FarmList);
 
     cout << "Initialized " << endl;
 }

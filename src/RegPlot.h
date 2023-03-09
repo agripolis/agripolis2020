@@ -234,7 +234,6 @@ public:
         return second_offer;
     }
 
-
     void setPaymentEntitlement(double pe);
     double getPaymentEntitlement() const {
         return payment_entitlement;

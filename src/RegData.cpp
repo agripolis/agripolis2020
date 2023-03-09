@@ -19,6 +19,7 @@
 #include "RegData.h"
 #include "RegFarm.h"
 #include "RegResults.h"
+#include "RegPlot.h"
 #include <time.h>
 #include <iomanip>
 
@@ -147,7 +148,7 @@ void RegDataInfo::printSoilservice(list <RegFarmInfo*> farmList, int period){
 //--------------------------
 // INITIALISE REGION RESULTS
 //--------------------------
-RegDataInfo::RegDataInfo(RegGlobalsInfo* G, RegMarketInfo* markt) :g(G), market(markt) {
+RegDataInfo::RegDataInfo(RegGlobalsInfo* G, RegMarketInfo* markt, RegRegionInfo* reg) :g(G), market(markt),region(reg) {
     counter = 0;
 }
 
@@ -1427,4 +1428,30 @@ RegDataInfo::cacheFarmResults(const RegFarmInfo* farm,
     res.push_back((double)farm->getDisplayModulation());
 
     farm_results.push_back(res);
+}
+
+void RegDataInfo::printFarmSteads(list <RegFarmInfo*> farmList) {
+    if (farmList.empty())
+        return;
+    int fid;
+    string fname;
+    int x, y;
+
+    ofstream fsout;
+    string filename = "farmsteads.dat";
+    fsout.open((g->OUTPUTFILE + filename).c_str(), ios::out | ios::trunc);
+    fsout << "farm_id\tfarm_name\trow\tcol\n";
+
+    for (auto f : farmList) {
+        auto fp = f->farm_plot;
+        fid = f->getFarmId();
+        fname = f->getFarmName();
+        x = fp->getRow();
+        y = fp->getCol();
+        fsout << fid << "\t"
+            << fname << "\t"
+            << x << "\t"
+            << y << "\n";
+    }
+    fsout.close();
 }

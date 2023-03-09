@@ -30,11 +30,13 @@
 class RegDataInfo {
 private:
 	void printRegionSoilservice(ofstream& ofs, list<RegFarmInfo*> farmList, int period);
+    RegRegionInfo* region;
+    
     //Globals
     RegGlobalsInfo* g;
 
 	RegMarketInfo* market;
-
+    
     /// output stream for farm data
     ofstream farmout;
     /// output stream for farm  investment data
@@ -69,6 +71,8 @@ private:
     int farm_results_c;
     vector< vector <double> > farm_results;
 public:
+    void printFarmSteads(list <RegFarmInfo*> );
+   
 	void scenarioDate(ofstream&);
 	//soil service 
 	void initSoilservice(list <RegFarmInfo*> farmList);
@@ -137,7 +141,7 @@ public:
         return sector_names;
     }
 
-     RegDataInfo(RegGlobalsInfo*, RegMarketInfo*);
+     RegDataInfo(RegGlobalsInfo*, RegMarketInfo*, RegRegionInfo*);
      ~RegDataInfo() {}
 };
 
