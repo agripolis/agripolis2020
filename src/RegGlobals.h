@@ -33,8 +33,8 @@ class RegGlobalsInfo {
 public:
     //rent-variation
     bool Rent_Variation = false;
-    float Beta_min = 0.35;
-    float Beta_max = 0.8;
+    double Beta_min = 0.35;
+    double Beta_max = 0.8;
 
 	//emsland
 	bool RestrictInvestments;

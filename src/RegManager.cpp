@@ -204,9 +204,6 @@ void RegManagerInfo::init() {
 	// create market and pass globals
     Market = new RegMarketInfo(g);
 
-	// create output files and pass globals
-    Data = new RegDataInfo(g, Market, Region);
-    
 	initGlobals(true);
 	initCommandlineOptions();
 	initGlobals(false);
@@ -222,6 +219,10 @@ void RegManagerInfo::init() {
    	initRandomDistribs();
     Region = new RegRegionInfo(g);
     initRegion();
+
+    // create output files and pass globals
+    Data = new RegDataInfo(g, Market, Region);
+
     Env=new RegEnvInfo(g);
     initEnv();
     initMarket();
@@ -253,8 +254,10 @@ void RegManagerInfo::init() {
 	Region->calcMaxRents();
 
 	//testLivestockInvRand();
-    //if (g->Rent_Variation)
-        //Data->printFarmSteads(FarmList);
+    if (g->Rent_Variation) {
+        Data->initPrintPlots(FarmList);
+        Data->printFarmSteads(FarmList);
+    }
 
     cout << "Initialized " << endl;
 }
@@ -1465,6 +1468,11 @@ RegManagerInfo::LandAllocation() {
         }
     }
 	//cout << "after Landallocation: " << Region->free_plots.size() << endl;
+
+    if (g->Rent_Variation) {
+        Data->printPlots(iteration);
+    }
+
 	g->tPhase = SimPhase::BETWEEN;
 }
 
@@ -1648,6 +1656,7 @@ RegManagerInfo::SectorResults() {
     /////////////////////
     // SECTOR DATA OUTPUT
     /////////////////////
+
     Sector->periodResultsSector(InvestCatalog, *Region, FarmList, iteration);
     if (g->CALC_LEGAL_TYPES) {
         for (unsigned int i=0;i<g->LEGAL_TYPES.size();i++) {

@@ -70,8 +70,12 @@ private:
     int counter;
     int farm_results_c;
     vector< vector <double> > farm_results;
+    vector<string> farmnames;
+
 public:
+    void initPrintPlots(list<RegFarmInfo*> farmlist);
     void printFarmSteads(list <RegFarmInfo*> );
+    void printPlots(int);
    
 	void scenarioDate(ofstream&);
 	//soil service 

@@ -167,6 +167,17 @@ RegDataInfo::initialisation(vector<RegInvestObjectInfo>& invest_cat,
         }
     }
 
+    if (g->Rent_Variation) {
+        string plotsdir = dirname + "\\" + "plots";
+        hfind = FindFirstFile(plotsdir.c_str(), &FindFileData);
+        if (hfind == INVALID_HANDLE_VALUE) {               //not found
+            if (!CreateDirectory(plotsdir.c_str(), NULL)) {
+                cerr << "ERROR: " << plotsdir << " can not be created ! " << endl;
+                exit(2);
+            }
+        }
+     }
+
 	 if (g->SECTOROUTPUT) {
         if(g->PRINT_SEC_RES)
         initSectorResults(invest_cat,product_cat);
@@ -1454,4 +1465,78 @@ void RegDataInfo::printFarmSteads(list <RegFarmInfo*> farmList) {
             << y << "\n";
     }
     fsout.close();
+}
+
+void RegDataInfo::initPrintPlots(list<RegFarmInfo*> farms) {
+    int n = farms.size();
+    farmnames.resize(n);
+    int i = -1;
+    string name = "";
+    for (auto f : farms) {
+        i = f->getFarmId();
+        name = f->getFarmName();
+        farmnames[i] = name;
+    }
+}
+
+void RegDataInfo::printPlots(int it) {
+    ofstream pout;
+    string filename = "plots_"+to_string(it)+".dat";
+    filename = g->OUTPUTFILE + "plots\\" + filename;
+    pout.open(filename, ios::out | ios::trunc);
+    pout << "id\trow\tcol\tsoilType\townedBy_id\townedBy_name\trentBy_id\trentBy_name\trent\tsecond_offer\n";
+    auto plots = region->plots;
+    int n = plots.size();
+
+    int id;
+    int r, c;
+    int ownedid, rentid;
+    string ownedname, rentname;
+    string soilname;
+    double non = -1;
+    string noname = "NON";
+    double rent;
+    double secondoffer;
+
+    for (int i = 0; i < n;++i) {
+        auto p = plots[i];
+        if ((*p).getSoilType() == g->NO_OF_SOIL_TYPES)
+            continue;
+
+        ownedid = rentid = non;
+        ownedname = rentname = noname;
+        rent = secondoffer = non;
+        
+        id = (*p).getId();
+        r = (*p).getRow();
+        c = (*p).getCol();
+        soilname = (*p).getSoilName();
+        switch (p->getState()) {
+        case 1:
+            rentid = p->getRentedByAgent();
+            rentname = farmnames[rentid];
+            rent = p->getRentPaid();
+            secondoffer = p->getSecondOffer();
+            break;
+        case 2:
+        case 3:
+            ownedid = p->getOccupiedByAgent();
+            ownedname = farmnames[ownedid];
+            break;
+        default:;
+        }
+        
+        pout << id << "\t"
+             << r << "\t"
+             << c << "\t"
+             << soilname << "\t"
+             << ownedid << "\t"
+             << ownedname << "\t"
+             << rentid << "\t"
+             << rentname << "\t"
+             << rent << "\t"
+             << secondoffer << "\n";
+        
+    }
+    pout.close();
 }
