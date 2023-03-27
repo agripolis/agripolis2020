@@ -255,6 +255,17 @@ gg->TEILER = atoi(optionsdata["TEILER"].c_str());
 
 gg->Rent_Variation = optionsdata["RENT_VARIATION"].compare("true") == 0 ? true : false;
 
+double bmin = atof(optionsdata["BETA_MIN"].c_str());
+double bmax = atof(optionsdata["BETA_MAX"].c_str());
+if (bmin > 0 && bmin < 1)
+	gg->Beta_min = bmin;
+if (bmax > 0 && bmax < 1)
+	gg->Beta_max = bmax;
+if (gg->Beta_max < gg->Beta_min) {
+	cout << "Beta_min is larger than Beta_max ! Exiting ..." << endl;
+	exit(4);
+}
+
 gg->RestrictInvestments=optionsdata["RESTRICTINVESTMENTS"].compare("true") == 0 ? true : false;
 
 gg->NASG = optionsdata["NASG"].compare("true") == 0 ? true : false;

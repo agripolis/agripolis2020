@@ -1451,7 +1451,7 @@ void RegDataInfo::printFarmSteads(list <RegFarmInfo*> farmList) {
     ofstream fsout;
     string filename = "farmsteads.dat";
     fsout.open((g->OUTPUTFILE + filename).c_str(), ios::out | ios::trunc);
-    fsout << "farm_id\tfarm_name\trow\tcol\n";
+    fsout << "farm_id\tfarm_name\trow\tcol\tbeta\n";
 
     for (auto f : farmList) {
         auto fp = f->farm_plot;
@@ -1462,7 +1462,8 @@ void RegDataInfo::printFarmSteads(list <RegFarmInfo*> farmList) {
         fsout << fid << "\t"
             << fname << "\t"
             << x << "\t"
-            << y << "\n";
+            << y << "\t"
+            << f->get_beta()<< "\n";
     }
     fsout.close();
 }

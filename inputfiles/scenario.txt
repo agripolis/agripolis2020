@@ -1,4 +1,4 @@
-Scenario:	Rent_Var	
+Scenario:	Rent_Var_1	
 Description: baseline		
 		
 policy_file: policy_settings.txt		
@@ -7,6 +7,8 @@ policy_file: policy_settings.txt
 Teiler	10	
 
 Rent_variation	true
+beta_min	.30
+beta_max	.70
 		
 ManagerCoeffDistribution	Normal	
 ManagerDemographics	true
