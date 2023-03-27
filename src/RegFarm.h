@@ -306,6 +306,7 @@ public:
     list<RegPlotInfo*> getPlotList() const;
 
     void set_beta(double );
+    double get_beta() const;
 
 	void setReinvestLUcap();
 	double& getRefReinvestLUcap();

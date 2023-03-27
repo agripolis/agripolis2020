@@ -883,6 +883,10 @@ void RegFarmInfo::set_beta(double b) {
     rent_beta = b;
 }
 
+double RegFarmInfo::get_beta() const {
+    return rent_beta;
+}
+
 void
 RegFarmInfo::demandForLand(RegPlotInfo* p) {
     if (!actual || p->getPaymentEntitlement()!=cache_premium_of_type[p->getSoilType()]) {
