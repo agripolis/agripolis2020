@@ -1,8 +1,0 @@
-"FarmName  PIG-PIF12
-"		
-		
-!              Investition	Anzahl	Kapazitaet
-		
-PIGS4	1	500
-		
-MACHINERY7	1	15

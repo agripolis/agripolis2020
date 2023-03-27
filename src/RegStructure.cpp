@@ -360,6 +360,9 @@ void RegRegionInfo::calculateAverageNewRent() {
             }
         }
     }
+    
+    newly_rented_plots_of_type = used_new_plots;
+
     for (int i=0;i<g->NO_OF_SOIL_TYPES;i++) {
         if (used_new_plots[i]>0) {
             average_new_rent_of_type[i]/=(double)used_new_plots[i]*g->PLOT_SIZE;
@@ -367,6 +370,13 @@ void RegRegionInfo::calculateAverageNewRent() {
         exp_average_new_rent_of_type[i]=average_new_rent_of_type[i];
     }
     average_new_rent/=no_plots;
+}
+
+int RegRegionInfo::getNewlyRentedPlotsOfType(int t) const {
+    if (newly_rented_plots_of_type.size() > 0)
+        return newly_rented_plots_of_type[t];
+    else
+        return 0;
 }
 
 RegPlotInfo*

@@ -1,8 +1,8 @@
 # -----------Options  -----------------
 # 	Name	 Value
 
-	TEILER	10		
-	RUNS	25	
+	TEILER	1		
+	RUNS	10	
 			
 #[Output]	
 	PRINT_SEC_RES	true;	

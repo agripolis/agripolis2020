@@ -31,6 +31,9 @@ private:
     vector<double> average_rent_of_type;
     vector<double> exp_average_rent_of_type;
     double average_rent;
+    
+    vector<int> newly_rented_plots_of_type;
+
     vector<double> average_new_rent_of_type;
     vector<double> exp_average_new_rent_of_type;
     double average_new_rent;
@@ -40,6 +43,8 @@ private:
     double var_tacs;
     double fix_tacs;
 public:
+    int getNewlyRentedPlotsOfType(int) const;
+
 	int getRandom_contractLength();
 	int getRandom_freePlot_initLand();
 	int getRandom_freePlot_rentPlot();
@@ -60,6 +65,11 @@ public:
     void setUpdate();
     RegPlotInfo* getRandomFreePlotOfType(int type);
     RegPlotInfo* getRandomPlotOfType(int type);
+
+    vector<RegPlotInfo*> getFreeplots() const {
+        return free_plots;
+    }
+
     int getNumberOfFreePlots() {
         return free_plots.size();
     };

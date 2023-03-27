@@ -31,6 +31,10 @@ enum class DISTRIB_TYPE {UNIFORM, NORMAL};
 using namespace std;
 class RegGlobalsInfo {
 public:
+    //RL
+    bool RL = false;
+    int RLfarmID = 0;
+
     //rent-variation
     bool Rent_Variation = false;
     double Beta_min = 0.35;

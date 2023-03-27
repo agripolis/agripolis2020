@@ -271,6 +271,10 @@ private:
 	map<string, int> removed_invs;
 
 public:
+    list<RegInvestObjectInfo> getFarmInvests() const {
+        return farm_invests;
+    }
+
 	map<string, int> getRemovedInvests();
 	void resetRemovedInvs();
 

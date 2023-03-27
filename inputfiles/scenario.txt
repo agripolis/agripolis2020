@@ -1,12 +1,13 @@
-Scenario:	Rent_Var	
+Scenario:	REF	
 Description: baseline		
 		
 policy_file: policy_settings.txt		
 		
 [Options]		
-Teiler	10	
+Teiler	1
+Runs	10
 
-Rent_variation	true
+RL	true
 		
 ManagerCoeffDistribution	Normal	
 ManagerDemographics	true
@@ -14,4 +15,7 @@ AGE_DEPENDENT true
 		
 [Globals]		
 ManagerDev		0.1
+
+MIN_CONTRACT_LENGTH   	2	
+MAX_CONTRACT_LENGTH   	7
 	

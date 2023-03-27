@@ -2894,3 +2894,11 @@ double RegFarmInfo::getUnitsOfProduct(int i) const{
 double RegFarmInfo::getVarCostsOfProduct(int i) const {
         return FarmProductList->getVarCostsOfNumber(i);
 }
+
+list<RegPlotInfo*> RegFarmInfo::getPlotList() const {
+    return PlotList;
+}
+
+RegInvestList*  RegFarmInfo::getFarmInvestList() const {
+    return FarmInvestList;
+}

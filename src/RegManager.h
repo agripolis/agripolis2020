@@ -60,6 +60,10 @@ public:
 	void calcMaxRents();
 	void testLivestockInvRand();
 
+    list<RegFarmInfo*> getFarmList() const {
+        return FarmList;
+   }
+
    int getNoOfFarms() {
         return FarmList.size();
     }
@@ -122,8 +126,16 @@ public:
 	void outputFarmAgeDists();
 
 	void updateYoungFarmerLand();
+    RegRegionInfo* getRegion() const {
+        return Region;
+    }
 
+    vector<RegInvestObjectInfo> getInvestCatalog() const {
+        return InvestCatalog;
+    }
+    
 protected:
+    RegFarmInfo* RLfarm = nullptr;
     double get_beta();
 
 	void outputRestrictedInvs(RegFarmInfo*);

@@ -21,6 +21,7 @@
 #include "RegGlobals.h"
 #include "RegLabour.h"
 #include "RegPlotInformation.h"
+
 /** RegFarmInfo class.
     @short class defines the properties and actions of a single farm.
     @author Kathrin Happe, Alfons Balmann, Konrad Kellermann
@@ -35,6 +36,7 @@ class RegSectorResultsInfo;
 class RegLpInfo;
 class RegProductList;
 class RegProductInfo;
+
 class RegFarmInfo {
 protected:
     double rent_beta;
@@ -300,6 +302,9 @@ protected:
     bool flat_copy;
 
 public:
+    RegInvestList* getFarmInvestList() const;
+    list<RegPlotInfo*> getPlotList() const;
+
     void set_beta(double );
 
 	void setReinvestLUcap();

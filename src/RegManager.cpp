@@ -28,6 +28,7 @@
 #include "RegStructure.h"
 #include "RegFarm.h"
 #include "RegPlot.h"
+#include "RegRL.h"
 
 #include <iterator>
 #include <regex>
@@ -61,6 +62,12 @@ long int mtRandMax= 0x7FFFFFFFUL ;
  struct envdata  envdata       ;
 
  vector <oneyield> yielddata;
+
+ //RL
+ extern bool newIteration;
+ //extern vector<int> newRentedplots;
+ extern vector<double> recentRents; //farm
+ extern vector<double> avRecentRents; //region
 
 //soil service 
 void RegManagerInfo::UpdateSoilserviceP(){
@@ -935,6 +942,10 @@ RegManagerInfo::initPopulations() {
                                  farmname,
                                  farmef);
             // set values read from file
+            if (g->RL) {
+                if (new_farm_id == g->RLfarmID)
+                    RLfarm = newFarm;
+            }
 
                 newFarm->setInitialLand(initial_land_input[i]);
             for (int k=0;k<g->NO_OF_SOIL_TYPES;k++) {
@@ -1101,8 +1112,8 @@ void RegManagerInfo::step() {
     if (iteration == 0)
         CostAdjustment();
     readPolicyChanges();
-    Region->calculateAverageRent();
-    Region->calculateAverageNewRent();
+ //   Region->calculateAverageRent();
+ //   Region->calculateAverageNewRent();
 	if (g->CALCULATE_CONTIGUOUS_PLOTS) Region->countContiguousPlots();
     g->WERTS1=RentStatistics();
     g->WERTS=-g->WERTS1;
@@ -1115,6 +1126,7 @@ void RegManagerInfo::step() {
 	UpdateSoilserviceLA();
 	Region->calculateAverageRent();
     Region->calculateAverageNewRent();
+    
 	if(iteration==0)
         Region->setNewRentFirstPeriod();
     f=static_cast<int>(Region->getExpAvNewRentOfType(1)/Region->getAvRentOfType(1));
@@ -1310,8 +1322,52 @@ void RegManagerInfo::calcMaxRents() {
 	Region->calcMaxRents();
 }
 
+static vector<double> calcAvNewRents(RegManagerInfo* m) {
+    vector<double> res;
+    vector<double> res0;
+    RegRegionInfo* reg = m->getRegion();
+    int n = m->getGlobals()->NO_OF_SOIL_TYPES;
+    res.resize(n);
+    res0.resize(n);
+    //newRentedplots.resize(n);
+
+    for (auto i = 0; i < n; ++i) {
+        res[i] = reg->getAvNewRentOfType(i);
+        //newRentedplots[i] = reg->getNewlyRentedPlotsOfType(i);
+        if (m->getIteration() == 0) {
+            res0[i] = reg->getAvRentOfType(i);
+            if (res[i] == 0)
+                res[i] = res0[i];
+        }
+    }
+    return res;
+}
+
+static vector<double> calcRecentRents(RegFarmInfo* f, RegManagerInfo* m) {
+    vector<double> res;
+    vector<double> res0;
+    int n = m->getGlobals()->NO_OF_SOIL_TYPES;
+    res.resize(n);
+    res0.resize(n);
+    for (auto i = 0; i < n; ++i) {
+        res[i] = f->getAvNewRentOfType(i);
+        if (m->getIteration() == 0) {
+            res0[i] = f->getAvRentOfType(i);
+            if (res[i] == 0)
+                res[i] = res0[i];
+        }
+        else if (res[i] == 0) {
+            res[i] = recentRents[i];
+        }
+    }
+    return res;
+}
+
 void
 RegManagerInfo::LandAllocation() {
+    if (g->RL)
+        newIteration = true;
+
 	g->tPhase = SimPhase::LAND;
 	//cout << "vor landallocation: " << Region->free_plots.size() << endl;
 //        if (iteration==0) {
@@ -1471,6 +1527,14 @@ RegManagerInfo::LandAllocation() {
 
     if (g->Rent_Variation) {
         Data->printPlots(iteration);
+    }
+
+    //recent rents
+    if (g->RL) {
+        Region->calculateAverageRent();
+        Region->calculateAverageNewRent();
+        recentRents = calcRecentRents(RLfarm, this);
+        avRecentRents = calcAvNewRents(this);
     }
 
 	g->tPhase = SimPhase::BETWEEN;
@@ -1954,6 +2018,10 @@ RegManagerInfo::rentOnePlot(vector<int>& count_rented_plots_of_type, int type) {
         g->tFarmName=(*farms_iter)->getFarmName();
         g->tFarmId= (*farms_iter)->getFarmId();
 #endif
+        if (g->RL && (*farms_iter) == RLfarm && newIteration) {
+            RLdata rlData = getRLdata((*farms_iter), this);
+            output(rlData, this);
+        }
             (*farms_iter)->demandForLandOfType(type,bidcount);
             offer=(*farms_iter)-> getRentOffer();
 			
@@ -2092,6 +2160,10 @@ RegManagerInfo::rentOnePlot(vector<int>& count_rented_plots_of_type, int type) {
 				g->tFarmName = (*farms_iter)->getFarmName();
 				g->tFarmId = (*farms_iter)->getFarmId();
 #endif
+                if (g->RL && (*farms_iter)==RLfarm && newIteration) {
+                    RLdata rlData = getRLdata((*farms_iter), this);
+                    output(rlData, this);
+                }
 
                 (*farms_iter)->demandForLand(p);
 
