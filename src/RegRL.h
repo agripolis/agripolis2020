@@ -41,5 +41,5 @@ struct RLdata {
 
 RLdata getRLdata(RegFarmInfo*, RegManagerInfo*);
 
-void output(RLdata, RegManagerInfo*);
+void output(RLdata, RegManagerInfo*, string);
 #endif

@@ -188,62 +188,72 @@
         return rlData;
     }
 
-    static void outputPlots(vector<vector<int>> vps, vector<string> names) {
-        cout << "plots with rest contract <= 5 years:\n";
+    static void outputPlots(vector<vector<int>> vps, vector<string> names, ofstream &out) {
+        out << "plots with rest contract <= 5 years:\n";
         for (auto i = 0; i < vps.size(); ++i) {
-            cout << "\t" << names[i] << ": ";
+            out << "\t" << names[i] << ": ";
             for (auto i2 = 0; i2 < vps[i].size(); ++i2) {
-                cout << "\t" << vps[i][i2];
+                out << "\t" << vps[i][i2];
             }
-            cout << "\n";
+            out << "\n";
         }
     }
 
-    static void outputInvests(map<int, pair<int, double>> restinvs, vector<RegInvestObjectInfo> invcat) {
+    static void outputInvests(map<int, pair<int, double>> restinvs, vector<RegInvestObjectInfo> invcat, ofstream &out) {
         vector<string> idnames;
         for (auto i = 0; i < invcat.size(); ++i) {
             idnames.push_back(invcat[i].getName());
         }
-        cout << "rest life of investments (name, num, rest life): \n";
+        out << "rest life of investments (name, num, rest life): \n";
         for (auto& [id, p] : restinvs) {
-            cout << "\t" << idnames[id] << "\t" << p.first << "\t" << p.second << "\n";
+            out << "\t" << idnames[id] << "\t" << p.first << "\t" << p.second << "\n";
         }
     }
 
-    static void outputFreeplots(vector<int> fps, vector<string> names) {
-        cout << "number of free plots within 10km:\n ";
+    static void outputFreeplots(vector<int> fps, vector<string> names, ofstream &out) {
+        out << "number of free plots within 10km:\n ";
         for (auto i = 0; i < fps.size(); ++i) {
-            cout << "\t" << names[i] << "\t" << fps[i] << ";";
+            out << "\t" << names[i] << "\t" << fps[i] << ";";
         }
-        cout << "\n";
+        out << "\n";
     }
 
 
-    static void outputRents(vector<double> rents, vector<string> names, bool forfarm = false) {
+    static void outputRents(vector<double> rents, vector<string> names, ofstream &out, bool forfarm = false) {
         if (!forfarm)
-            cout << "region recent rents:\n ";
+            out << "region recent rents:\n ";
         else
-            cout << "farm recent rents:\n ";
+            out << "farm recent rents:\n ";
 
         for (auto i = 0; i < names.size(); ++i) {
-            cout << "\t" << names[i] << "\t" << rents[i] << ";";
+            out << "\t" << names[i] << "\t" << rents[i] << ";";
         }
-        cout << "\n";
+        out << "\n";
 
     }
 
-    void output(RLdata rldata, RegManagerInfo* m) {
-        vector<string> soilnames = m->getGlobals()->NAMES_OF_SOIL_TYPES;
-        outputPlots(rldata.restPlotsOfType, soilnames);
-        cout << "age: " << rldata.age << "\n";
-        cout << "liquidity: " << rldata.liquidity << "\n";
-        cout << "management: " << rldata.management << "\n";
-        outputInvests(rldata.restInvests, m->getInvestCatalog());
-        outputRents(rldata.recentRents, soilnames, true);
+    void output(RLdata rldata, RegManagerInfo* m, string fname="") {
+        if (fname.size() == 0)
+            return;
 
-        cout << "number of farms within 10km: " << rldata.nfarms10km << "\n";
-        outputFreeplots(rldata.nfreeplots10km, soilnames);
-        //outputRents(rldata.avRents, soilnames);
-        outputRents(rldata.avNewRents, soilnames);
-        cout << "\n\n";
+        ofstream out;
+        out.open(fname, ios::app);
+        if (!out.is_open()) {
+            cout << "can not open: " << fname << endl;
+        }
+
+        vector<string> soilnames = m->getGlobals()->NAMES_OF_SOIL_TYPES;
+        outputPlots(rldata.restPlotsOfType, soilnames, out);
+        out << "age: " << rldata.age << "\n";
+        out << "liquidity: " << rldata.liquidity << "\n";
+        out << "management: " << rldata.management << "\n";
+        outputInvests(rldata.restInvests, m->getInvestCatalog(), out);
+        outputRents(rldata.recentRents, soilnames, out, true);
+
+        out << "number of farms within 10km: " << rldata.nfarms10km << "\n";
+        outputFreeplots(rldata.nfreeplots10km, soilnames, out);
+        //outputRents(rldata.avRents, soilnames, out);
+        outputRents(rldata.avNewRents, soilnames, out);
+        out << "\n\n";
+        out.close();
     }

@@ -1339,6 +1339,9 @@ static vector<double> calcAvNewRents(RegManagerInfo* m) {
             if (res[i] == 0)
                 res[i] = res0[i];
         }
+        else if (res[i] == 0) {
+            res[i] = avRecentRents[i];
+        }
     }
     return res;
 }
@@ -2020,7 +2023,7 @@ RegManagerInfo::rentOnePlot(vector<int>& count_rented_plots_of_type, int type) {
 #endif
         if (g->RL && (*farms_iter) == RLfarm && newIteration) {
             RLdata rlData = getRLdata((*farms_iter), this);
-            output(rlData, this);
+            output(rlData, this, "RL.dat");
         }
             (*farms_iter)->demandForLandOfType(type,bidcount);
             offer=(*farms_iter)-> getRentOffer();
@@ -2162,7 +2165,7 @@ RegManagerInfo::rentOnePlot(vector<int>& count_rented_plots_of_type, int type) {
 #endif
                 if (g->RL && (*farms_iter)==RLfarm && newIteration) {
                     RLdata rlData = getRLdata((*farms_iter), this);
-                    output(rlData, this);
+                    output(rlData, this, "RL.dat");
                 }
 
                 (*farms_iter)->demandForLand(p);
