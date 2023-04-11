@@ -84,6 +84,9 @@
     <ClCompile Include="..\RegRL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\pb\pydata.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\evalkern.h">
@@ -173,8 +176,11 @@
     <ClInclude Include="..\RegRL.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\pb\pydata.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="..\glpk_4_45.lib" />
+    <Library Include="..\glpk_4_45_x64.lib" />
   </ItemGroup>
 </Project>

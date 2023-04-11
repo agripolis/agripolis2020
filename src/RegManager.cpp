@@ -1368,8 +1368,9 @@ static vector<double> calcRecentRents(RegFarmInfo* f, RegManagerInfo* m) {
 
 void
 RegManagerInfo::LandAllocation() {
-    if (g->RL)
+    if (g->RL) {
         newIteration = true;
+    }
 
 	g->tPhase = SimPhase::LAND;
 	//cout << "vor landallocation: " << Region->free_plots.size() << endl;

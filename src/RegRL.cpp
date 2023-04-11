@@ -13,6 +13,9 @@
 #include "RegRL.h"
 #include "RegPlot.h"
 #include "RegInvest.h"
+#include <zmq.hpp>
+#include <google/protobuf/text_format.h>
+#include "pydata.pb.h"
 
 
     static int numSoils;
@@ -29,6 +32,112 @@
     static double nrows;
 
     bool newIteration = true;
+
+    static bool zmqinited = false;
+
+    static void toPb(rl::RLData& data) {
+        data.set_age(cachedRLdata.age);
+        data.set_liquidity(cachedRLdata.liquidity);
+        data.set_management(cachedRLdata.management);
+        data.set_nfarms10km(cachedRLdata.nfarms10km);
+        *data.mutable_avnewrents() = { cachedRLdata.avNewRents.begin(), cachedRLdata.avNewRents.end() };
+        *data.mutable_recentrents() = { cachedRLdata.recentRents.begin(), cachedRLdata.recentRents.end() };
+        *data.mutable_nfreeplots10km() = { cachedRLdata.nfreeplots10km.begin(), cachedRLdata.nfreeplots10km.end() };
+        
+        for (int i = 0; i < cachedRLdata.restPlotsOfType.size(); ++i) {
+            rl::RLData_plots pls;
+            *pls.mutable_n() = {cachedRLdata.restPlotsOfType[i].begin(), cachedRLdata.restPlotsOfType[i].end()};
+            (*data.mutable_restplotsoftype()).Add(move(pls));
+        }
+       
+        for (auto i: cachedRLdata.restInvests) {
+            rl::RLData_invlife il;
+            il.set_num(i.second.first);
+            il.set_life(i.second.second);
+            (*data.mutable_restinvests())[i.first]=move(il);
+        }
+    }
+
+    static zmq::context_t context(1);
+    static zmq::socket_t sender_socket(context, ZMQ_PUSH);
+    static zmq::socket_t receiver_socket(context, zmq::socket_type::pull);
+
+    void initzmq() {
+        sender_socket.connect("tcp://localhost:5557");
+        receiver_socket.bind("tcp://0.0.0.0:5555");
+        zmqinited = true;
+        cout << "zmq inited\n";
+    }
+
+    static void send() {
+        GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+        //zmq::context_t context(1);
+
+        // sender
+        //zmq::socket_t sender_socket(context, ZMQ_PUSH);
+        //sender_socket.connect("tcp://localhost:5557");
+
+        //zmq::socket_t receiver_socket(context, zmq::socket_type::pull);
+        //receiver_socket.bind("tcp://0.0.0.0:555");
+
+        //zmq::message_t context_msg(sizeof(context));
+        //std::memcpy(context_msg.data(), &context, sizeof(context));
+        //sender_socket.send(context_msg);
+
+        std::chrono::seconds twosec(2);
+        int max = 10;
+
+        rl::RLData data;
+        
+        int i = cachedRLdata.iter;//zero is default for protobuf;
+        if (i >= max)
+            return;
+        //while (true) {
+            toPb(data);
+            std::string text;
+            google::protobuf::TextFormat::PrintToString(data, &text);
+            //std::cout << "C0: " << text << std::endl;
+                         
+            std::string msg_str;
+            data.SerializeToString(&msg_str);
+
+            zmq::message_t message(msg_str.size());
+            std::memcpy((void*)message.data(), msg_str.c_str(), msg_str.size());
+            sender_socket.send(message);// , zmq::send_flags::dontwait);
+
+           //zmq::message_t context_msg;
+           //receiver_socket.recv(&context_msg);
+           //std::memcpy(&context, context_msg.data(), sizeof(context));
+
+            //std::this_thread::sleep_for(twosec);
+
+            zmq::message_t received_message;
+            receiver_socket.recv(&received_message);
+
+            //std::vector<double> ds;
+            //std::vector<std::string> ss;
+
+            //mypackage::MyData rdata;
+            std::string rmsg_str(static_cast<char*>(received_message.data()), received_message.size());
+
+            data.ParseFromString(rmsg_str);
+            //ds = { rdata.data().begin(), rdata.data().end() };
+            //ss = { rdata.tags().begin(), rdata.tags().end() };
+            ++i;
+            if (data.age() != cachedRLdata.age) {
+                std::cout << "c: age not correct! " << data.age() << "\n";
+                exit(3);
+            }
+
+            //std::string text;
+            google::protobuf::TextFormat::PrintToString(data, &text);
+            std::cout << "C: " << text << std::endl;
+
+        //}
+
+        google::protobuf::ShutdownProtobufLibrary();
+    }
 
     static vector<vector<int>> calcRestPlots(list<RegPlotInfo*> pls) {
         vector<vector<int>> res;
@@ -168,6 +277,8 @@
 
         RLdata rlData;
 
+        rlData.iter = m->getIteration();
+
         list<RegPlotInfo*> plots = f->getPlotList();
         rlData.restPlotsOfType = calcRestPlots(plots);
         rlData.age = f->getFarmAge();
@@ -185,6 +296,7 @@
 
         cachedRLdata = rlData;
 
+        
         return rlData;
     }
 
@@ -256,4 +368,8 @@
         outputRents(rldata.avNewRents, soilnames, out);
         out << "\n\n";
         out.close();
+
+        if (!zmqinited)
+            initzmq();
+        send();
     }

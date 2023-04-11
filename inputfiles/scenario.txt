@@ -7,7 +7,7 @@ policy_file: policy_settings.txt
 Teiler	1
 Runs	10
 
-RL	true
+#RL	true
 		
 ManagerCoeffDistribution	Normal	
 ManagerDemographics	true
@@ -16,6 +16,6 @@ AGE_DEPENDENT true
 [Globals]		
 ManagerDev		0.1
 
-MIN_CONTRACT_LENGTH   	2	
-MAX_CONTRACT_LENGTH   	7
+MIN_CONTRACT_LENGTH   	3	
+MAX_CONTRACT_LENGTH   	4
 	

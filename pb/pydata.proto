@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package rl;
+
+message RLData {
+	repeated plots restPlotsOfType=1;
+	int32 age = 2;
+	float liquidity = 3;
+	float management = 4;
+	map<int32, invlife> restInvests = 5;
+	repeated double recentRents = 6;
+	int32 nfarms10km = 7;
+	repeated int32 nfreeplots10km = 8;
+	repeated double avNewRents = 9;
+	
+	message plots {
+	   repeated int32 n=1;
+	}
+	
+	message invlife {
+		int32 num  = 1;
+		double life = 2;
+	}
+	
+}
