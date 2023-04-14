@@ -253,6 +253,12 @@ void setoptions(){
 gg->RUNS=atoi(optionsdata["RUNS"].c_str());
 gg->TEILER = atoi(optionsdata["TEILER"].c_str());
 
+gg->Fixed_Beta = optionsdata["FIXED_BETA"].compare("true") == 0 ? true : false;
+if (gg->Fixed_Beta) {
+	gg->Beta_FarmId = atoi(optionsdata["BETA_FARM_ID"].c_str());
+	gg->Beta = atof(optionsdata["BETA"].c_str());
+}
+
 gg->RestrictInvestments=optionsdata["RESTRICTINVESTMENTS"].compare("true") == 0 ? true : false;
 
 gg->NASG = optionsdata["NASG"].compare("true") == 0 ? true : false;

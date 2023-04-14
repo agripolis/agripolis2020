@@ -31,7 +31,12 @@ enum class DISTRIB_TYPE {UNIFORM, NORMAL};
 using namespace std;
 class RegGlobalsInfo {
 public:
-	//emsland
+    //different beta for a farm
+    bool Fixed_Beta = false;
+    int Beta_FarmId = 0;
+    double Beta = 0.5;
+
+    //emsland
 	bool RestrictInvestments;
 	double Livestock_Inv_farmsPercent;
 	set<string> Livestock_Invs;

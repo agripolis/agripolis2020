@@ -1,10 +1,15 @@
-Scenario:	DEM	
+Scenario:	83beta4
 Description: baseline		
 		
 policy_file: policy_settings.txt		
 		
 [Options]		
-Teiler	10	
+Teiler	100
+Runs	5
+
+fixed_beta	true		
+beta_farm_id	83
+beta	0.4		
 		
 ManagerCoeffDistribution	Normal	
 ManagerDemographics	true
