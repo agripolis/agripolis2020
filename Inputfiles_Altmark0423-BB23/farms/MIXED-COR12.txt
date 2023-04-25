@@ -1,0 +1,12 @@
+FarmName  MIXED-COR12		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+
+EXTCATTLE1	1	95
+
+MACHINERY2 	1	500
+
+MACHINERY3	1	200
+
+MACHINERY5	1	50

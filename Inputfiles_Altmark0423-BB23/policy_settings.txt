@@ -1,0 +1,20 @@
+iteration 0																				
+	price_change:	V_HIRED_LABOUR=1.0001;	V_HIRED_LABOUR_H=1.0001;	 V_OFF_FARM_LAB=1.0001;																
+	premium:	BARLEY=272.5;	WINTER_WHEAT=272.5;	RAPE_SEED=272.5;	SUGAR_BEETS=272.5;	PROTEIN_PLANTS=272.5;	MAIZE_SILAGE=272.5;	LEY=272.5;	POTATOES=272.5;	RYE=272.5;	RYE_BIOGAS=272.5;	GPS=272.5;	GRASSILAGE_INT=272.5;	GRASSILAGE_EXT=272.5;	PORTIONSWEIDE=272.5;	UMTRIEBSWEIDE=272.5;	STANDWEIDE=272.5;	SET_ASIDE=272.5;	IDLE_ARABLE=272.5;	IDLE_GRASS=272.5;
+	tranch:	tranch_2_deg=0.10;	tranch_3_deg=0.10;	tranch_4_deg=0.10;	tranch_5_deg=0.14;															
+	others:	rhs_row:Grazing_Land=EQ;	rhs_row:Arable_Land=EQ;																	
+																				
+iteration 1																				
+	premium:	BARLEY=268;	WINTER_WHEAT=268;	RAPE_SEED=268;	SUGAR_BEETS=268;	PROTEIN_PLANTS=268;	MAIZE_SILAGE=268;	LEY=268;	POTATOES=268;	RYE=268;	RYE_BIOGAS=268;	GPS=268;	GRASSILAGE_INT=268;	GRASSILAGE_EXT=268;	PORTIONSWEIDE=268;	UMTRIEBSWEIDE=268;	STANDWEIDE=268;	SET_ASIDE=268;	IDLE_ARABLE=268;	IDLE_GRASS=268;
+	tranch:	tranch_2_deg=0.10;	tranch_3_deg=0.10;	tranch_4_deg=0.10;	tranch_5_deg=0.14;															
+	others:	rhs_row:Grazing_Land=EQ;	rhs_row:Arable_Land=EQ;																	
+																				
+iteration 2																				
+	premium:	BARLEY=264.5;	WINTER_WHEAT=264.5;	RAPE_SEED=264.5;	SUGAR_BEETS=264.5;	PROTEIN_PLANTS=264.5;	MAIZE_SILAGE=264.5;	LEY=264.5;	POTATOES=264.5;	RYE=264.5;	RYE_BIOGAS=264.5;	GPS=264.5;	GRASSILAGE_INT=264.5;	GRASSILAGE_EXT=264.5;	PORTIONSWEIDE=264.5;	UMTRIEBSWEIDE=264.5;	STANDWEIDE=264.5;	SET_ASIDE=264.5;	IDLE_ARABLE=264.5;	IDLE_GRASS=264.5;
+	tranch:	tranch_2_deg=0.10;	tranch_3_deg=0.10;	tranch_4_deg=0.10;	tranch_5_deg=0.14;															
+	others:	rhs_row:Grazing_Land=EQ;	rhs_row:Arable_Land=EQ;																	
+																				
+iteration 3																				
+	premium:	BARLEY=261;	WINTER_WHEAT=261;	RAPE_SEED=261;	SUGAR_BEETS=261;	PROTEIN_PLANTS=261;	MAIZE_SILAGE=261;	LEY=261;	POTATOES=261;	RYE=261;	RYE_BIOGAS=261;	GPS=261;	GRASSILAGE_INT=261;	GRASSILAGE_EXT=261;	PORTIONSWEIDE=261;	UMTRIEBSWEIDE=261;	STANDWEIDE=261;	SET_ASIDE=261;	IDLE_ARABLE=261;	IDLE_GRASS=261;
+	tranch:	tranch_2_deg=0.10;	tranch_3_deg=0.10;	tranch_4_deg=0.10;	tranch_5_deg=0.14;															
+	others:	rhs_row:Grazing_Land=EQ;	rhs_row:Arable_Land=EQ;																	

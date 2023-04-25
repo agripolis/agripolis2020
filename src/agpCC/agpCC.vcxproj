@@ -104,6 +104,7 @@
     <ClCompile Include="..\RegPlot.cpp" />
     <ClCompile Include="..\RegPlotInformation.cpp" />
     <ClCompile Include="..\RegProduct.cpp" />
+    <ClCompile Include="..\RegRegr.cpp" />
     <ClCompile Include="..\RegResults.cpp" />
     <ClCompile Include="..\RegStructure.cpp" />
     <ClCompile Include="..\textinput.cpp" />
@@ -132,6 +133,7 @@
     <ClInclude Include="..\RegPlot.h" />
     <ClInclude Include="..\RegPlotInformation.h" />
     <ClInclude Include="..\RegProduct.h" />
+    <ClInclude Include="..\RegRegr.h" />
     <ClInclude Include="..\RegResults.h" />
     <ClInclude Include="..\RegStructure.h" />
     <ClInclude Include="..\SimpleOpt.h" />

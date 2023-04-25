@@ -3,7 +3,7 @@
 *
 * AgriPoliS: An Agricultural Policy Simulator
 *
-* Copyright (c) 2021, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
+* Copyright (c) 2023, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
 * (cf. AUTHORS.md) at Leibniz Institute of Agricultural Development in 
 * Transition Economies
 *
@@ -25,6 +25,8 @@
 #include "OutputControl.h"
 #include "Evaluator.h"
 #include "RegEnvInfo.h"
+#include "RegRegr.h"
+
 /** RegManagerInfo class.
     This class is 'the brain' of the programme. It manages the all necessary
     classes and data flows.
@@ -121,7 +123,8 @@ public:
 	void outputFarmAgeDists();
 
 	void updateYoungFarmerLand();
-
+    void updateEconLandRents();
+        
 protected:
 	void outputRestrictedInvs(RegFarmInfo*);
 	int nfarms_restrict_invest;

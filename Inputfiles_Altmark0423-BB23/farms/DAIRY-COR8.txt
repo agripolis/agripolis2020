@@ -1,0 +1,22 @@
+FarmName  DAIRY-COR8		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+
+INTCATTLE4	1	25
+
+EXTCATTLE1	3	100
+
+DAIRY1		1	540
+
+PARLOUR_1	1	540
+
+BIOGAS450	1	1
+
+BIOGAS800	3	1
+
+MACHINERY2 	2	500
+
+MACHINERY4	1	100
+
+

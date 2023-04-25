@@ -1,0 +1,46 @@
+iteration 0																																																											
+	price_change:	V_HIRED_LABOUR=1.011;	V_HIRED_LABOUR_H=1.011;	 V_OFF_FARM_LAB=1.011;																																																							
+	ref_prem_percent:	BARLEY=1;	WINTER_WHEAT=1;	RAPE_SEED=1;	SUGAR_BEETS=1;	PROTEIN_PLANTS=1;	MAIZE_SILAGE=1;	LEY=1;	POTATOES=1;	RYE=1;	RYE_BIOGAS=1;	GPS=1;	GRASSILAGE_INT=1;	GRASSILAGE_EXT=1;	PORTIONSWEIDE=1;	UMTRIEBSWEIDE=1;	STANDWEIDE=1;	BIOGAS_I_150kW=1;	BIOGAS_II_150kW=1;	BIOGAS_III_150kW=1;	BIOGAS_IV_150kW=1;	BIOGAS_I_450kW=1;	BIOGAS_II_450kW=1;	BIOGAS_III_450kW=1;	BIOGAS_IV_450kW=1;	BIOGAS_I_800kW=1;	BIOGAS_II_800kW=1;	BIOGAS_III_800kW=1;	BIOGAS_IV_800kW=1;	BIOGAS150KW=1;	BIOGAS450KW=1;	BIOGAS800KW=1;	BIOGAS_I_150kW_N=1;	BIOGAS_II_150kW_N=1;	BIOGAS_III_150kW_N=1;	BIOGAS_I_450kW_N=1;	BIOGAS_II_450kW_N=1;	BIOGAS_III_450kW_N=1;	BIOGAS_I_800kW_N=1;	BIOGAS_II_800kW_N=1;	BIOGAS_III_800kW_N=1;	BIOGAS150KW_N=1;	BIOGAS450KW_N=1;	BIOGAS800KW_N=1;	BIOGAS_I_150kW_N14=1;	BIOGAS_II_150kW_N14=1;	BIOGAS_III_150kW_N14=1;	BIOGAS_I_450kW_N14=1;	BIOGAS_II_450kW_N14=1;	BIOGAS_III_450kW_N14=1;	BIOGAS_I_800kW_N14=1;	BIOGAS_II_800kW_N14=1;	BIOGAS_III_800kW_N14=1;	BIOGAS150KW_N14=1;	BIOGAS450KW_N14=1;	BIOGAS800KW_N14=1;	SET_ASIDE=1;	IDLE_ARABLE=1;	IDLE_GRASS=1;
+	tranch:	tranch_2_deg=0.05;	tranch_3_deg=0.05;	tranch_4_deg=0.05;	tranch_5_deg=0.05;																																																						
+	others:	rhs_row:Grazing_Land=EQ;	rhs_row:Arable_Land=EQ;																																																								
+																																																											
+iteration 1																																																											
+	tranch:	tranch_2_deg=0.05;	tranch_3_deg=0.05;	tranch_4_deg=0.05;	tranch_5_deg=0.05;																																																						
+	others:	rhs_row:Grazing_Land=EQ;	rhs_row:Arable_Land=EQ;																																																								
+iteration 2																																																											
+	tranch:	tranch_2_deg=0.05;	tranch_3_deg=0.05;	tranch_4_deg=0.05;	tranch_5_deg=0.05;																																																						
+iteration 3																																																											
+	tranch:	tranch_2_deg=0.07;	tranch_3_deg=0.07;	tranch_4_deg=0.07;	tranch_5_deg=0.11;																																																						
+iteration 4																																																											
+	premium:	BARLEY=397.669;	WINTER_WHEAT=397.669;	RAPE_SEED=397.669;	SUGAR_BEETS=397.669;	PROTEIN_PLANTS=397.669;	MAIZE_SILAGE=397.669;	LEY=397.669;	POTATOES=397.669;	RYE=397.669;	RYE_BIOGAS=397.669;	GPS=397.669;	GRASSILAGE_INT=200.128;	GRASSILAGE_EXT=200.128;	PORTIONSWEIDE=200.128;	UMTRIEBSWEIDE=200.128;	STANDWEIDE=200.128;	SET_ASIDE=397.669;	IDLE_ARABLE=397.669;	IDLE_GRASS=200.128;																																							
+	price_change:	DAIRY_COW=0.976038492733291;	LEASE_QUOTA=0.83;	LET_QUOTA=0.83;																																																							
+	tranch:		tranch_2_deg=0.08;	tranch_3_deg=0.08;	tranch_4_deg=0.08;	tranch_5_deg=0.12;																																																					
+iteration 5																																																											
+	premium:	BARLEY=388.187;	WINTER_WHEAT=388.187;	RAPE_SEED=388.187;	SUGAR_BEETS=388.187;	PROTEIN_PLANTS=388.187;	MAIZE_SILAGE=388.187;	LEY=388.187;	POTATOES=388.187;	RYE=388.187;	RYE_BIOGAS=388.187;	GPS=388.187;	GRASSILAGE_INT=234.544;	GRASSILAGE_EXT=234.544;	PORTIONSWEIDE=234.544;	UMTRIEBSWEIDE=234.544;	STANDWEIDE=234.544;	SET_ASIDE=388.187;	IDLE_ARABLE=388.187;	IDLE_GRASS=234.544;																																							
+	price_change:	DAIRY_COW=0.967527767745029;	LEASE_QUOTA=0.8;	LET_QUOTA=0.8;																																																							
+	tranch:		tranch_2_deg=0.09;	tranch_3_deg=0.09;	tranch_4_deg=0.09;	tranch_5_deg=0.13;																																																					
+iteration 6																																																											
+	premium:	BARLEY=373.964;	WINTER_WHEAT=373.964;	RAPE_SEED=373.964;	SUGAR_BEETS=373.964;	PROTEIN_PLANTS=373.964;	MAIZE_SILAGE=373.964;	LEY=373.964;	POTATOES=373.964;	RYE=373.964;	RYE_BIOGAS=373.964;	GPS=373.964;	GRASSILAGE_INT=286.168;	GRASSILAGE_EXT=286.168;	PORTIONSWEIDE=286.168;	UMTRIEBSWEIDE=286.168;	STANDWEIDE=286.168;	SET_ASIDE=373.964;	IDLE_ARABLE=373.964;	IDLE_GRASS=286.168;																																							
+	price_change:	DAIRY_COW=0.949349074763987;	LEASE_QUOTA=0.75;	LET_QUOTA=0.75;																																																							
+	tranch:		tranch_2_deg=0.10;	tranch_3_deg=0.10;	tranch_4_deg=0.10;	tranch_5_deg=0.14;																																																					
+	others:	"mat_cell:BIOGAS150, biogas_150kW=0;"	"mat_cell:BIOGAS450, biogas_450kW=0;"	"mat_cell:BIOGAS800, biogas_800kW=0;"	"mat_cell:BIOGAS150, biogas_150kW_n=-1;"	"mat_cell:BIOGAS450, biogas_450kW_n=-1;"	"mat_cell:BIOGAS800, biogas_800kW_n=-1;"	"mat_cell:BIOGAS150KW, biogas150_prod=1000;"	"mat_cell:BIOGAS450KW, biogas450_prod=1000;"	"mat_cell:BIOGAS800KW, biogas800_prod=1000;"	"mat_cell:BIOGAS150KW_N, biogas150_prod_n=1;"	"mat_cell:BIOGAS450KW_N, biogas450_prod_n=1;"	"mat_cell:BIOGAS800KW_N, biogas800_prod_n=1;"																																														
+iteration 7																																																											
+	premium:	BARLEY=355;	WINTER_WHEAT=355;	RAPE_SEED=355;	SUGAR_BEETS=355;	PROTEIN_PLANTS=355;	MAIZE_SILAGE=355;	LEY=355;	POTATOES=355;	RYE=355;	RYE_BIOGAS=355;	GPS=355;	GRASSILAGE_INT=355;	GRASSILAGE_EXT=355;	PORTIONSWEIDE=355;	UMTRIEBSWEIDE=355;	STANDWEIDE=355;	SET_ASIDE=355;	IDLE_ARABLE=355;	IDLE_GRASS=355;																																							
+	price_change:	DAIRY_COW=0.982137885611479;	LEASE_QUOTA=0.67;	LET_QUOTA=0.67;																																																							
+	others:	"mat_cell:BIOGAS150, biogas_150kW=0;"	"mat_cell:BIOGAS450, biogas_450kW=0;"	"mat_cell:BIOGAS800, biogas_800kW=0;"	"mat_cell:BIOGAS150, biogas_150kW_n=-1;"	"mat_cell:BIOGAS450, biogas_450kW_n=-1;"	"mat_cell:BIOGAS800, biogas_800kW_n=-1;"	"mat_cell:BIOGAS150KW, biogas150_prod=1000;"	"mat_cell:BIOGAS450KW, biogas450_prod=1000;"	"mat_cell:BIOGAS800KW, biogas800_prod=1000;"	"mat_cell:BIOGAS150KW_N, biogas150_prod_n=1;"	"mat_cell:BIOGAS450KW_N, biogas450_prod_n=1;"	"mat_cell:BIOGAS800KW_N, biogas800_prod_n=1;"																																														
+iteration 8																																																											
+	price_change:	DAIRY_COW=0.988780089723958;	LEASE_QUOTA=0.5;	LET_QUOTA=0.5;																																																							
+	others:	"mat_cell:BIOGAS150, biogas_150kW_n=0;"	"mat_cell:BIOGAS450, biogas_450kW_n=0;"	"mat_cell:BIOGAS800, biogas_800kW_n=0;"	"mat_cell:BIOGAS150_14, biogas_150kW_n14=-1;"	"mat_cell:BIOGAS450_14, biogas_450kW_n14=-1;"	"mat_cell:BIOGAS800_14, biogas_800kW_n14=-1;"																																																				
+iteration 9																																																											
+	price_change:	DAIRY_COW=1.00244931583145;	LEASE_QUOTA=0;	LET_QUOTA=0;																																																							
+	others:	"mat_cell:BIOGAS150, biogas_150kW_n=0;"	"mat_cell:BIOGAS450, biogas_450kW_n=0;"	"mat_cell:BIOGAS800, biogas_800kW_n=0;"	"mat_cell:BIOGAS150_14, biogas_150kW_n14=-1;"	"mat_cell:BIOGAS450_14, biogas_450kW_n14=-1;"	"mat_cell:BIOGAS800_14, biogas_800kW_n14=-1;"																																																				
+iteration 10																																																											
+	price_change:	DAIRY_COW=1.01014404269165;																																																									
+iteration 11																																																											
+	price_change:	DAIRY_COW=1.0099014939649;																																																									
+iteration 12																																																											
+	price_change:	DAIRY_COW=1.0083210219367;																																																									
+iteration 13																																																											
+	price_change:	DAIRY_COW=1.0014148218145;																																																									
+iteration 14																																																											
+	price_change:	DAIRY_COW=1;																																																									

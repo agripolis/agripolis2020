@@ -3,7 +3,7 @@
 *
 * AgriPoliS: An Agricultural Policy Simulator
 *
-* Copyright (c) 2021, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
+* Copyright (c) 2023, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
 * (cf. AUTHORS.md) at Leibniz Institute of Agricultural Development in 
 * Transition Economies
 *
@@ -896,7 +896,7 @@ RegFarmInfo::demandForLand(RegPlotInfo* p) {
 
     }
 	
-    // If in the l  ast period there was a land allocation then the
+    // If in the last period there was a land allocation then the
     // computed value of lp_result for the
     // respective type is kept in this period
     double one=cache_sp_of_type[p->getSoilType()];
@@ -906,6 +906,13 @@ RegFarmInfo::demandForLand(RegPlotInfo* p) {
     double factor = g->RENT_ADJUST_COEFFICIENT;
     p->identifyPlotsSameStateAndFarm(farm_id);
     rent_offer = max_offer*factor;
+
+    //LandMarket_BB23
+    if (g->LandMarket_BB23 && !g->Only_Calculate_Grundrente) {
+        rent_offer = min<double>(rent_offer, 
+                max<double>(g->Econ_Land_Rents[p->getSoilType()]*g->Percent_EconLandRent_BB23, g->MinRent_BB23) * g->PLOT_SIZE);
+    }
+
     if (rent_offer < 0)
         rent_offer = 0;
 }
@@ -980,7 +987,16 @@ RegFarmInfo::demandForLandOfType(int type,int count) {
         }
     }
     double factor = g->RENT_ADJUST_COEFFICIENT;
-    unadjusted_rent_offer=adjusted_rent_offer=rent_offer = factor* (delta_profit_of_type[type] - wanted_plot_of_type[type].costs());
+    
+    //LandMarket_BB23
+    double offer= factor * (delta_profit_of_type[type] - wanted_plot_of_type[type].costs());
+    if (g->LandMarket_BB23 && !g->Only_Calculate_Grundrente) {
+        offer = min<double>(offer, 
+            max<double>(g->Econ_Land_Rents[type] * g->Percent_EconLandRent_BB23, g->MinRent_BB23)*g->PLOT_SIZE);
+    }
+    
+    unadjusted_rent_offer = adjusted_rent_offer = rent_offer = offer;
+    //factor* (delta_profit_of_type[type] - wanted_plot_of_type[type].costs());
     if (rent_offer < 0)
         rent_offer = 0;
     if (unadjusted_rent_offer < 0)

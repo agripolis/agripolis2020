@@ -1,0 +1,10 @@
+FarmName  GRAN-FIF11		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+
+SOWS9	1	50
+
+PIGS8	1	115
+
+MACHINERY6 	1	30

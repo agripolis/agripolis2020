@@ -1,0 +1,8 @@
+FarmName  MIXED-PIF19		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+
+EXTCATTLE3	2	10
+
+MACHINERY5	1	50

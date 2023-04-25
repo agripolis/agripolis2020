@@ -1,0 +1,37 @@
+#	generated from ===> Altmark_input.xlsm <===																			
+																				
+#	Farm Data Collections																			
+																				
+	NumOfFarms	19																		
+	Name	CROP-FIF1	CROP-FIF2	CROP-FIF3	CROP-PIF4	CROP-PIF5	DAIRY-COR6	DAIRY-FIF7	DAIRY-COR8	FODDER-PIF9	GRAN-COR10	GRAN-FIF11	MIXED-COR12	MIXED-COR13	MIXED-COR14	MIXED-COR15	MIXED-FIF16	MIXED-PIF17	MIXED-FIF18	MIXED-PIF19
+	Farm_Type	3	3	3	3	3	5	5	5	4	1	1	4	4	4	4	4	4	4	4
+	Form_of_Organisation	1	1	1	0	0	2	1	2	0	2	1	2	2	2	2	1	0	1	0
+	Weighting_Factor	32	82	139	49	82	49	30	27	162	4	14	21	13	16	20	18	62	98	10
+																				
+#	Number_of_farms																			
+																				
+																				
+	land_input	105	495	325	45	50	635	90	1085	40	925	30	745	1200	2050	780	100	40	190	45
+																				
+	Arable_Land																			
+	owned_land	29	147	113	15	15	87	7	161	4	147	1	111	199	370	117	34	5	41	5
+	rented_land	66	328	202	30	30	263	13	484	6	443	2	334	596	1110	353	61	10	74	10
+	initial_rental_price	274	274	274	274	274	274	274	274	274	274	274	274	274	274	274	274	274	274	274
+																				
+	Grazing_Land																			
+	owned_land	3	6	4	0	2	71	25	110	11	84	10	75	101	142	77	2	8	27	10
+	rented_land	7	14	6	0	3	214	45	330	19	251	17	225	304	428	233	3	17	48	20
+	initial_rental_price	146	146	146	146	146	146	146	146	146	146	146	146	146	146	146	146	146	146	146
+																				
+																				
+	milk_quota	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+	fam_labour_units	1.93	2.3	1	0.6	0.95	0	1	0	1	0	2	0	0	0	0	1.95	1.2	1.1	1
+	off_fam_labour	0	0	0	0.4	0.05	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+	equity_capital	257775	1215225	797875	140265	155850	1764030	428420	3014130	68920	2569650	121589	2069610	3333600	5694900	2166840	253800	159120	482220	179010
+	land_assets	51328	245412	187668	24060	27268	218830	47872	375335	20250	319935	15235	257610	415500	709120	268690	53856	19448	101728	22440
+	rel_invest_age	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+																				
+#	Milchkuehe	0	0	190	0	0	60	0	0	70	0	0	160	0	0	0	60	0	0	120
+#	Bodenvermögen in Euro pro Hektar	1604	1604	1604	1604	1604	1385	1496	1385	1025	1385	1385	1385	1385	1385	1385	1496	1496	1496	1496
+#	Eigenland gesamt	32	153	117	15	17	158	32	271	15	231	11	186	300	512	194	36	13	68	15
+#	land_assets	51328	245412	187668	24060	27268	218830	47872	375335	15375	319935	15235	257610	415500	709120	268690	53856	19448	101728	22440

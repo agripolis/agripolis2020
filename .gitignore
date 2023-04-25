@@ -1,0 +1,6 @@
+src/agpCC/.vs/
+src/agpCC/Release/
+src/agpCC/Debug/
+outputfiles_*/
+src/agpCC/gdebug*.txt
+gdebug*.txt

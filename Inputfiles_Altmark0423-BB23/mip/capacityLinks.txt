@@ -1,0 +1,92 @@
+#	generated from ===> Altmark_input.xlsm <===				
+					
+					
+#	Capacitylinks  ------------				
+					
+#		linkType	number	valueType	factor
+					
+	liquidity	reference		liquidity	1
+	financing_rule	reference		financialrule	1
+	labour	reference		labour	1
+	Arable_Land	land		Arable_Land	1
+	Grazing_Land	land		Grazing_Land	1
+	energy_requirements_livestock	number	0		
+	requirements_pasture_suckler_cow	number	0		
+	requirements_grass_silage	number	0		
+	requirements_maize_silage	number	0		
+	requirements_GPS	number	0		
+	requirements_rye	number	0		
+	sows	invest	2	CAP	1
+	disinvest_sows	number	0		
+	fattening_pigs	invest	3	CAP	1
+	disinvest_pigs	number	0		
+	bull_or_bullock	invest	4	CAP	1
+	disinvest_beef	number	0		
+	suckler_cows	invest	5	CAP	1
+	disinvest_suckler	number	0		
+	dairy_cows	invest	6	CAP	1
+	disinvest_dairy	number	0		
+	milking_capacities	invest	7	CAP	1
+	vealer	invest	8	CAP	1
+	disinvest_vealer	number	0		
+	recruitment_heifer_suckler	number	0		
+	recruitment_heifer_dairy	number	0		
+	male_dairy_calf_sell	number	0		
+	fem_dairy_calf_sell	number	0		
+	dairy_calf_buy	number	0		
+	fem_suckler_calf_sell	number	0		
+	male_suckler_calf_sell	number	0		
+	suckler_calf_buy	number	0		
+	biogas150_prod	number	0		
+	biogas450_prod	number	0		
+	biogas800_prod	number	0		
+	biogas150_prod_n	number	0		
+	biogas450_prod_n	number	0		
+	biogas800_prod_n	number	0		
+	biogas150_prod_n14	number	0		
+	biogas450_prod_n14	number	0		
+	biogas800_prod_n14	number	0		
+	biogas_150kW	invest	9	CAP	1
+	biogas_450kW	invest	10	CAP	1
+	biogas_800kW	invest	11	CAP	1
+	biogas_150kW_n	invest	9	CAP	1
+	biogas_450kW_n	invest	10	CAP	1
+	biogas_800kW_n	invest	11	CAP	1
+	biogas_150kW_n14	invest	13	CAP	1
+	biogas_450kW_n14	invest	14	CAP	1
+	biogas_800kW_n14	invest	15	CAP	1
+	machinery	invest	12	CAP	1
+	biogas_input_fertilizer	number	0		
+	set_aside_min	number	0		
+	set_aside_max	number	0		
+#	milk_quota	reference		milk	1
+	LU	number	0		
+	LU_upper_limit	number	1000		
+	crops	number	0		
+	rye_min_15%	number	0		
+	wheat	number	0		
+	protein_plants	number	0		
+	surgar_beets	number	0		
+	rape_seed	number	0		
+	potatoes_max_2%	number	0		
+	coupled_premium	number	0		
+	decoupled_premium	reference		unmodincomepay	
+	sum_prem	number	0		
+	dist_prem	number	0		
+	modulated_prem	number	0		
+	premium_AWU	number	0		
+	labour_for_premium	number	0		
+	max_tranch1	reference		tranch1width	1
+	max_tranch2	reference		tranch2width	1
+	max_tranch3	reference		tranch3width	1
+	max_tranch4	reference		tranch4width	1
+	max_tranch5	reference		tranch5width	1
+	count_first_30_ha	number	0		
+	first_30_ha	number	0		
+	count_next_16_ha	number	0		
+	next_16_ha	number	0		
+	tranch1	number	0		
+	tranch2	number	0		
+	tranch3	number	0		
+	tranch4	number	0		
+	tranch5	number	0		

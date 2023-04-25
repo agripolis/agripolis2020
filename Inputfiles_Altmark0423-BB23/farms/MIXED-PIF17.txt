@@ -1,0 +1,16 @@
+FarmName  MIXED-PIF17		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+
+SOWS9 1	10
+
+EXTCATTLE3	2 10
+
+DAIRY5	1 15
+
+PARLOUR_5	1	15
+
+MACHINERY5	1	50
+
+

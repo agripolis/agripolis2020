@@ -1,0 +1,37 @@
+Scenario:	  BB23-60
+Description:  REF_Altmark
+
+policy_file: policy_settings.txt
+
+[Options]
+NASG	false
+Teiler	1
+
+LandMarket_BB23	true
+MinRent_BB23	50
+Percent_econlandrent_BB23	0.60
+
+ManagerCoeffDistribution	Normal
+ManagerDemographics	false
+AGE_DEPENDENT	true
+
+[Globals]
+
+ManagerDev		0.1
+
+NASG_start_period	4
+NASG_maxRentAv		0.1
+#NASG_maxShareUAA	0.9
+NASG_maxSizeFactor 	5
+
+
+rent_adjust_factor	0.5	
+
+seed_mgmtCoeff		<SEED>
+seed_farmAge		<SEED>
+seed_closeFarm		<SEED>
+seed_investAge		<SEED>
+seed_contractLengthInit	<SEED>
+seed_contractLength	 	<SEED>
+seed_freePlot_initLand	<SEED>
+seed_freePlot_rentPlot	<SEED>

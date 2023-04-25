@@ -1,0 +1,7 @@
+FarmName  MIXED-FIF16		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+SOWS9 2 40
+
+MACHINERY4	1	100

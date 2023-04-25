@@ -1,0 +1,8 @@
+FarmName  CROP-FIF1		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+
+MACHINERY4 	1	100
+
+MACHINERY7	1	15 	

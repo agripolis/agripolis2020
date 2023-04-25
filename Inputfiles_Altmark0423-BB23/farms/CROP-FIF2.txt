@@ -1,0 +1,10 @@
+FarmName  CROP-FIF2		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+
+BIOGAS150	2	1
+
+MACHINERY3 	2	200
+
+MACHINERY4	1	100	

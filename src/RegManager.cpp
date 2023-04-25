@@ -3,7 +3,7 @@
 *
 * AgriPoliS: An Agricultural Policy Simulator
 *
-* Copyright (c) 2021, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
+* Copyright (c) 2023, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
 * (cf. AUTHORS.md) at Leibniz Institute of Agricultural Development in 
 * Transition Economies
 *
@@ -193,7 +193,7 @@ RegManagerInfo::~RegManagerInfo() {
 //---------------------------------------------------------------------------
 
 void RegManagerInfo::init() {
-	debug = false;
+    debug = false;
     f=t=n=0;
     Policyoutput = new OutputControl(g);
 
@@ -249,7 +249,7 @@ void RegManagerInfo::init() {
 	Region->calcMaxRents();
 
 	//testLivestockInvRand();
-
+    
     cout << "Initialized " << endl;
 }
 void RegManagerInfo::testLivestockInvRand() {
@@ -1030,6 +1030,41 @@ void RegManagerInfo::outputFarmAgeDists() {
 	}
 }
 
+void RegManagerInfo::updateEconLandRents() {
+   list<RegFarmInfo* >::iterator farms_iter;
+   vector<double> arable_lands;
+   vector<double> green_lands;
+   vector<double> econ_land_rents;
+   double land_ar = 0;
+   double land_gr = 0;
+   double tot_elr = 0;
+   double elr = 0;
+        for (farms_iter = FarmList.begin(); farms_iter != FarmList.end();
+                  farms_iter++) {
+            land_ar = (*farms_iter)->getLandInputOfType(0); //todo soil type
+            land_gr = (*farms_iter)->getLandInputOfType(1);
+            elr = (*farms_iter)->getEconomicLandRent();
+            econ_land_rents.push_back(elr);
+            arable_lands.push_back(land_ar);
+            green_lands.push_back(land_gr);
+            tot_elr += elr * (land_ar + land_gr);
+        }
+        
+   g->Total_Econ_Land_Rent = tot_elr;
+   g->Farm_Lands.resize(2);
+   g->Farm_Lands[0] = arable_lands;
+   g->Farm_Lands[1] = green_lands;
+   g->Farm_Econ_Land_Rents=econ_land_rents;
+   updateEconLandRentsPy(g);
+   
+   /*
+   cout << "EconLandRents\n";
+   for (int i = 0; i < g->NO_OF_SOIL_TYPES; i++) {
+       cout << g->NAMES_OF_SOIL_TYPES[i] << ": "<< g->Econ_Land_Rents[i] << "\n";
+   }
+   cout << endl;
+   //*/
+}
 //---------------------------------------------------------------------------
 //         SIMULATION
 //---------------------------------------------------------------------------
@@ -1047,6 +1082,7 @@ RegManagerInfo::simulate() {
         step();
     }
 	//outputFarmAgeDists();
+   
 }
 
 void
@@ -1082,7 +1118,7 @@ void RegManagerInfo::step() {
     g->WERTS1=RentStatistics();
     g->WERTS=-g->WERTS1;
     LandAllocation();
-	if (g->YoungFarmer)
+    if (g->YoungFarmer)
 		updateYoungFarmerLand();
 	if (g->NASG && iteration >= g->NASG_startPeriod - 1) 
 		updateNASG();
@@ -1097,7 +1133,7 @@ void RegManagerInfo::step() {
     g->WERTS+=g->WERTS2;
     InvestmentDecision();
     Production();
-	UpdateSoilserviceP();  
+ 	UpdateSoilserviceP();  
     UpdateMarket();
     FarmPeriodResults();
     RemovedFarmPeriodResults();
@@ -1287,7 +1323,11 @@ void RegManagerInfo::calcMaxRents() {
 
 void
 RegManagerInfo::LandAllocation() {
-	g->tPhase = SimPhase::LAND;
+    if (g->LandMarket_BB23) {
+        updateEconLandRents();
+    }
+
+    g->tPhase = SimPhase::LAND;
 	//cout << "vor landallocation: " << Region->free_plots.size() << endl;
 //        if (iteration==0) {
 //          printShadowPrices(100);   }

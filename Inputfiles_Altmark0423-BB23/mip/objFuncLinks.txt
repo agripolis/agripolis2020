@@ -1,0 +1,14 @@
+#	generated from ===> REFV?sterbotten2009_03_03.xls <===				
+					
+					
+#	Objective function links  ------------				
+					
+#	position	linktype	number	valuetype	factor
+					
+	LU_UPPER_LIMIT	number	0		
+	DISINV_SOWS	number	0		
+	DISINV_PIGS	number	0		
+	DISINV_BEEF	number	0		
+	DISINV_SUCKLER	number	0		
+	DISINV_DAIRY	number	0		
+	DISINV_VEALER	number	0		

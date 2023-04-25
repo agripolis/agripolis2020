@@ -3,7 +3,7 @@
 *
 * AgriPoliS: An Agricultural Policy Simulator
 *
-* Copyright (c) 2021, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
+* Copyright (c) 2023, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
 * (cf. AUTHORS.md) at Leibniz Institute of Agricultural Development in 
 * Transition Economies
 *
@@ -31,6 +31,7 @@ static void tokenize(const string& str,
                       vector<string>& tokens,
                       const string& delimiters = " \t=;")
 {
+	tokens.clear();
     // Skip delimiters at beginning.
     string::size_type lastPos = str.find_first_not_of(delimiters, 0);
     // Find next "delimiter".
@@ -252,6 +253,15 @@ DISTRIB_TYPE make_distribType(string str) {
 void setoptions(){
 gg->RUNS=atoi(optionsdata["RUNS"].c_str());
 gg->TEILER = atoi(optionsdata["TEILER"].c_str());
+
+gg->LandMarket_BB23 = optionsdata["LANDMARKET_BB23"].compare("true") == 0 ? true : false;
+if (optionsdata.find("MINRENT_BB23")!=optionsdata.end())
+    gg->MinRent_BB23 = atof(optionsdata["MINRENT_BB23"].c_str());
+if (optionsdata.find("PERCENT_ECONLANDRENT_BB23")!=optionsdata.end())
+    gg->Percent_EconLandRent_BB23 = max<double>(atof(optionsdata["PERCENT_ECONLANDRENT_BB23"].c_str()), 0);
+if (optionsdata.find("ONLY_CALCULATE_GRUNDRENTE") != optionsdata.end())
+	gg->Only_Calculate_Grundrente = optionsdata["ONLY_CALCULATE_GRUNDRENTE"].compare("true")==0? true: false;
+
 
 gg->RestrictInvestments=optionsdata["RESTRICTINVESTMENTS"].compare("true") == 0 ? true : false;
 

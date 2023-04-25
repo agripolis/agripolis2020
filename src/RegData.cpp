@@ -3,7 +3,7 @@
 *
 * AgriPoliS: An Agricultural Policy Simulator
 *
-* Copyright (c) 2021, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
+* Copyright (c) 2023, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
 * (cf. AUTHORS.md) at Leibniz Institute of Agricultural Development in 
 * Transition Economies
 *
@@ -584,6 +584,13 @@ RegDataInfo::initSectorResults(vector<RegInvestObjectInfo>& invest_cat,vector<Re
     sector_names.push_back( "real_sc_labour");
     sector_names.push_back( "sell_guelle_p");
     sector_names.push_back( "buy_guelle_p");
+    if (g->LandMarket_BB23) {
+        sector_names.push_back(string("Total_Econ_Land_Rent"));
+        for (int i = 0; i < g->NO_OF_SOIL_TYPES; i++) {
+            sector_names.push_back(string("Econ_Land_Rent_")+ g->NAMES_OF_SOIL_TYPES[i]);
+        }
+    }
+
     for (int i=0;i<g->NO_OF_SOIL_TYPES;i++) {
         sector_names.push_back(g->NAMES_OF_SOIL_TYPES[i]+string("_rent"));
     }
@@ -690,6 +697,13 @@ RegDataInfo::printSectorResults(const RegSectorResultsInfo& sector,
 	sector_values.push_back(ok?product_cat[g->stdNameIndexs["MANSELL_EMS"]].getPriceExpectation():0);
     sector_values.push_back(ok?product_cat[g->stdNameIndexs["MANBUY_EMS"]].getPriceExpectation():0);
 	
+    if (g->LandMarket_BB23) {
+        sector_values.push_back(g->Total_Econ_Land_Rent); 
+        for (int i = 0; i < g->NO_OF_SOIL_TYPES; i++) {
+            sector_values.push_back(g->Econ_Land_Rents[i]);
+        }
+    }
+
     for (int i=0;i<g->NO_OF_SOIL_TYPES;i++) {
         sector_values.push_back( sector.total_rent_of_type[i]         );
     }

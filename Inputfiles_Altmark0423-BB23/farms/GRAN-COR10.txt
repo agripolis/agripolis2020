@@ -1,0 +1,18 @@
+FarmName  GRAN-COR10		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+
+SOWS3	1	710
+
+PIGS5	1	600
+
+PIGS7	1	200
+
+MACHINERY2	1	500
+
+MACHINERY3	2	200
+
+MACHINERY6	1	30	
+
+

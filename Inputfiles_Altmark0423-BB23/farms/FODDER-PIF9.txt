@@ -1,0 +1,12 @@
+FarmName  FODDER-PIF9		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+
+EXTCATTLE2	1	30
+
+MACHINERY5 	1	50
+
+
+
+

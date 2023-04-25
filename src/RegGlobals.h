@@ -3,7 +3,7 @@
 *
 * AgriPoliS: An Agricultural Policy Simulator
 *
-* Copyright (c) 2021, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
+* Copyright (c) 2023, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
 * (cf. AUTHORS.md) at Leibniz Institute of Agricultural Development in 
 * Transition Economies
 *
@@ -31,6 +31,17 @@ enum class DISTRIB_TYPE {UNIFORM, NORMAL};
 using namespace std;
 class RegGlobalsInfo {
 public:
+    //BB23
+    bool LandMarket_BB23 = false;
+    double MinRent_BB23 = 50; //Euro
+    double Percent_EconLandRent_BB23 = 0.75;
+    bool Only_Calculate_Grundrente = false;
+
+    vector<double> Econ_Land_Rents;
+    vector<vector<double>> Farm_Lands;
+    vector<double> Farm_Econ_Land_Rents;
+    double Total_Econ_Land_Rent = 0;
+            
 	//emsland
     double Manure_Price_X;
     double Manure_Price_D;
@@ -226,7 +237,7 @@ public:
     bool DEFAULT;
     int SEED;
     int SCENARIO;
-    double QUOTA_PRICE;
+    double QUOTA_PRICE=0;
     int GLOBAL_STRATEGY;
     bool GLOBAL_OPTIMUM_EVERY_PERIOD;
     bool FIRSTPRICE;

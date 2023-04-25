@@ -1,0 +1,8 @@
+FarmName  CROP-PIF5		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+
+EXTCATTLE3	2	20
+
+MACHINERY5 	1	50

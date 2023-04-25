@@ -1,0 +1,26 @@
+FarmName  MIXED-COR13		
+		
+!              Investition	Anzahl	Kapazitaet
+		
+
+INTCATTLE3	1	100
+
+EXTCATTLE1	1	80
+
+DAIRY2	1	240
+
+DAIRY3	1	140
+
+PARLOUR_2	1	240
+
+PARLOUR_3	1	140
+
+BIOGAS450	2	1
+
+BIOGAS800	3	1
+
+MACHINERY2	2	500
+
+MACHINERY3	1	200
+
+

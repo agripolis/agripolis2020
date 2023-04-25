@@ -1,0 +1,70 @@
+#	-----------  GLOBALS -----		
+#	Name	Value	
+
+
+#[NASG]
+	NASG_maxRentAv	100
+	NASG_maxShareUAA	0.9
+	NASG_maxSizeFactor 	100
+			
+#[Management]
+	overheads	0.01
+	lower_border	0.8	
+	upper_border	1.2
+	ManagerMean  	1
+	ManagerDev	0.1		
+	generation_change	25	
+			
+#[Production]
+	PIGLETS_PER_SOW	24	
+	PIGS_PER_PLACE	2.75	
+	MILKPROD	8500	
+			
+#[Finance]
+	ST_BORROW_CAP	-0.06
+	EC_INTEREST	0.02
+	interest	0.06	
+
+	self_finance_share	0.3	
+	capital_withdraw_factor	16000	
+	WITHDRAWFACTOR 	 0.7	
+
+#[Land]
+	Plotsize	5	
+	transport_costs	50
+	rent_adjust_neighbours	10	
+	rent_adjust_factor	0.5	
+	Number_of_soil_types	2	
+	Names_of_soil_types	Arable_Land	Grazing_Land
+	MIN_CONTRACT_LENGTH   	5	
+	MAX_CONTRACT_LENGTH   	18	
+
+#[Labour]
+	Labour_hours_per_unit	1920	
+	V_HIRED_LABOUR	-11		
+	V_OFF_FARM_LAB	7
+	HIREDLAB	10560		
+	OFFFARMLAB	-6720
+	Labour_sub  960	
+
+#[Policy]
+	tranch_1_width	5000	
+	tranch_2_width	95000	
+	tranch_3_width	100000	
+	tranch_4_width	100000	
+	tranch_5_width	100000000	
+	Fix_reference_period	3	
+			
+
+###  NORMALLY YOU DON'T NEED TO EDIT THE FOLLOWING LINES ####
+	OVERSIZE	1.1	
+	Non_Ag_Land	0.1	
+	PLOTSN	8	
+	tc_machinery	1
+	simversion	1	
+	ESU	1200	
+	
+	CHANGEUP	1	
+	CHANGEDOWN	1	
+	MILKUPPERLIMIT	1	
+	MILKLOWERLIMIT	1	
