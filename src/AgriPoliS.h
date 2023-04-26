@@ -255,6 +255,7 @@ gg->RUNS=atoi(optionsdata["RUNS"].c_str());
 gg->TEILER = atoi(optionsdata["TEILER"].c_str());
 
 gg->LandMarket_BB23 = optionsdata["LANDMARKET_BB23"].compare("true") == 0 ? true : false;
+gg->BB23_start_period = atoi(optionsdata["BB23_START_PERIOD"].c_str());
 if (optionsdata.find("MINRENT_BB23")!=optionsdata.end())
     gg->MinRent_BB23 = atof(optionsdata["MINRENT_BB23"].c_str());
 if (optionsdata.find("PERCENT_ECONLANDRENT_BB23")!=optionsdata.end())

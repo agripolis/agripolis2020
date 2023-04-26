@@ -33,6 +33,7 @@ class RegGlobalsInfo {
 public:
     //BB23
     bool LandMarket_BB23 = false;
+    int BB23_start_period = 0;
     double MinRent_BB23 = 50; //Euro
     double Percent_EconLandRent_BB23 = 0.75;
     bool Only_Calculate_Grundrente = false;

@@ -1,4 +1,4 @@
-Scenario:	  BB23-60
+Scenario:	   BB23-3-60
 Description:  REF_Altmark
 
 policy_file: policy_settings.txt
@@ -8,6 +8,7 @@ NASG	false
 Teiler	1
 
 LandMarket_BB23	true
+BB23_start_period	3
 MinRent_BB23	50
 Percent_econlandrent_BB23	0.60
 

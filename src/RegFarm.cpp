@@ -908,7 +908,7 @@ RegFarmInfo::demandForLand(RegPlotInfo* p) {
     rent_offer = max_offer*factor;
 
     //LandMarket_BB23
-    if (g->LandMarket_BB23 && !g->Only_Calculate_Grundrente) {
+    if (g->LandMarket_BB23 && !g->Only_Calculate_Grundrente && g->tIter>=g->BB23_start_period) {
         rent_offer = min<double>(rent_offer, 
                 max<double>(g->Econ_Land_Rents[p->getSoilType()]*g->Percent_EconLandRent_BB23, g->MinRent_BB23) * g->PLOT_SIZE);
     }
@@ -990,7 +990,7 @@ RegFarmInfo::demandForLandOfType(int type,int count) {
     
     //LandMarket_BB23
     double offer= factor * (delta_profit_of_type[type] - wanted_plot_of_type[type].costs());
-    if (g->LandMarket_BB23 && !g->Only_Calculate_Grundrente) {
+    if (g->LandMarket_BB23 && !g->Only_Calculate_Grundrente && g->tIter>=g->BB23_start_period) {
         offer = min<double>(offer, 
             max<double>(g->Econ_Land_Rents[type] * g->Percent_EconLandRent_BB23, g->MinRent_BB23)*g->PLOT_SIZE);
     }
