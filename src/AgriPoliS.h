@@ -254,6 +254,9 @@ void setoptions(){
 gg->RUNS=atoi(optionsdata["RUNS"].c_str());
 gg->TEILER = atoi(optionsdata["TEILER"].c_str());
 
+gg->Farm_Size_Limit = atof(optionsdata["FARM_SIZE_LIMIT"].c_str());
+gg->Farm_Size_start_period = atoi(optionsdata["FARM_SIZE_START_PERIOD"].c_str());
+
 gg->LandMarket_BB23 = optionsdata["LANDMARKET_BB23"].compare("true") == 0 ? true : false;
 gg->BB23_start_period = atoi(optionsdata["BB23_START_PERIOD"].c_str());
 if (optionsdata.find("MINRENT_BB23")!=optionsdata.end())
@@ -262,7 +265,6 @@ if (optionsdata.find("PERCENT_ECONLANDRENT_BB23")!=optionsdata.end())
     gg->Percent_EconLandRent_BB23 = max<double>(atof(optionsdata["PERCENT_ECONLANDRENT_BB23"].c_str()), 0);
 if (optionsdata.find("ONLY_CALCULATE_GRUNDRENTE") != optionsdata.end())
 	gg->Only_Calculate_Grundrente = optionsdata["ONLY_CALCULATE_GRUNDRENTE"].compare("true")==0? true: false;
-
 
 gg->RestrictInvestments=optionsdata["RESTRICTINVESTMENTS"].compare("true") == 0 ? true : false;
 

@@ -4,3 +4,4 @@ src/agpCC/Debug/
 outputfiles_*/
 src/agpCC/gdebug*.txt
 gdebug*.txt
+inputfiles_*/test-*.txt

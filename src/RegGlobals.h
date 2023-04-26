@@ -32,6 +32,10 @@ using namespace std;
 class RegGlobalsInfo {
 public:
     //BB23
+    
+    double Farm_Size_Limit = 0; //ha, 0 means no limit
+    int Farm_Size_start_period = 0;
+
     bool LandMarket_BB23 = false;
     int BB23_start_period = 0;
     double MinRent_BB23 = 50; //Euro

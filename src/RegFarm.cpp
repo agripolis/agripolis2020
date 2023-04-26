@@ -913,6 +913,11 @@ RegFarmInfo::demandForLand(RegPlotInfo* p) {
                 max<double>(g->Econ_Land_Rents[p->getSoilType()]*g->Percent_EconLandRent_BB23, g->MinRent_BB23) * g->PLOT_SIZE);
     }
 
+    if (g->Farm_Size_Limit > 0) {
+        if (land_input >= g->Farm_Size_Limit && g->tIter >= g->Farm_Size_start_period)
+            rent_offer = 0;
+    }
+
     if (rent_offer < 0)
         rent_offer = 0;
 }
@@ -993,6 +998,11 @@ RegFarmInfo::demandForLandOfType(int type,int count) {
     if (g->LandMarket_BB23 && !g->Only_Calculate_Grundrente && g->tIter>=g->BB23_start_period) {
         offer = min<double>(offer, 
             max<double>(g->Econ_Land_Rents[type] * g->Percent_EconLandRent_BB23, g->MinRent_BB23)*g->PLOT_SIZE);
+    }
+
+    if (g->Farm_Size_Limit > 0) {
+        if (land_input >= g->Farm_Size_Limit && g->tIter >= g->Farm_Size_start_period)
+            rent_offer = 0;
     }
     
     unadjusted_rent_offer = adjusted_rent_offer = rent_offer = offer;

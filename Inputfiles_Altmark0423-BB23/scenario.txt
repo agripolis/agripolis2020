@@ -1,4 +1,4 @@
-Scenario:	   BB23-3-60
+Scenario:	   REF-BB23
 Description:  REF_Altmark
 
 policy_file: policy_settings.txt
@@ -7,8 +7,13 @@ policy_file: policy_settings.txt
 NASG	false
 Teiler	1
 
+### Absolute farm size in ha, comment out   
+### the following line for no limit
+#Farm_size_limit	2600
+#Farm_size_start_period	4
+
 LandMarket_BB23	true
-BB23_start_period	3
+BB23_start_period	-1
 MinRent_BB23	50
 Percent_econlandrent_BB23	0.60
 
