@@ -1,4 +1,4 @@
-Scenario:	   REF-BB23
+Scenario:	   BB23-4
 Description:  REF_Altmark
 
 policy_file: policy_settings.txt
@@ -13,7 +13,7 @@ Teiler	1
 #Farm_size_start_period	4
 
 LandMarket_BB23	true
-BB23_start_period	-1
+BB23_start_period	4
 MinRent_BB23	50
 Percent_econlandrent_BB23	0.60
 

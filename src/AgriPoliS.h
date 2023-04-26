@@ -265,6 +265,8 @@ if (optionsdata.find("PERCENT_ECONLANDRENT_BB23")!=optionsdata.end())
     gg->Percent_EconLandRent_BB23 = max<double>(atof(optionsdata["PERCENT_ECONLANDRENT_BB23"].c_str()), 0);
 if (optionsdata.find("ONLY_CALCULATE_GRUNDRENTE") != optionsdata.end())
 	gg->Only_Calculate_Grundrente = optionsdata["ONLY_CALCULATE_GRUNDRENTE"].compare("true")==0? true: false;
+if (gg->BB23_start_period == -1)
+	gg->Only_Calculate_Grundrente = true;
 
 gg->RestrictInvestments=optionsdata["RESTRICTINVESTMENTS"].compare("true") == 0 ? true : false;
 
