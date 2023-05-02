@@ -66,7 +66,7 @@
         sender_socket.connect("tcp://localhost:5557");
         receiver_socket.bind("tcp://0.0.0.0:5555");
         zmqinited = true;
-        cout << "zmq inited\n";
+        //cout << "zmq inited\n";
     }
 
     static void send() {
@@ -161,8 +161,7 @@
             int id = t.getCatalogNumber();
             int age = t.getInvestAge();
             int life = t.getEconomicLife();
-            if (id <= 1)
-                continue;
+            
             if (res[id].first > 0) {
                 double r = res[id].second * res[id].first + life - age;
                 int c = res[id].first++;
