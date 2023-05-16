@@ -69,28 +69,35 @@
         //cout << "zmq inited\n";
     }
 
+    void send_val(double v) {
+        //cout << "send_val()" << endl;
+        string str = std::to_string(v);
+        zmq::message_t ec_message(str.size());
+        memcpy(ec_message.data(), str.data(), str.size());
+        sender_socket.send(ec_message);
+        //cout << "send!" << endl;
+     }
+
+    double recv_val() {
+        //cout << "recv_val()" << endl;
+        zmq::message_t rmessage;
+        receiver_socket.recv(&rmessage);
+
+        string str = std::string(static_cast<char*>(rmessage.data()), rmessage.size());
+        //cout << "recv!" << endl;
+        return atof(str.c_str());
+        
+    }
+
     static void send() {
         GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-        //zmq::context_t context(1);
-
-        // sender
-        //zmq::socket_t sender_socket(context, ZMQ_PUSH);
-        //sender_socket.connect("tcp://localhost:5557");
-
-        //zmq::socket_t receiver_socket(context, zmq::socket_type::pull);
-        //receiver_socket.bind("tcp://0.0.0.0:555");
-
-        //zmq::message_t context_msg(sizeof(context));
-        //std::memcpy(context_msg.data(), &context, sizeof(context));
-        //sender_socket.send(context_msg);
 
         std::chrono::seconds twosec(2);
         int max = 10;
 
         rl::RLData data;
-        
-        int i = cachedRLdata.iter;//zero is default for protobuf;
+        int i = 0;
+        //int i = cachedRLdata.iter;//zero is default for protobuf;
         if (i >= max)
             return;
         //while (true) {
@@ -106,34 +113,15 @@
             std::memcpy((void*)message.data(), msg_str.c_str(), msg_str.size());
             sender_socket.send(message);// , zmq::send_flags::dontwait);
 
-           //zmq::message_t context_msg;
-           //receiver_socket.recv(&context_msg);
-           //std::memcpy(&context, context_msg.data(), sizeof(context));
+           /*
+           //std::this_thread::sleep_for(twosec);
 
-            //std::this_thread::sleep_for(twosec);
+            std::cout << "beta: " << recv_val() <<std::endl;
+           
 
-            zmq::message_t received_message;
-            receiver_socket.recv(&received_message);
-
-            //std::vector<double> ds;
-            //std::vector<std::string> ss;
-
-            //mypackage::MyData rdata;
-            std::string rmsg_str(static_cast<char*>(received_message.data()), received_message.size());
-
-            data.ParseFromString(rmsg_str);
-            //ds = { rdata.data().begin(), rdata.data().end() };
-            //ss = { rdata.tags().begin(), rdata.tags().end() };
-            ++i;
-            if (data.age() != cachedRLdata.age) {
-                std::cout << "c: age not correct! " << data.age() << "\n";
-                exit(3);
-            }
-
-            //std::string text;
-            google::protobuf::TextFormat::PrintToString(data, &text);
-            std::cout << "C: " << text << std::endl;
-
+            double ec = 3002;
+            send_val(ec);
+           //*/
         //}
 
         google::protobuf::ShutdownProtobufLibrary();
@@ -276,7 +264,7 @@
 
         RLdata rlData;
 
-        rlData.iter = m->getIteration();
+        //rlData.iter = m->getIteration();
 
         list<RegPlotInfo*> plots = f->getPlotList();
         rlData.restPlotsOfType = calcRestPlots(plots);
@@ -345,7 +333,7 @@
 
     void output(RLdata rldata, RegManagerInfo* m, string fname="") {
         if (fname.size() == 0)
-            return;
+            return; 
 
         ofstream out;
         out.open(fname, ios::app);

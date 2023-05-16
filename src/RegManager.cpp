@@ -22,6 +22,7 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <cassert>
 
 #include "RegManager.h"
 #include "RegLpD.h"
@@ -993,6 +994,10 @@ RegManagerInfo::initPopulations() {
                 betaMap[int(r * 100 + 0.5)]++;
                 newFarm->set_beta(r);
             }
+
+            if (g->RL) {
+                newFarm->set_act_beta(g->RENT_ADJUST_COEFFICIENT);
+            }
         }
     }
 
@@ -1372,6 +1377,12 @@ RegManagerInfo::LandAllocation() {
         newIteration = true;
     }
 
+    if (g->RL && RLfarm->getClosed() > 0) {
+        RLdata rlData = getRLdata(RLfarm, this);
+        output(rlData, this, "RL.dat");
+        RLfarm->set_act_beta(recv_val());
+    }
+
 	g->tPhase = SimPhase::LAND;
 	//cout << "vor landallocation: " << Region->free_plots.size() << endl;
 //        if (iteration==0) {
@@ -1638,6 +1649,9 @@ RegManagerInfo::FarmPeriodResults() {
             farms_iter++) {
 
         (*farms_iter)->periodResults(iteration);
+        if (g->RL && (*farms_iter) == RLfarm && iteration>0) {
+            send_val((*farms_iter)->getEquityCapital());
+        }
     }
     if (g->ASSOCIATE_ACTIVITIES && g->ENV_MODELING)
         Env->associateActivities(FarmList);
@@ -1649,6 +1663,9 @@ RegManagerInfo::RemovedFarmPeriodResults() {
             farms_iter != RemovedFarmList.end();
             farms_iter++) {
         (*farms_iter)->periodResultsForRemovedFarms();
+        if (g->RL && (*farms_iter) == RLfarm && iteration>0) {
+            send_val((*farms_iter)->getEquityCapital());
+        }
     }
 }
     void
@@ -2012,6 +2029,7 @@ RegManagerInfo::rentOnePlot(vector<int>& count_rented_plots_of_type, int type) {
         list<RegFarmInfo* >::iterator  prev_owner;
 
         RegFarmInfo* maxbidder;
+
         // search for the highest offer
         for (farms_iter = FarmList.begin(), maxoffer = 0, maxbidder = NULL, equalbidder.clear();
                 farms_iter != FarmList.end();
@@ -2022,9 +2040,11 @@ RegManagerInfo::rentOnePlot(vector<int>& count_rented_plots_of_type, int type) {
         g->tFarmName=(*farms_iter)->getFarmName();
         g->tFarmId= (*farms_iter)->getFarmId();
 #endif
+        
         if (g->RL && (*farms_iter) == RLfarm && newIteration) {
             RLdata rlData = getRLdata((*farms_iter), this);
             output(rlData, this, "RL.dat");
+            (*farms_iter)->set_act_beta(recv_val());
         }
             (*farms_iter)->demandForLandOfType(type,bidcount);
             offer=(*farms_iter)-> getRentOffer();
@@ -2167,6 +2187,7 @@ RegManagerInfo::rentOnePlot(vector<int>& count_rented_plots_of_type, int type) {
                 if (g->RL && (*farms_iter)==RLfarm && newIteration) {
                     RLdata rlData = getRLdata((*farms_iter), this);
                     output(rlData, this, "RL.dat");
+                    (*farms_iter)->set_act_beta(recv_val());
                 }
 
                 (*farms_iter)->demandForLand(p);

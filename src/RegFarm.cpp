@@ -879,6 +879,10 @@ RegFarmInfo::calculateEstimationForBidding() {
     }
 }
 
+void RegFarmInfo::set_act_beta(double b) {
+    act_beta = b;
+}
+
 void RegFarmInfo::set_beta(double b) {
     rent_beta = b;
 }
@@ -915,9 +919,10 @@ RegFarmInfo::demandForLand(RegPlotInfo* p) {
     double max_offer=one;//max(one,est);
     max_offer-=p->calculateDistanceCosts(farm_plot);
 
-    double factor = 0;
+    double factor = g->RENT_ADJUST_COEFFICIENT;
     if (g->Rent_Variation) factor = rent_beta;
-    else factor = g->RENT_ADJUST_COEFFICIENT;
+    if (g->RL) factor = act_beta;
+
     p->identifyPlotsSameStateAndFarm(farm_id);
     rent_offer = max_offer*factor;
     if (rent_offer < 0)
@@ -994,9 +999,9 @@ RegFarmInfo::demandForLandOfType(int type,int count) {
         }
     }
    
-    double factor = 0;
+    double factor = g->RENT_ADJUST_COEFFICIENT;
     if (g->Rent_Variation) factor = rent_beta;
-    else factor = g->RENT_ADJUST_COEFFICIENT;
+    if (g->RL) factor = act_beta;
 
     unadjusted_rent_offer=adjusted_rent_offer=rent_offer = factor* (delta_profit_of_type[type] - wanted_plot_of_type[type].costs());
     if (rent_offer < 0)

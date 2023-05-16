@@ -40,6 +40,7 @@ class RegProductInfo;
 class RegFarmInfo {
 protected:
     double rent_beta;
+    double act_beta;
 
 	void changeGeneration();
 
@@ -305,6 +306,7 @@ public:
     RegInvestList* getFarmInvestList() const;
     list<RegPlotInfo*> getPlotList() const;
 
+    void set_act_beta(double);
     void set_beta(double );
     double get_beta() const;
 
@@ -416,7 +418,7 @@ public:
     */
     void     addInvestments(int cn, int q, int cap);
     /// resets labour in labour object
-    void    resetFarmVariables();
+    void resetFarmVariables();
     void increaseLandCapacityOfType(int type,int no_of_plots);
     void decreaseLandCapacityOfType(int type,int no_of_plots);
     void setNoOfPlotsOfType(int type,int no_of_plots);

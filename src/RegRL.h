@@ -23,7 +23,7 @@
 */
 
 struct RLdata {
-    int iter;
+    //int iter;
     //farm
     vector<vector<int>> restPlotsOfType; 
     int age;
@@ -40,7 +40,11 @@ struct RLdata {
     vector<double> avNewRents;
 };
 
+void send_val(double);
+double recv_val();
+
 RLdata getRLdata(RegFarmInfo*, RegManagerInfo*);
+
 void initzmq();
 void output(RLdata, RegManagerInfo*, string);
 #endif
