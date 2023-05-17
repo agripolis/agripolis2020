@@ -2,36 +2,36 @@
 																	
 #	Farm Data Collections																
 																	
-	NumOfFarms	5															
-	Name	CROP-PIF1	DAIRY-FIF7	FOD-PIF10	PIG-FIF13	MIXED-FIF17											
-	Farm_Type	3	5	4	1	4											
-	Form_of_Organisation	0	1	1	1	1											
-	Weighting_Factor	2	1	1	1	1											
+	NumOfFarms	6															
+	Name	CROP-PIF2	CROP-PIF3	CROP-FIF4	DAIRY-FIF8	MIXED-FIF16	MIXED-FIF19										
+	Farm_Type	3	3	3	5	4	4										
+	Form_of_Organisation	2	2	1	1	1	1										
+	Weighting_Factor	1	1	1	1	2	1										
 																	
 																	
-	land_input	7	53	17	34	32											
+	land_input	23	57	111	89	64	62										
 																	
 	Arable_Land																
-	owned_land	0	10	3	12	7											
-	rented_land	5	18	3	17	13											
-	initial_rental_price	382	382	310	382	382											
+	owned_land	8	19	10	18	14	24										
+	rented_land	10	31	90	32	25	24										
+	initial_rental_price	382	382	382	382	382	382										
 																	
 	Grazing_Land																
-	owned_land	1	8	5	3	3											
-	rented_land	1	17	6	2	9											
-	initial_rental_price	327	327	298	327	327											
+	owned_land	2	3	4	14	10	7										
+	rented_land	3	4	7	25	15	7										
+	initial_rental_price	327	327	327	327	327	327										
 																	
 																	
-	milk_quota	0	0	0	0	0											
-	fam_labour_units	1	2	1	1	1											
-	off_fam_labour	0	1	0	1	1											
-	equity_capital	106378	671193	127355	1034178	474196											
-	#arable assets	53235	177450	53235	212940	124215											
-	#grassland assets	12050	96400	60250	36150	36150											
-	land_assets	65285	273850	113485	249090	160365											
-	rel_invest_age	0	0	0	0	0											
+	milk_quota	0	0	0	0	0	0										
+	fam_labour_units	1	1	1	2	2	1										
+	off_fam_labour	0	0	1	1	0	1										
+	equity_capital	176705	328654	544130	1181446	782330	782332										
+	#arable assets	141960	337155	567840	319410	248430	425880										
+	#grassland assets	24100	36150	48200	168700	120500	84350										
+	land_assets	166060	373305	616040	488110	368930	510230										
+	rel_invest_age	0	0	0	0	0	0										
 																	
-#	Milchk?e	0	0	0	0	0											
+#	Milchk?e	0	0	190	60	0	0										
 																	
 	#fadnID	21 * halved															
 	"#land assets calculated by FADN farms without rented land, taking SE446/ha for arable and grassland"											arable		17745		grass	12050

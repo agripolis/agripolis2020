@@ -1,11 +1,14 @@
-Scenario:	RL	
+Scenario:	ref
+#RL	
 Description: baseline		
 		
 policy_file: policy_settings.txt		
 		
 [Options]		
 Teiler	1
-Runs	5
+Runs 	5	
+
+
 
 RL	true
 		
@@ -17,5 +20,5 @@ AGE_DEPENDENT true
 ManagerDev		0.1
 
 MIN_CONTRACT_LENGTH   	3	
-MAX_CONTRACT_LENGTH   	4
+MAX_CONTRACT_LENGTH   	8
 	

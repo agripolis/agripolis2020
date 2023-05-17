@@ -33,7 +33,7 @@ class RegGlobalsInfo {
 public:
     //RL
     bool RL = false;
-    int RLfarmID = 0;
+    int RLfarmID = 4;
 
     //rent-variation
     bool Rent_Variation = false;

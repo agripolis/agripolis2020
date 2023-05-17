@@ -1,7 +1,0 @@
-FarmName  PIG-FIF13		
-		
-!              Investition	Anzahl	Kapazitaet
-		
-PIGS1	1	4200
-		
-MACHINERY6	1	30
