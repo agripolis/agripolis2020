@@ -1377,12 +1377,6 @@ RegManagerInfo::LandAllocation() {
         newIteration = true;
     }
 
-    if (g->RL && RLfarm->getClosed() > 0) {
-        RLdata rlData = getRLdata(RLfarm, this);
-        output(rlData, this, "RL.dat");
-        RLfarm->set_act_beta(recv_val());
-    }
-
 	g->tPhase = SimPhase::LAND;
 	//cout << "vor landallocation: " << Region->free_plots.size() << endl;
 //        if (iteration==0) {
@@ -1827,6 +1821,10 @@ RegManagerInfo::FutureOfFarms() {
         g->tFarmId= (*farms_iter)->getFarmId();
 #endif 
         (*farms_iter)->futureOfFarm(iteration);
+
+        if (g->RL && (*farms_iter) == RLfarm && iteration>0) {
+            send_val((*farms_iter)->getClosed()+1);
+        }
     }
 	g->tPhase = SimPhase::BETWEEN;
 }

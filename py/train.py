@@ -19,6 +19,7 @@ initzmq()
 
 def get_ep():
     for s in range(simus):
+        closed=False
         #subprocess.run(agripolis, iniputfiles])
         #agp=subprocess.Popen([python, agpy,  str(s)], 
         agp=subprocess.Popen([agpy, inputfiles ], 
@@ -29,15 +30,26 @@ def get_ep():
         ep=[]
         eprew=0
         for r in range(runs):
-            data=recv_message()
-            st = get_state(data)
-            #print(st)
+            if not closed:
+                data=recv_message()
+                st = get_state(data)
+                #print(st)
 
-            beta = get_action()
-            send_beta(beta)
+                beta = get_action()
+                send_beta(beta)
 
-            rew = recv_ec()
-            #print("beta, rew: ", beta, rew)
+                rew = recv_ec()
+                #print("beta, rew: ", beta, rew)
+                
+                rc = recv_closed()
+                if rc>0:
+                    closed=True
+
+            else:
+                st=[-1]
+                beta=-1
+                rew= recv_ec()
+
 
             ep.append((st, beta,  rew))
             eprew += rew

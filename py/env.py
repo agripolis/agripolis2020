@@ -37,6 +37,11 @@ def recv_ec():
     #print(float(recv_ec))
     return float(recv_ec) 
 
+def recv_closed():
+    recv = recv_socket.recv_string()
+    #print(float(recv_ec))
+    return float(recv)-1 
+
 def send_beta(b):
     #print(b)
     msg=str(b)

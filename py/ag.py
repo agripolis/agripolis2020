@@ -12,7 +12,7 @@ def updateQ(ep):
     pass
 
 def get_action():
-    r = 0.5 #random.gauss(mu=0.62, sigma=0.2) 
+    r = 0.5 #random.gauss(mu=0.50, sigma=0.2) 
     #print("random: ", r)
     return r
 

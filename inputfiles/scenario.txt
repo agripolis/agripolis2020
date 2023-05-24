@@ -1,5 +1,4 @@
-Scenario:	ref
-#RL	
+Scenario:	RL	
 Description: baseline		
 		
 policy_file: policy_settings.txt		

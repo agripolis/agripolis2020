@@ -10,6 +10,6 @@ inputfiles="D:\\RL\\agripolis2020\\inputfiles\\"
 nInvs=47
 epochs=3
 simus=3
-topn=2
+topn=1
 QSIZE= simus
 
