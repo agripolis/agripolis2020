@@ -47,4 +47,5 @@ RLdata getRLdata(RegFarmInfo*, RegManagerInfo*);
 
 void initzmq();
 void output(RLdata, RegManagerInfo*, string);
+void sendRLdata(RLdata);
 #endif

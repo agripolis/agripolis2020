@@ -5,11 +5,10 @@ policy_file: policy_settings.txt
 		
 [Options]		
 Teiler	1
-Runs 	5	
-
-
+Runs 	10	
 
 RL	true
+RL_training	true
 		
 ManagerCoeffDistribution	Normal	
 ManagerDemographics	true

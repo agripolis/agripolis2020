@@ -34,6 +34,7 @@ public:
     //RL
     bool RL = false;
     int RLfarmID = 4;
+    bool RL_training = false;
 
     //rent-variation
     bool Rent_Variation = false;

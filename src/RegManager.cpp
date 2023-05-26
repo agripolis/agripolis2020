@@ -215,6 +215,11 @@ void RegManagerInfo::init() {
 	initGlobals(true);
 	initCommandlineOptions();
 	initGlobals(false);
+    if (g->RL_training) {
+        g->FARMOUTPUT = 0;
+        g->SECTOROUTPUT = 0;
+        g->INIT_OUTPUT = false;
+    }
 
 	Sector = new RegSectorResultsInfo(g,0);
     if (g->CALC_LEGAL_TYPES) {
@@ -2041,7 +2046,8 @@ RegManagerInfo::rentOnePlot(vector<int>& count_rented_plots_of_type, int type) {
         
         if (g->RL && (*farms_iter) == RLfarm && newIteration) {
             RLdata rlData = getRLdata((*farms_iter), this);
-            output(rlData, this, "RL.dat");
+            //output(rlData, this, "RL.dat");
+            sendRLdata(rlData);
             (*farms_iter)->set_act_beta(recv_val());
         }
             (*farms_iter)->demandForLandOfType(type,bidcount);
@@ -2184,7 +2190,8 @@ RegManagerInfo::rentOnePlot(vector<int>& count_rented_plots_of_type, int type) {
 #endif
                 if (g->RL && (*farms_iter)==RLfarm && newIteration) {
                     RLdata rlData = getRLdata((*farms_iter), this);
-                    output(rlData, this, "RL.dat");
+                    //output(rlData, this, "RL.dat");
+                    sendRLdata(rlData);
                     (*farms_iter)->set_act_beta(recv_val());
                 }
 

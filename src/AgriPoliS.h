@@ -254,6 +254,7 @@ gg->RUNS=atoi(optionsdata["RUNS"].c_str());
 gg->TEILER = atoi(optionsdata["TEILER"].c_str());
 
 gg->RL = optionsdata["RL"].compare("true") == 0 ? true : false;
+gg->RL_training = optionsdata["RL_TRAINING"].compare("true") == 0 ? true : false;
 
 gg->Rent_Variation = optionsdata["RENT_VARIATION"].compare("true") == 0 ? true : false;
 

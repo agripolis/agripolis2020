@@ -360,3 +360,9 @@
             initzmq();
         send();
     }
+
+    void sendRLdata(RLdata rldata) {
+        if (!zmqinited)
+            initzmq();
+        send();
+    }
