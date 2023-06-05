@@ -4,6 +4,18 @@
 import pydata_pb2 as md
 from config import nInvs
 import numpy as np
+import os
+
+def mkscenario(fn, ep, temp='<num>'):
+    with open(fn,"rt") as fin:
+        d=fin.read()
+        d=d.replace(temp, str(ep))
+
+    fn2=os.path.join(os.path.dirname(fn), "scenario-"+str(ep)+".txt")
+    with open(fn2,"wt") as fin:
+        fin.write(d)
+
+    return os.path.basename(fn2)
 
 def manage2int(m):
     if m<0.95:

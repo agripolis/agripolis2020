@@ -1,0 +1,22 @@
+Scenario:	RL-ep-<num>	
+Description:  Template for Reinforcement Learning 		
+		
+policy_file: policy_settings.txt		
+		
+[Options]		
+Teiler	1
+Runs 	10	
+
+RL	true
+RL_training	false
+		
+ManagerCoeffDistribution	Normal	
+ManagerDemographics	true
+AGE_DEPENDENT true
+		
+[Globals]		
+ManagerDev		0.1
+
+MIN_CONTRACT_LENGTH   	3	
+MAX_CONTRACT_LENGTH   	8
+	

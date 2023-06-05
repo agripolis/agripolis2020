@@ -20,9 +20,9 @@ def get_value():
     return 5000*random.random()
 
 def learning():
-    pass
+    print("learning ...")
 
-def testing():
+def testing(e):
     pass
 
 def outputModel():
