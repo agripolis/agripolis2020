@@ -7,11 +7,15 @@ from env import *
 import pydata_pb2 as md
 from ag import *
 from util import *
-
+from datetime import datetime
 
 import random
 import queue
 import os
+
+start_time=datetime.now()
+
+f= open("RLinput.dat", "at")
 
 res=queue.PriorityQueue(QSIZE)
 initzmq()
@@ -98,7 +102,8 @@ def get_ep(e):
     x=0
     while x < topn  and not res.empty():
        ep=res.get()[1]
-       print(ep)
+       #print(ep[0][0])
+       f.write(str(ep[0][0])+"\n") #print(ep)
        #yield ep
        x+=1 
 
@@ -114,4 +119,10 @@ for e in range(epochs):
     print(f"======= epoch {e} =========") 
     get_ep(e)
 
+f.close()
+
 closezmq()
+
+delt_time=datetime.now()-start_time
+print("total time in ms: ", delt_time.total_seconds()*10**3)
+
