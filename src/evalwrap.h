@@ -3,7 +3,7 @@
 *
 * AgriPoliS: An Agricultural Policy Simulator
 *
-* Copyright (c) 2021, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
+* Copyright (c) 2024, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
 * (cf. AUTHORS.md) at Leibniz Institute of Agricultural Development in 
 * Transition Economies
 *
@@ -141,7 +141,7 @@ void    pushArg(double value,ErrorRecord& errorRecord,evalKernel_pcb_type& evalK
 double  checkZero(double value,ErrorRecord& errorRecord,evalKernel_pcb_type& evalKernel_pcb);
 double *locateVariable(int nameLength,VariableDescriptor* variable,int& nVariables,ErrorRecord& errorRecord,evalKernel_pcb_type& evalKernel_pcb,CharStack& cs,ArgStack& as);
 double  callFunction(int nameLength, int argCount,ErrorRecord& errorRecord,evalKernel_pcb_type& evalKernel_pcb,CharStack& cs,ArgStack& as);
-void    diagnoseError(char *message,ErrorRecord& errorRecord,evalKernel_pcb_type& evalKernel_pcb);
+void    diagnoseError(const char *message,ErrorRecord& errorRecord,evalKernel_pcb_type& evalKernel_pcb);
 int     evaluateExpression(char *expressionString,VariableDescriptor* variable, int& nVariables,ErrorRecord& errorRecord,evalKernel_pcb_type& evalKernel_pcb,CharStack& cs,ArgStack& as);
 
 /**********************************************************************

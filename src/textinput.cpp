@@ -3,7 +3,7 @@
 *
 * AgriPoliS: An Agricultural Policy Simulator
 *
-* Copyright (c) 2021, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
+* Copyright (c) 2024, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
 * (cf. AUTHORS.md) at Leibniz Institute of Agricultural Development in 
 * Transition Economies
 *
@@ -25,7 +25,7 @@ bool hasCarbon;
 extern RegGlobalsInfo* gg;
 static void tokenize(const string& str,
                       vector<string>& tokens,
-                      const string& delimiters = ": \t=;")
+                      const string& delimiters = ": \t=;\r")
 {
     // Skip delimiters at beginning.
     string::size_type lastPos = str.find_first_not_of(delimiters, 0);
@@ -43,6 +43,19 @@ static void tokenize(const string& str,
     }
     if (n<2) tokens.push_back("=");
 }
+
+static string trim(const std::string& str, const std::string& whitespace = " \t\r\n")
+{
+    const auto strBegin = str.find_first_not_of(whitespace);
+    if (strBegin == std::string::npos)
+        return ""; // no content
+
+    const auto strEnd = str.find_last_not_of(whitespace);
+    const auto strRange = strEnd - strBegin + 1;
+
+    return str.substr(strBegin, strRange);
+}
+
 
 //static
  void glob(string fname=GLOBFILE) {
@@ -67,6 +80,7 @@ static void tokenize(const string& str,
 
         if (tokens.size()==1) continue;
         if (tokens[0][0]=='#') continue;
+//	if (trim(tokens[0]).length()<=1) continue;
 
 		transform(tokens[0].begin(), tokens[0].end(), tokens[0].begin(),
               (int(*)(int)) std::toupper);
@@ -119,6 +133,7 @@ void youngfarmer() {
 
         if (tokens.size()==1) continue;
         if (tokens[0][0]=='#') continue;
+//	if (trim(tokens[0]).length()<=1) continue;
 
        // std::transform(s.begin(), s.end(), s.begin(),
          //      (int(*)(int)) std::toupper);
@@ -160,6 +175,7 @@ void farms() {
 
         if (tokens.size()==1) continue;
         if (tokens[0][0]=='#') continue;
+//	if (trim(tokens[0]).length()<=1) continue;
 
         istringstream is(s);
         is >> s2;
@@ -239,7 +255,9 @@ void farms() {
                       string tt = ts;
                       //std::transform(tt.begin(), tt.end(), tt.begin(),
                         //    (int(*)(int)) std::toupper);
-                      found=s.find(tt);
+             string ats = trim(s);
+             string att = trim(tt);
+                      found=ats.find(att);
                       if (found != s.npos) break;
                  }
 				 if (found==s.npos) continue;
@@ -263,7 +281,6 @@ void farms() {
          istringstream iss(s);
          iss >> s2;
          if (s2[0]=='#') continue;
-
                if  (s2.find("OWNED_L")!=s2.npos){
                    j--;
                    while ( iss >> t2) {
@@ -339,6 +356,7 @@ void nfarms() {
 
         if (tokens.size()==1) continue;
         if (tokens[0][0]=='#') continue;
+//	if (trim(tokens[0]).length()<=1) continue;
 
         istringstream is(s);
         is >> str1;
@@ -418,6 +436,7 @@ void readenv() {
 
         if (tokens.size()==1) continue;
         if (tokens[0][0]=='#') continue;
+//	if (trim(tokens[0]).length()<=1) continue;
 
         std::transform(s.begin(), s.end(), s.begin(),
                (int(*)(int)) std::toupper);
@@ -560,6 +579,7 @@ void readmarket() {
 
         if (tokens.size()==1) continue;
         if (tokens[0][0]=='#') continue;
+	//if (trim(tokens[0]).length()<=1) continue;
 
         std::transform(s.begin(), s.end(), s.begin(),
                (int(*)(int)) std::toupper);
@@ -832,8 +852,8 @@ void readinvest() {
         getline(ins,s);
         sback= s;
 
-		vector <string> tokens;
-		tokenize(s,tokens);
+	vector <string> tokens;
+	tokenize(s,tokens);
 
         if (tokens.size()==1) continue;
         if (tokens[0][0]=='#') continue;
@@ -921,6 +941,7 @@ void readinvest() {
   }
   ins.close();
 
+
   vector<string> names{ "HIREDLAB","OFFFARMLAB" };
   double labsub = stof(globdata.globs["LABOUR_SUB"]);
   int ind;
@@ -937,7 +958,6 @@ void readinvest() {
 	  oneinvest inv = oneinvest(ind, nm, stof(globdata.globs[nm]), ls);
 	  investdata.invests.push_back(inv);
   }
-
   return;
 }
 
@@ -1024,18 +1044,6 @@ void  readmatrix() {
    return;
 }
 
-static string trim(const std::string& str, const std::string& whitespace = " ")
-{
-    const auto strBegin = str.find_first_not_of(whitespace);
-    if (strBegin == std::string::npos)
-        return ""; // no content
-
-    const auto strEnd = str.find_last_not_of(whitespace);
-    const auto strRange = strEnd - strBegin + 1;
-
-    return str.substr(strBegin, strRange);
-}
-
 //static
 void  readmatrix_new() {
     ifstream ins;
@@ -1055,12 +1063,11 @@ void  readmatrix_new() {
 		getline(ins,s);
 		
 		vector <string> tokens;
-        string tab="\t+;:";
+        string tab="\r\t+;:";
 		tokenize(s,tokens,tab);
-
         if (tokens.size()==1) continue;
         if (tokens[0][0]=='#') continue;
-		if (trim(tokens[0]).length()==0) continue;
+	if (trim(tokens[0]).length()==0) continue;
 
         string tt;
         struct aRestrict0 arest;
@@ -1092,6 +1099,7 @@ void  readmatrix_new() {
                     arest.name=str1;
 					for (unsigned int k=1; k< tokens.size(); ++k){
 						arest.terms0.push_back(trim(tokens[k]));
+
                     }
 					matrixdata_n.Restricts0.push_back(arest);
             default:   ;
@@ -1214,6 +1222,7 @@ void  readobjlinks() {
 
         if (tokens.size()==1) continue;
         if (tokens[0][0]=='#') continue;
+	//if (trim(tokens[0]).length()<=1) continue;
 
         istringstream is(s);
 
@@ -1247,7 +1256,6 @@ void  readmatrixlinks() {
 
     onelink cl;
     onematlink ml;
-
     while (!ins.eof()){
         getline(ins,s);
         sback = s;
@@ -1257,7 +1265,7 @@ void  readmatrixlinks() {
 
         if (tokens.size()==1) continue;
         if (tokens[0][0]=='#') continue;
-
+	//if (trim(tokens[0]).length()<=1) continue;
         std::transform(s.begin(), s.end(), s.begin(),
                (int(*)(int)) std::toupper);
         istringstream is(sback);
@@ -1301,7 +1309,6 @@ void readmip(){
     readcaplinks();
     readobjlinks();
     readmatrixlinks();
-
  return ;
 }
 

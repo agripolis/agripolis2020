@@ -3,7 +3,7 @@
 *
 * AgriPoliS: An Agricultural Policy Simulator
 *
-* Copyright (c) 2021, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
+* Copyright (c) 2024, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
 * (cf. AUTHORS.md) at Leibniz Institute of Agricultural Development in 
 * Transition Economies
 *
@@ -35,7 +35,8 @@ static string rtrim(string s, char c) {
 	rs.resize(n);
 	copy(s.rbegin(), s.rend(), rs.begin());
 	size_t pos=0;
-	while (rs[pos] == '\\') ++pos;
+	//while (rs[pos] == '\\') ++pos;
+	while (rs[pos] == c) ++pos;
 	
 	res.resize(n - pos);
 	for (unsigned i = 0; i < n-pos; ++i) {
@@ -450,10 +451,11 @@ RegLpInfo::Lp(RegProductList* PList, vector<int >& ninv, bool prod, int maxofffa
 		updateBoundsYoungFarmer();
 	}
 
- 	//#ifndef FRONTMIPISINSTALLED // #define FRONTMIPISINSTALLED is on top of RegGlobals.h
+	//#ifndef FRONTMIPISINSTALLED // #define FRONTMIPISINSTALLED is on top of RegGlobals.h
 	//    double glpkobject = LpGlpk(PList, ninv, prod, maxofffarmlu );
 	// return glpkobject;
 	//#else
+   
 #ifdef GNU_SOLVER
 	glp_solve();
 
@@ -565,16 +567,14 @@ RegLpInfo::Lp(RegProductList* PList, vector<int >& ninv, bool prod, int maxofffa
 			}
 
 			stringstream ts;
-			string debdir = "DebMIPs\\";
+			string debdir = "DebMIPs/";
 		
 			string tinputdir;
-			tinputdir=rtrim(inputdir, '\\');
+			tinputdir=rtrim(inputdir, '/');
 				
 			fs::path inpdir(tinputdir);
 			fs::path pdir = inpdir.parent_path();
-            if (pdir.string() == "")
-                pdir = ".";
-			string dstr = pdir.string() + "\\" + debdir;
+			string dstr = pdir.string() + "/" + debdir;
 			fs::path ddir(dstr);
 			if (!fs::exists(ddir))
 				fs::create_directories(ddir);

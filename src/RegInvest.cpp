@@ -3,7 +3,7 @@
 *
 * AgriPoliS: An Agricultural Policy Simulator
 *
-* Copyright (c) 2021, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
+* Copyright (c) 2024, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
 * (cf. AUTHORS.md) at Leibniz Institute of Agricultural Development in 
 * Transition Economies
 *
@@ -604,8 +604,9 @@ RegInvestList::getCapacityOfType(int t) {
 
 int RegInvestList::getRandomInvestAge() {
 	string name = "INVESTAGE";
- 	return g->getRandomInt(name, g->uni_int_distrib_investAge);
- }
+	
+	return g->getRandomInt(name, g->uni_int_distrib_investAge);
+}
 
 void
 RegInvestList::setAsynchronousInvestAge(int farm_age, double *assets,
@@ -631,7 +632,7 @@ RegInvestList::setAsynchronousInvestAge(int farm_age, double *assets,
 
         n = (*invest).getEconomicLife();
 
-        int ir = randlong(); // getRandomInvestAge();
+		int ir = randlong() ; // getRandomInvestAge();
 		//cout << ir << endl;
 		investage = ir % n;// randlong() % n;
 

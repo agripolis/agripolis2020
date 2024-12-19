@@ -3,7 +3,7 @@
 *
 * AgriPoliS: An Agricultural Policy Simulator
 *
-* Copyright (c) 2021, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
+* Copyright (c) 2024, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
 * (cf. AUTHORS.md) at Leibniz Institute of Agricultural Development in 
 * Transition Economies
 *
@@ -12,7 +12,7 @@
 
 #ifndef RegGlobalsH
 #define RegGlobalsH
-#include <tchar.h>
+//#include <tchar.h>
 #include "math.h"
 #include "SimpleOpt.h"
 #include <vector>

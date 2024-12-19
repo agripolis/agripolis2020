@@ -3,7 +3,7 @@
 *
 * AgriPoliS: An Agricultural Policy Simulator
 *
-* Copyright (c) 2021, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
+* Copyright (c) 2024, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
 * (cf. AUTHORS.md) at Leibniz Institute of Agricultural Development in 
 * Transition Economies
 *
@@ -13,7 +13,7 @@
 // RegData.cpp
 //---------------------------------------------------------------------------
 #undef UNICODE
-#include <windows.h>
+//#include <windows.h>
 
 #include <fstream>
 #include "RegData.h"
@@ -23,7 +23,10 @@
 #include <time.h>
 #include <iomanip>
 
+#include <filesystem>
+
 using namespace std;
+namespace fs = std::filesystem;
 
 void RegDataInfo::scenarioDate(ofstream& of) {
 	of <<"#Senario: \t"<< g->Scenario << "\n";
@@ -156,25 +159,26 @@ void
 RegDataInfo::initialisation(vector<RegInvestObjectInfo>& invest_cat,
                             vector<RegProductInfo>& product_cat, RegEnvInfo* Env) {
 //DCX
-    WIN32_FIND_DATA FindFileData;
-    size_t pos = g->OUTPUTFILE.find_last_not_of("\\");
-    string dirname = g->OUTPUTFILE.substr(0,pos+1);
-    HANDLE hfind = FindFirstFile(dirname.c_str(), &FindFileData);
-    if ( hfind == INVALID_HANDLE_VALUE) {               //not found
-        if (!CreateDirectory(dirname.c_str(),NULL)){
+    fs::path opath{g->OUTPUTFILE};
+    fs::path ppath=opath.parent_path();
+    string dirname = ppath.string();
+    
+    if (!fs::exists(ppath)) {
+      if (!create_directory(ppath)) {
             cerr << "ERROR: " << g->OUTPUTFILE.c_str() << " can not be created ! " << endl;
             exit(2);
-        }
+      }
     }
+     
 
     if (g->Rent_Variation) {
-        string plotsdir = dirname + "\\" + "plots";
-        hfind = FindFirstFile(plotsdir.c_str(), &FindFileData);
-        if (hfind == INVALID_HANDLE_VALUE) {               //not found
-            if (!CreateDirectory(plotsdir.c_str(), NULL)) {
+        string plotsdir = dirname + "/" + "plots";
+        fs::path apath{plotsdir};
+        if (!fs::exists(apath)) {
+           if (!create_directory(apath)) {
                 cerr << "ERROR: " << plotsdir << " can not be created ! " << endl;
                 exit(2);
-            }
+           }
         }
      }
 
@@ -1037,7 +1041,7 @@ RegDataInfo::printLegalTypeResults(const RegSectorResultsInfo& sector,vector<Reg
 //    }
 //DCX
     string e="";//GetCurrentDir();
-    printf(e.c_str());
+    printf("%s", e.c_str());
     printf("\n");
 
     string part2="legal_type.dat";
@@ -1483,7 +1487,7 @@ void RegDataInfo::initPrintPlots(list<RegFarmInfo*> farms) {
 void RegDataInfo::printPlots(int it) {
     ofstream pout;
     string filename = "plots_"+to_string(it)+".dat";
-    filename = g->OUTPUTFILE + "plots\\" + filename;
+    filename = g->OUTPUTFILE + "plots/" + filename;
     pout.open(filename, ios::out | ios::trunc);
     pout << "id\trow\tcol\tsoilType\townedBy_id\townedBy_name\trentBy_id\trentBy_name\trent\tsecond_offer\n";
     auto plots = region->plots;

@@ -3,7 +3,7 @@
 *
 * AgriPoliS: An Agricultural Policy Simulator
 *
-* Copyright (c) 2021, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
+* Copyright (c) 2024, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
 * (cf. AUTHORS.md) at Leibniz Institute of Agricultural Development in 
 * Transition Economies
 *
@@ -17,6 +17,7 @@
 #include <iterator>
 #include <vector>
 #include <string>
+#include <filesystem>
 
 #include "RegGlobals.h"
 
@@ -48,7 +49,7 @@ static void tokenize(const string& str,
     if (n<2) tokens.push_back("=");
 }
 
-static string trim(const std::string& str, const std::string& whitespace = " ")
+static string trim(const std::string& str, const std::string& whitespace = "\r\n\t= ")
 {
 	const auto strBegin = str.find_first_not_of(whitespace);
 	if (strBegin == std::string::npos)
@@ -81,7 +82,7 @@ static SimPhase phaseFromStr(string name) {
 bool deb_mip() {
 	bool result = false;
 	string fname = "debug_mip.txt";
-	string fullfn = optiondir + "\\"+ fname;
+	string fullfn = optiondir + "/"+ fname;
 	
 	ifstream ins(fullfn.c_str());
 	if (ins.good()) {
@@ -124,7 +125,7 @@ bool deb_mip() {
 void readScenario() {
 	ifstream ins;
 	stringstream gfile;
-	gfile << optiondir + "\\" << gg->SCENARIOFILE;
+	gfile << optiondir + "/" << gg->SCENARIOFILE;
 	ins.open(gfile.str().c_str(), ios::in);
 	if (!ins.is_open()) {
 		cerr << "Error while opening: " << gfile.str() << "\n";
@@ -140,7 +141,7 @@ void readScenario() {
 		if (s.compare("") == 0) continue;
 		if (s[0] == '#') continue;
 		tokens.clear();
-		tokenize(s, tokens,":\t" );
+		tokenize(s, tokens,":\t\r" );
 
 		if (tokens.size() == 1) continue;
 		s2 = trim(tokens[0]);
@@ -216,13 +217,13 @@ void readoptions() {
 
     while (!ins.eof()){
         getline(ins,s);
-        sback = s;
-        if (s.compare("")==0) continue;
-        if (s[0]=='#') continue;
+        sback = trim(s);
+        if (sback.compare("")==0) continue;
+        if (sback[0]=='#') continue;
         tokens.clear();
-        tokenize(s, tokens);
+        tokenize(sback, tokens);
 
-		if (tokens.size()==1) continue;
+	if (tokens.size()==1) continue;
         s2=tokens[0];
         std::transform(s2.begin(), s2.end(), s2.begin(),
                (int(*)(int)) std::toupper);
@@ -279,16 +280,25 @@ gg->ManagerDistribType = make_distribType(optionsdata["MANAGERCOEFFDISTRIBUTION"
 
 string tstr = optionsdata["INPUTFILEDIR"];
 
-if ((tstr.compare("=")==0)|| tstr.compare("")==0) 
-   gg->INPUTFILEdir= optiondir;
-else if (tstr[tstr.length()-1]!='\\' ) gg->INPUTFILEdir = tstr+ "\\";
-else gg->INPUTFILEdir = tstr;
+namespace fs=std::filesystem;
+fs::path inpath, opath;
 
-string updir = gg->INPUTFILEdir;
-size_t pos =updir.find_last_not_of('\\');
-updir = updir.substr(0,pos);
-pos = updir.find_last_of('\\');
-updir = updir.substr(0,pos+1);
+if ((tstr.compare("=")==0)|| tstr.compare("")==0) { 
+   inpath.assign(optiondir);
+}
+else 
+   inpath.assign(tstr);
+
+inpath/="";
+gg->INPUTFILEdir= inpath.string();
+
+//TEST
+//cout << "INP dir: " << gg->INPUTFILEdir << endl; 
+
+opath=inpath.parent_path().parent_path();
+opath/="";
+string updir = opath.string();
+
 
 tstr = gg->POLICYFILE;
 if (tstr.compare("")==0)
@@ -317,10 +327,17 @@ if (pos==string::npos){
 string ext = string("") + "_" + gg->Scenario;
 
 tstr = optionsdata["OUTPUTFILE"];
-if ((tstr.compare("") == 0) || tstr.compare("=")==0) 
-   gg->OUTPUTFILE = updir + "outputfiles"+ ext + "\\";
-else if (tstr[tstr.length()-1]!='\\' ) gg->OUTPUTFILE = tstr+ "\\"  ;
-else gg->OUTPUTFILE = tstr;
+
+if ((tstr.compare("\r") == 0) || tstr.compare("=")==0) 
+   gg->OUTPUTFILE = updir + "outputfiles"+ ext + "/";
+else {
+   opath.assign(tstr); 
+   opath/="";
+   gg->OUTPUTFILE=opath.string();
+}
+
+//TEST
+//cout << tstr << ": OUTP dir: " << gg->OUTPUTFILE << endl; 
 
 gg->FARMOUTPUT = optionsdata["FARMOUTPUT"].compare("true") == 0 ? true : false;
 gg->SECTOROUTPUT = optionsdata["SECTOROUTPUT"].compare("true") == 0 ? true : false;
@@ -417,10 +434,11 @@ return;
 }
 
 void options(string idir){
-	if (idir[idir.length()-1]!='\\' )
-		optiondir = idir + '\\';
-	else 
-		optiondir= idir;
+//	if (idir[idir.length()-1]!='\\' )
+//		optiondir = idir + '\\';
+//	else 
+//		optiondir= idir;
+    optiondir=idir+"/";
     readoptions();
     setoptions();
     return;

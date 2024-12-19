@@ -3,7 +3,7 @@
 *
 * AgriPoliS: An Agricultural Policy Simulator
 *
-* Copyright (c) 2021, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
+* Copyright (c) 2024, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
 * (cf. AUTHORS.md) at Leibniz Institute of Agricultural Development in 
 * Transition Economies
 *
@@ -2082,7 +2082,6 @@ RegManagerInfo::rentOnePlot(vector<int>& count_rented_plots_of_type, int type) {
         RegFarmInfo* maxbidder;
         // search for the highest offer
         RegPlotInfo* p=Region->getRandomFreePlot();
-
         if (p==NULL) return 0;
         else {
             for (farms_iter = FarmList.begin(), max_offer = 0, maxbidder = NULL, equalbidder.clear();

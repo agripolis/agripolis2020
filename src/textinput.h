@@ -3,7 +3,7 @@
 *
 * AgriPoliS: An Agricultural Policy Simulator
 *
-* Copyright (c) 2021, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
+* Copyright (c) 2024, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
 * (cf. AUTHORS.md) at Leibniz Institute of Agricultural Development in 
 * Transition Economies
 *
@@ -29,10 +29,10 @@ using namespace std;
 const string  DEMOGRAPH_FILE = "demographics.txt";
 const string  YOUNGFARMER_FILE = "youngfarmer.txt";
 
-const string  FARMDIR  =  "farms\\";
-const string  MIPDIR  =  "mip\\";
+const string  FARMDIR  =  "farms/";
+const string  MIPDIR  =  "mip/";
 const string  TXT  =  ".txt";
-const string  TESTDIR  =  "test\\";
+const string  TESTDIR  =  "test/";
 
 const string  GLOBFILE  =  "globals.txt";
 const string  TRANSLFILE  =  "translations.txt";

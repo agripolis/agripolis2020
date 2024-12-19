@@ -3,7 +3,7 @@
 *
 * AgriPoliS: An Agricultural Policy Simulator
 *
-* Copyright (c) 2021, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
+* Copyright (c) 2024, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
 * (cf. AUTHORS.md) at Leibniz Institute of Agricultural Development in 
 * Transition Economies
 *
@@ -91,8 +91,8 @@ RegRegionInfo::cPoT(int t) {
 
 int RegRegionInfo::getRandom_contractLength() {
 	string name = "CONTRACTLENGTH";
-	//return g->getRandomInt(name,g->uni_int_distrib_contractLength);
-    return g->MIN_CONTRACT_LENGTH + randlong() % (g->MAX_CONTRACT_LENGTH - g->MIN_CONTRACT_LENGTH);
+//	return g->getRandomInt(name,g->uni_int_distrib_contractLength);
+  return g->MIN_CONTRACT_LENGTH + randlong() % (g->MAX_CONTRACT_LENGTH - g->MIN_CONTRACT_LENGTH); 
 }
 
 int RegRegionInfo::getRandom_freePlot_initLand() {
@@ -377,7 +377,7 @@ RegRegionInfo::getRandomFreePlotOfType(int type) {
     do {
         test=false;
         int randplot = randlong()%(g->NO_COLS * g->NO_ROWS);
-		//int randplot = getRandom_freePlot_initLand();
+	//	int randplot = getRandom_freePlot_initLand();
 		//cout << randplot << "\t";
 
         p=plots[randplot];

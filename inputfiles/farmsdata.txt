@@ -34,4 +34,4 @@
 #	Milchk?e	0	0	0	190	0	0	0	60	0	0	0	0	0	0	0	0	0	0	0
 																				
 	#fadnID	21 * halved																		
-	"#land assets calculated by FADN farms without rented land, taking SE446/ha for arable and grassland"											arable		17745		grass	12050			
+#	"#land assets calculated by FADN farms without rented land, taking SE446/ha for arable and grassland"											arable		17745		grass	12050			

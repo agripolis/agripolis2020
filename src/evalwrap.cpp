@@ -65,10 +65,10 @@ static char* mystrdup(const char* str)
 
 /* define an error record */
 
-void diagnoseError(char *msg,ErrorRecord& errorRecord,evalKernel_pcb_type& evalKernel_pcb) {
+void diagnoseError(const char *msg,ErrorRecord& errorRecord,evalKernel_pcb_type& evalKernel_pcb) {
     if (evalKernel_pcb.exit_flag == AG_RUNNING_CODE)   /* parser still running */
         evalKernel_pcb.exit_flag = AG_SEMANTIC_ERROR_CODE;      /* stop parse */
-    errorRecord.message = msg;
+    errorRecord.message = const_cast<char*>(msg);
     errorRecord.line    = evalKernel_pcb.line;
     errorRecord.column  = evalKernel_pcb.column;
 }
@@ -243,7 +243,7 @@ WRAPPER_FUNCTION_1_ARG(tanh)
 
 /* define the function table -- must be in sorted order! */
 struct {
-    char *name;
+    const char *name;
     double (*function)(int, double[],ErrorRecord&,evalKernel_pcb_type&);
 }
 functionTable[N_FUNCTIONS] = {

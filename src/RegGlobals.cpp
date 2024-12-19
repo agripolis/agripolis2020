@@ -3,7 +3,7 @@
 *
 * AgriPoliS: An Agricultural Policy Simulator
 *
-* Copyright (c) 2021, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
+* Copyright (c) 2024, Alfons Balmann, Kathrin Happe, Konrad Kellermann et al.
 * (cf. AUTHORS.md) at Leibniz Institute of Agricultural Development in 
 * Transition Economies
 *
@@ -18,9 +18,15 @@
 #include <time.h>
 #include <stdio.h>
 
+#include <algorithm>
+
 #include "RegGlobals.h"
 #include "textinput.h"
 #include "random.h"
+
+
+#define TCHAR char
+#define _T(x) (x)
 
 const string RegGlobalsInfo::UsageString=
     "USAGE: program [options] dirOfSzenarios  [ szenario [repeatNum] ] \n";
@@ -187,7 +193,7 @@ RegGlobalsInfo::readFromCommandLine() {
 	CSimpleOpt args(ARGC,ARGV, g_rgOptions,SO_O_ICASE);
     while (args.Next()) {
         if (args.LastError() != SO_SUCCESS) {
-            TCHAR * pszError = _T("Unknown error");
+            const TCHAR * pszError = &(_T("Unknown error")[0]);
             switch (args.LastError()) {
             case SO_OPT_INVALID:
                 pszError = _T("Unrecognized option");
@@ -248,32 +254,32 @@ RegGlobalsInfo::readFromCommandLine() {
 
 static string Upper(string str) {
 	//cout << str;
-	transform(str.begin(), str.end(), str.begin(), toupper);
+	transform(str.begin(), str.end(), str.begin(), ::toupper);
 	//cout << str << endl;
 	return str;
 }
 
 void RegGlobalsInfo::initRandEngines() {
 	for (int i = 0; i < RCOUNT; ++i) {
-		RAND_ENGINES[Upper(rand_gen_names[i])] = MT19937;// MINSTD_RAND0;
+		RAND_ENGINES[Upper(rand_gen_names[i])] = MT19937; //MINSTD_RAND0;
 	}
 }
 
 RegGlobalsInfo::R_ENGINES RegGlobalsInfo::TO_RAND_ENGINE(string str) {
 	//cout << str << endl;
 	str = Upper(str);
-	if (!str.compare("MINSTD_RAND0"))
-		return MINSTD_RAND0;
-	else if (!str.compare("MINSTD_RAND"))
-		return MINSTD_RAND;
-	else if (!str.compare("MT19937"))
-		return MT19937;
-	else if (!str.compare("MT19937_64"))
-		return MT19937_64;
-	else if (!str.compare("KNUTH_B"))
-		return KNUTH_B;
-	else
-		return MT19937; // MINSTD_RAND0;
+		if (!str.compare("MINSTD_RAND0"))
+			return MINSTD_RAND0;
+		else if (!str.compare("MINSTD_RAND"))
+			return MINSTD_RAND;
+		else if (!str.compare("MT19937"))
+			return MT19937;
+		else if (!str.compare("MT19937_64"))
+			return MT19937_64;
+		else if (!str.compare("KNUTH_B"))
+			return KNUTH_B;
+		else 
+			return MT19937; //MINSTD_RAND0;
 }
 
 double RegGlobalsInfo::getRandomReal(string name, uniform_real_distribution<>& distr) {
@@ -329,10 +335,9 @@ void RegGlobalsInfo::setRandGens() {
 		std::knuth_b knuthb;
 		if (RAND_SEEDS.count(nm) > 0) {
 			sd = RAND_SEEDS[nm];
-		}
-		else {
-sd = 1001;
-		}
+                } else {
+sd=1001;
+}
 			mt.seed(sd);
 			mt64.seed(sd);
 			minstd0.seed(sd);
@@ -347,7 +352,7 @@ sd = 1001;
 		case MT19937: rand_gen = mt; break;
 		case MT19937_64: rand_gen = mt64; break;
 		case KNUTH_B: rand_gen = knuthb; break;
-		default: rand_gen = mt; // minstd0;
+		default: rand_gen = mt; //minstd0;
 		}
 		
 		RAND_GENs[nm]=rand_gen;
@@ -517,6 +522,7 @@ tInd=0;
 if (ManagerDistribType == DISTRIB_TYPE::NORMAL) {
 	normal_distr.param(std::normal_distribution<>::param_type(ManagerMean, ManagerDev));
 }
+
 	
 if (ManagerDemographics || YoungFarmer) {
 	FF_age_normal_distr.param(std::normal_distribution<>::param_type(FF_initAge_mean, FF_initAge_dev));
@@ -570,7 +576,6 @@ if (ManagerDemographics || YoungFarmer) {
                             *number_of_each_type[i];
          }
     }
-
     double landinput=0;
     for (int i=0;i<NO_OF_SOIL_TYPES;i++) {
         landinput+=LAND_INPUT_OF_TYPE[i];
