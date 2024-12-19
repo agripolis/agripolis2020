@@ -632,7 +632,7 @@ RegInvestList::setAsynchronousInvestAge(int farm_age, double *assets,
 
         n = (*invest).getEconomicLife();
 
-		int ir = randlong() ; // getRandomInvestAge();
+		int ir = getRandomInvestAge();
 		//cout << ir << endl;
 		investage = ir % n;// randlong() % n;
 

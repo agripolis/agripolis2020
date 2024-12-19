@@ -615,10 +615,8 @@ RegFarmInfo::setAsynchronousFarmAge() {
 	lb = (legal_type==2)? g->CF_InitAge_min: g->FF_InitAge_min;
 	ub = (legal_type==2)? g->CF_InitAge_max: g->FF_InitAge_max;
     double eqinterest = (*product_cat)[1].getPrice();
-    // int ran = (int)(((double)rand()/RAND_MAX)*g->GENERATION_CHANGE);
-    ran = randlong() % g->GENERATION_CHANGE;
-
-    /*
+    ran = (int)(((double)rand()/RAND_MAX)*g->GENERATION_CHANGE);
+    
 	if (g->ManagerDemographics || g->YoungFarmer) {
 		double r;
 		if (legal_type == 2) {
@@ -641,7 +639,7 @@ RegFarmInfo::setAsynchronousFarmAge() {
 			//cout <<"fage: "<< ran << endl;
 		}
 	}
-//*/
+
     setFarmAge(ran);
 	if (g->ManagerDemographics|| g->YoungFarmer) {
 		if (legal_type <= 1) g->farmAgeDists[1][ran]++;
@@ -680,8 +678,7 @@ RegFarmInfo::getInitialOwnedLand() const {
 int RegFarmInfo::getRandomContractLength() {
 	string name = "CONTRACTLENGTHINIT";
 
-//	return g->getRandomInt(name, g->uni_int_distrib_contractLengthInit);
-  return randlong() % (g->MAX_CONTRACT_LENGTH-1) + 1 ;
+  return g->getRandomInt(name, g->uni_int_distrib_contractLengthInit);
 }
 
 bool 

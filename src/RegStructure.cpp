@@ -91,8 +91,7 @@ RegRegionInfo::cPoT(int t) {
 
 int RegRegionInfo::getRandom_contractLength() {
 	string name = "CONTRACTLENGTH";
-//	return g->getRandomInt(name,g->uni_int_distrib_contractLength);
-  return g->MIN_CONTRACT_LENGTH + randlong() % (g->MAX_CONTRACT_LENGTH - g->MIN_CONTRACT_LENGTH); 
+	return g->getRandomInt(name,g->uni_int_distrib_contractLength);
 }
 
 int RegRegionInfo::getRandom_freePlot_initLand() {
@@ -376,8 +375,8 @@ RegRegionInfo::getRandomFreePlotOfType(int type) {
     RegPlotInfo* p;
     do {
         test=false;
-        int randplot = randlong()%(g->NO_COLS * g->NO_ROWS);
-	//	int randplot = getRandom_freePlot_initLand();
+        //int randplot = randlong()%(g->NO_COLS * g->NO_ROWS);
+	int randplot = getRandom_freePlot_initLand();
 		//cout << randplot << "\t";
 
         p=plots[randplot];
@@ -412,8 +411,8 @@ RegRegionInfo::getRandomFreePlot() {
         return NULL;
     } else {
         int t=free_plots.size();
-		int r = randlong() % t;
-		//int r = getRandom_freePlot_rentPlot();
+		//int r = randlong() % t;
+		int r = getRandom_freePlot_rentPlot();
 		//cout << r << "\t";
 
 		r = r % t;
