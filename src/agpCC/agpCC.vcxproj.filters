@@ -170,5 +170,6 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\glpk_4_45.lib" />
+    <Library Include="..\glpk_4_45_x64.lib" />
   </ItemGroup>
 </Project>

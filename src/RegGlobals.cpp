@@ -255,25 +255,25 @@ static string Upper(string str) {
 
 void RegGlobalsInfo::initRandEngines() {
 	for (int i = 0; i < RCOUNT; ++i) {
-		RAND_ENGINES[Upper(rand_gen_names[i])] = MINSTD_RAND0;
+		RAND_ENGINES[Upper(rand_gen_names[i])] = MT19937;// MINSTD_RAND0;
 	}
 }
 
 RegGlobalsInfo::R_ENGINES RegGlobalsInfo::TO_RAND_ENGINE(string str) {
 	//cout << str << endl;
 	str = Upper(str);
-		if (!str.compare("MINSTD_RAND0"))
-			return MINSTD_RAND0;
-		else if (!str.compare("MINSTD_RAND"))
-			return MINSTD_RAND;
-		else if (!str.compare("MT19937"))
-			return MT19937;
-		else if (!str.compare("MT19937_64"))
-			return MT19937_64;
-		else if (!str.compare("KNUTH_B"))
-			return KNUTH_B;
-		else 
-			return MINSTD_RAND0;
+	if (!str.compare("MINSTD_RAND0"))
+		return MINSTD_RAND0;
+	else if (!str.compare("MINSTD_RAND"))
+		return MINSTD_RAND;
+	else if (!str.compare("MT19937"))
+		return MT19937;
+	else if (!str.compare("MT19937_64"))
+		return MT19937_64;
+	else if (!str.compare("KNUTH_B"))
+		return KNUTH_B;
+	else
+		return MT19937; // MINSTD_RAND0;
 }
 
 double RegGlobalsInfo::getRandomReal(string name, uniform_real_distribution<>& distr) {
@@ -329,12 +329,16 @@ void RegGlobalsInfo::setRandGens() {
 		std::knuth_b knuthb;
 		if (RAND_SEEDS.count(nm) > 0) {
 			sd = RAND_SEEDS[nm];
+		}
+		else {
+sd = 1001;
+		}
 			mt.seed(sd);
 			mt64.seed(sd);
 			minstd0.seed(sd);
 			minstd.seed(sd);
 			knuthb.seed(sd);
-		}
+		//}
 		var_RAND_GEN rand_gen;
 
 		switch (RAND_ENGINES[nm]) {
@@ -343,7 +347,7 @@ void RegGlobalsInfo::setRandGens() {
 		case MT19937: rand_gen = mt; break;
 		case MT19937_64: rand_gen = mt64; break;
 		case KNUTH_B: rand_gen = knuthb; break;
-		default: rand_gen = minstd0;
+		default: rand_gen = mt; // minstd0;
 		}
 		
 		RAND_GENs[nm]=rand_gen;

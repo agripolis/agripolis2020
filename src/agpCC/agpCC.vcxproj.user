@@ -4,4 +4,8 @@
     <LocalDebuggerCommandArguments>d:\rent-variation\agripolis2020\inputfiles  --RUNS=3   --TEILER=30</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LocalDebuggerCommandArguments>d:\github\agripolis2020\inputfiles  --RUNS=3   --TEILER=100</LocalDebuggerCommandArguments>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
 </Project>

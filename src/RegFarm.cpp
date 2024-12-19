@@ -316,24 +316,25 @@ RegFarmInfo::RegFarmInfo(RegRegionInfo *reg,
 
 	if (g->USE_TRIANGULAR_DISTRIBUTED_MANAGEMENT_FACTOR) {
 		management_coefficient = g->triangular("MGMTCOEFF", lower_border, lower_border + (upper_border - lower_border) / 2, upper_border);
-    } else {
-        //management_coefficient = lower_border + (upper_border-lower_border)*((double)randlong()/mtRandMax);//RAND_MAX);
-		double r;
-		string name = "MGMTCOEFF";
-		
-		if (g->ManagerDistribType != DISTRIB_TYPE::NORMAL) {
-			r = g->getRandomReal(name, g->uni_real_distrib_mgmtCoeff);
-			management_coefficient = lower_border + (upper_border - lower_border)*r;
-		}
-		else {
-			r = g->getRandomNormal(name, g->normal_distr);
-			while (r < lower_border || r > upper_border)
-				r = g->getRandomNormal(name, g->normal_distr);
-			management_coefficient = r;
-		}
-		//cout << mean<<"\t"<<stddev<<"\t"<< r << endl;
-		
     }
+    else {
+        //management_coefficient = lower_border + (upper_border-lower_border)*((double)randlong()/mtRandMax);//RAND_MAX);
+        double r;
+        string name = "MGMTCOEFF";
+
+        if (g->ManagerDistribType != DISTRIB_TYPE::NORMAL) {
+            r = g->getRandomReal(name, g->uni_real_distrib_mgmtCoeff);
+            management_coefficient = lower_border + (upper_border - lower_border) * r;
+        }
+        else {
+            r = g->getRandomNormal(name, g->normal_distr);
+            while (r < lower_border || r > upper_border)
+                r = g->getRandomNormal(name, g->normal_distr);
+            management_coefficient = r;
+        }
+        //cout << mean<<"\t"<<stddev<<"\t"<< r << endl;
+    }
+
     FarmInvestList = new RegInvestList(g,ICat);
     FarmProductList = new RegProductList(g,PCat);
 
@@ -616,6 +617,9 @@ RegFarmInfo::setAsynchronousFarmAge() {
 	ub = (legal_type==2)? g->CF_InitAge_max: g->FF_InitAge_max;
     double eqinterest = (*product_cat)[1].getPrice();
     // int ran = (int)(((double)rand()/RAND_MAX)*g->GENERATION_CHANGE);
+    ran = randlong() % g->GENERATION_CHANGE;
+    
+    /*
 	if (g->ManagerDemographics || g->YoungFarmer) {
 		double r;
 		if (legal_type == 2) {
@@ -624,8 +628,8 @@ RegFarmInfo::setAsynchronousFarmAge() {
 		else {
 			r = getRandomNormalRange("DEMOGFF", g->FF_age_normal_distr, lb, ub);
 		}
-		ran = (int)(r + 0.5);
-	}else {
+        ran = (int)(r + 0.5);
+ 	}else {
 		if (g->USE_TRIANGULAR_DISTRIBUTED_FARM_AGE) {
 			ran = static_cast<int>(g->triangular("FARMAGE", 1, 12, g->GENERATION_CHANGE));
 		}
@@ -638,7 +642,7 @@ RegFarmInfo::setAsynchronousFarmAge() {
 			//cout <<"fage: "<< ran << endl;
 		}
 	}
-
+    //*/
     setFarmAge(ran);
 	if (g->ManagerDemographics|| g->YoungFarmer) {
 		if (legal_type <= 1) g->farmAgeDists[1][ran]++;
@@ -677,7 +681,8 @@ RegFarmInfo::getInitialOwnedLand() const {
 int RegFarmInfo::getRandomContractLength() {
 	string name = "CONTRACTLENGTHINIT";
 
-	return g->getRandomInt(name, g->uni_int_distrib_contractLengthInit);
+	//return g->getRandomInt(name, g->uni_int_distrib_contractLengthInit);
+    return randlong() % (g->MAX_CONTRACT_LENGTH - 1) + 1;
 }
 
 bool 

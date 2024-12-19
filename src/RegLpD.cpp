@@ -450,7 +450,7 @@ RegLpInfo::Lp(RegProductList* PList, vector<int >& ninv, bool prod, int maxofffa
 		updateBoundsYoungFarmer();
 	}
 
-	//#ifndef FRONTMIPISINSTALLED // #define FRONTMIPISINSTALLED is on top of RegGlobals.h
+ 	//#ifndef FRONTMIPISINSTALLED // #define FRONTMIPISINSTALLED is on top of RegGlobals.h
 	//    double glpkobject = LpGlpk(PList, ninv, prod, maxofffarmlu );
 	// return glpkobject;
 	//#else
@@ -572,6 +572,8 @@ RegLpInfo::Lp(RegProductList* PList, vector<int >& ninv, bool prod, int maxofffa
 				
 			fs::path inpdir(tinputdir);
 			fs::path pdir = inpdir.parent_path();
+            if (pdir.string() == "")
+                pdir = ".";
 			string dstr = pdir.string() + "\\" + debdir;
 			fs::path ddir(dstr);
 			if (!fs::exists(ddir))

@@ -2082,6 +2082,7 @@ RegManagerInfo::rentOnePlot(vector<int>& count_rented_plots_of_type, int type) {
         RegFarmInfo* maxbidder;
         // search for the highest offer
         RegPlotInfo* p=Region->getRandomFreePlot();
+
         if (p==NULL) return 0;
         else {
             for (farms_iter = FarmList.begin(), max_offer = 0, maxbidder = NULL, equalbidder.clear();

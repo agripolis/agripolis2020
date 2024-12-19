@@ -604,9 +604,8 @@ RegInvestList::getCapacityOfType(int t) {
 
 int RegInvestList::getRandomInvestAge() {
 	string name = "INVESTAGE";
-	
-	return g->getRandomInt(name, g->uni_int_distrib_investAge);
-}
+ 	return g->getRandomInt(name, g->uni_int_distrib_investAge);
+ }
 
 void
 RegInvestList::setAsynchronousInvestAge(int farm_age, double *assets,
@@ -632,7 +631,7 @@ RegInvestList::setAsynchronousInvestAge(int farm_age, double *assets,
 
         n = (*invest).getEconomicLife();
 
-		int ir = getRandomInvestAge();
+        int ir = randlong(); // getRandomInvestAge();
 		//cout << ir << endl;
 		investage = ir % n;// randlong() % n;
 
