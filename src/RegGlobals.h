@@ -46,6 +46,7 @@ public:
 	//	GC: generation change, prob: probability
 	bool ManagerDemographics;
 	bool YoungFarmer;
+	int Stop_Iteration_YoungFarmerPay;
 	double FF_initAge_mean, FF_initAge_dev;
 	double CF_initAge_mean, CF_initAge_dev;
 	int FF_InitAge_min, FF_InitAge_max;

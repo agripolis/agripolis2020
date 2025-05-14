@@ -273,6 +273,13 @@ gg->NASG = optionsdata["NASG"].compare("true") == 0 ? true : false;
 
 gg->ManagerDemographics = optionsdata["MANAGERDEMOGRAPHICS"].compare("true") == 0 ? true : false;
 gg->YoungFarmer = optionsdata["YOUNGFARMER"].compare("true") == 0 ? true : false;
+if (gg->YoungFarmer) {
+	string stop_iteration = optionsdata["STOP_ITERATION_YOUNGFARMERPAY"];
+	if (stop_iteration.compare("")!=0)
+	    gg->Stop_Iteration_YoungFarmerPay = atoi(stop_iteration.c_str());
+	else 
+		gg->Stop_Iteration_YoungFarmerPay = gg->RUNS;
+}
 
 gg->DebMip = optionsdata["DEBUG_MIP"].compare("true") == 0 ? true : false;
 

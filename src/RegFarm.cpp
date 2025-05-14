@@ -1501,14 +1501,18 @@ void RegFarmInfo::updateYoungFarmerLand() {
 }
 
 void RegFarmInfo::updateYoungFarmer() {
-	if (YoungFarmer_years > 0)
-		--YoungFarmer_years;
-	else {
-		if (!youngfarmerPaid && farm_age < g->YF_startpayMaxAge && youngfarmerMinSize) {
-			YoungFarmer_years = g->YF_payYears;
-			youngfarmerPaid = true;
-		}
-	}
+    if (g->tIter >= g->Stop_Iteration_YoungFarmerPay)
+        YoungFarmer_years = 0;
+    else {
+        if (YoungFarmer_years > 0)
+            --YoungFarmer_years;
+        else {
+            if (!youngfarmerPaid && farm_age < g->YF_startpayMaxAge && youngfarmerMinSize) {
+                YoungFarmer_years = g->YF_payYears;
+                youngfarmerPaid = true;
+            }
+        }
+    }
 }
 
 void RegFarmInfo::changeGeneration() {

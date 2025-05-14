@@ -37,6 +37,7 @@ RegGlobalsInfo::RegGlobalsInfo() {
 
 	ManagerDemographics = false;
 	YoungFarmer = false;
+	Stop_Iteration_YoungFarmerPay = 0;
 	farmAgeDists.resize(3);
 
 	tPhase = SimPhase::INIT;
